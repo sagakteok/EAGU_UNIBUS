@@ -1,14 +1,14 @@
 <template>
   <v-app>
-    <test/>
+    <MainHome/>
   </v-app>
 </template>
 
 <script>
-import Test from "./components/test.vue";
+import MainHome from "./components/MainHome.vue";
 
 export default {
   name: "App",
-  components: {Test},
+  components: {MainHome},
 };
 </script>
