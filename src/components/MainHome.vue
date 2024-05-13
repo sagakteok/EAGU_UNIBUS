@@ -1,24 +1,14 @@
-<template>
-  <v-app-bar :elevation="0">
-    <v-btn icon="mdi-dots-vertical" @click="drawer = !drawer" location="right"></v-btn>
-    <v-toolbar-title location="left">UNIBUS</v-toolbar-title>
-  </v-app-bar>
+<script setup>
+</script>
 
-  <v-navigation-drawer v-model="drawer" location="right" color="#006934" app>
-    목록
-  </v-navigation-drawer>
+<template>
 </template>
 
-<style scoped>
-
+<style>
+  body {
+    background-image: url('../assets/MainHome.svg');
+    background-size: cover;
+    width: auto;
+    height: auto;
+  }
 </style>
-
-<script>
-export default {
-  data() {
-    return {
-      drawer: null,
-    };
-  },
-}
-</script>
