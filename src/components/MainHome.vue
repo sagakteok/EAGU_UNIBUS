@@ -1,5 +1,6 @@
 <script setup>
 import {ref} from "vue";
+import router from "../router.js";
 const fname = ref("Vue");
 
 function UNIBUS(name){
@@ -25,11 +26,11 @@ function citybus(name){
   <v-img class="UNIBUS" :src="UNIBUS(fname)"/>
   <v-img class="slogan" :src="slogan(fname)"/>
   <v-layout>
-      <v-card class="card1" hover link>
+      <v-card class="card1" hover @click="router.push('/shuttle')">
         <v-img class="cardimages" :src="shuttlebus(fname)"/>
         <div class="cards-text">셔틀버스</div>
       </v-card>
-      <v-card class="card2" hover link>
+      <v-card class="card2" hover @click="router.push('/city')">
         <v-img class="cardimages" :src="citybus(fname)"/>
         <div class="cards-text">시내버스</div>
       </v-card>
