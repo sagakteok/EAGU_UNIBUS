@@ -19,20 +19,28 @@ function citybus(name){
   return new URL('/src/assets/citybus.svg', import.meta.url).href;
 }
 
+function ShuttlebusText(name){
+  return new URL('/src/assets/ShuttlebusText.svg', import.meta.url).href;
+}
+
+function CitybusText(name){
+  return new URL('/src/assets/CitybusText.svg', import.meta.url).href;
+}
+
 
 </script>
 
 <template>
-  <v-img class="UNIBUS" :src="UNIBUS(fname)"/>
-  <v-img class="slogan" :src="slogan(fname)"/>
-  <v-layout>
+    <v-img class="MainUNIBUS" :src="UNIBUS(fname)"/>
+    <v-img class="slogan" :src="slogan(fname)"/>
+    <v-layout>
       <v-card class="card1" hover @click="router.push('/shuttle')">
         <v-img class="cardimages" :src="shuttlebus(fname)"/>
-        <div class="cards-text">셔틀버스</div>
+        <v-img class="ShuttlebusText" :src="ShuttlebusText(fname)"/>
       </v-card>
       <v-card class="card2" hover @click="router.push('/city')">
         <v-img class="cardimages" :src="citybus(fname)"/>
-        <div class="cards-text">시내버스</div>
+        <v-img class="CitybusText" :src="CitybusText(fname)"/>
       </v-card>
   </v-layout>
 </template>
@@ -45,7 +53,7 @@ body {
   height: auto;
 }
 
-.UNIBUS{
+.MainUNIBUS{
   width: 400px;
   margin: auto;
 }
@@ -53,7 +61,6 @@ body {
 .slogan{
   top: 15px;
   width:300px;
-  align: center;
   margin: auto;
 }
 
@@ -62,7 +69,7 @@ body {
   border: 4px solid;
   border-color: #006933;
   border-radius: 60px;
-  box-shadow: 0px 0px 30px #00000040;
+  box-shadow: 0px 0px 30px #00000050;
   height: 250px;
   position: relative;
   width: 250px;
@@ -75,7 +82,7 @@ body {
   border: 4px solid;
   border-color: #006933;
   border-radius: 60px;
-  box-shadow: 0px 0px 30px #00000040;
+  box-shadow: 0px 0px 30px #00000050;
   height: 250px;
   position: relative;
   width: 250px;
@@ -89,16 +96,16 @@ body {
   margin: auto;
 }
 
-.cards-text{
-  color: #006933;
-  font-family: "Inter-Bold", Helvetica;
-  font-size: 30px;
-  font-weight: 900;
-  left: 70px;
-  letter-spacing: 0;
-  line-height: normal;
-  position: absolute;
-  top: 170px;
+.ShuttlebusText{
+  top: 5px;
+  width: 110px;
+  margin: auto;
+}
+
+.CitybusText{
+  top: 5px;
+  width: 110px;
+  margin: auto;
 }
 
 </style>

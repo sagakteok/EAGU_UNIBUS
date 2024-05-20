@@ -1,7 +1,6 @@
 <script setup>
 import {ref} from "vue";
 import router from "../router.js";
-import {registerPlugins} from "../plugins/index.js";
 const fname = ref("Vue");
 
 function UNIBUS(name){
@@ -13,7 +12,7 @@ function UNIBUS(name){
 <template>
   <v-app-bar class="app-bar" color="transparent" elevation="0" prominent>
     <v-btn @click="router.push('/')">
-      <div class="app-bar-titletext">UNIBUS</div>
+      <v-img class="AppbarUNIBUS" :src="UNIBUS(fname)"/>
     </v-btn>
     <v-btn @click="router.push('/shuttle')">
       <div class="app-bar-text">셔틀버스</div>
@@ -31,12 +30,8 @@ function UNIBUS(name){
 </template>
 
 <style>
-
-.app-bar-titletext{
-  font-family: "Inter-Bold", Helvetica;
-  color: #FFFFFF;
-  font-size: 30px;
-  font-weight: 700;
+.AppbarUNIBUS{
+  width: 100px;
 }
 
 .app-bar-text {
