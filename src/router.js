@@ -2,7 +2,7 @@ import { createWebHistory, createRouter} from "vue-router";
 import MainHome from "./components/MainHome.vue"
 import shuttlego from "./components/Shuttlebus/ShuttlebusGoSchool.vue"
 import citygo from "./components/Citybus/CitybusGoSchool.vue"
-import news from "./components/News/TransportationNews.vue"
+import news from "./components/News/DeveloperNews.vue"
 const routes = [
     {
         path: "/",
@@ -10,17 +10,17 @@ const routes = [
     },
     {
         path: "/shuttle",
-        component: shuttlego
+        component: shuttlego,
     },
 
     {
         path: "/city",
-        component: citygo
+        component: citygo,
     },
     {
         path: "/news",
-        component: news
-    }
+        component: news,
+    },
     ]
 
 const router = createRouter({

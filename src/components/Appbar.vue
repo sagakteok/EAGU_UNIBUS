@@ -21,7 +21,7 @@ function UNIBUS(name){
     <v-btn @click="router.push('/city')">
       <div class="app-bar-text">시내버스</div>
     </v-btn>
-    <v-btn @click="router.push('/News')">
+    <v-btn @click="router.push('/news')">
       <div class="app-bar-text">소식</div>
     </v-btn>
     <v-btn href="https://www.dju.ac.kr/">
