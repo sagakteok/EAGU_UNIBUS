@@ -1,16 +1,26 @@
 import { createWebHistory, createRouter} from "vue-router";
-import MainHome from "../src/components/MainHome.vue"
-
+import MainHome from "./components/MainHome.vue"
+import shuttlego from "./components/Shuttlebus/ShuttlebusGoSchool.vue"
+import citygo from "./components/Citybus/CitybusGoSchool.vue"
 const routes = [
     {
         path: "/",
-        name: MainHome,
         component: MainHome,
-    }]
+    },
+    {
+        path: "/shuttle",
+        component: shuttlego
+    },
+
+    {
+        path: "/city",
+        component: citygo
+    },
+    ]
 
 const router = createRouter({
     history: createWebHistory(),
     routes,
 });
 
-export default router;
+export default router

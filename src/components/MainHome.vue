@@ -22,15 +22,15 @@ function citybus(name){
 </script>
 
 <template>
-  <v-img class="UNIBUS" :src="UNIBUS(fname)"></v-img>
-  <v-img class="slogan" :src="slogan(fname)"></v-img>
+  <v-img class="UNIBUS" :src="UNIBUS(fname)"/>
+  <v-img class="slogan" :src="slogan(fname)"/>
   <v-layout>
       <v-card class="card1" hover link>
-        <v-img class="cardimages" :src="shuttlebus(fname)"></v-img>
+        <v-img class="cardimages" :src="shuttlebus(fname)"/>
         <div class="cards-text">셔틀버스</div>
       </v-card>
       <v-card class="card2" hover link>
-        <v-img class="cardimages" :src="citybus(fname)"></v-img>
+        <v-img class="cardimages" :src="citybus(fname)"/>
         <div class="cards-text">시내버스</div>
       </v-card>
   </v-layout>

@@ -2,15 +2,13 @@
   <v-layout>
     <AppBar/>
   </v-layout>
-  <MainHome/>
+  <router-view/>
 </template>
 
 <script>
 import AppBar from "./components/Appbar.vue";
-import MainHome from "./components/MainHome.vue";
 
 export default {
-  name: "App",
-  components: {AppBar, MainHome}
+  components: {AppBar}
 };
 </script>
