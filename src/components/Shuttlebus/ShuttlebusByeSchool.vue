@@ -12,7 +12,6 @@ function ShuttlebusByeSchool(name){
 <template>
   <v-img class="ShuttlebusByeSchool" :src="ShuttlebusByeSchool(fname)"></v-img>
   <v-layout>
-    <Appbar/>
     <v-card class="card"></v-card>
   </v-layout>
 
@@ -46,11 +45,5 @@ body {
 </style>
 
 <script>
-
-import Appbar from "../Appbar.vue";
-export default {
-  name: "App",
-  components: {Appbar}
-};
 
 </script>

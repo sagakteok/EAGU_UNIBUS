@@ -25,7 +25,6 @@ function citybus(name){
   <v-img class="UNIBUS" :src="UNIBUS(fname)"></v-img>
   <v-img class="slogan" :src="slogan(fname)"></v-img>
   <v-layout>
-    <Appbar/>
       <v-card class="card1" hover link>
         <v-img class="cardimages" :src="shuttlebus(fname)"></v-img>
         <div class="cards-text">셔틀버스</div>
@@ -104,10 +103,5 @@ body {
 </style>
 
 <script>
-import Appbar from "./Appbar.vue";
-export default {
-  name: "App",
-  components: {Appbar}
-};
 
 </script>
