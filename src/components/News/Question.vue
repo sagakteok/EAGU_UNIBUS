@@ -3,8 +3,8 @@
 import {ref} from "vue";
 const fname = ref("Vue");
 
-function TransportationNews(name){
-  return new URL(`/src/assets/TransportationNews.svg`, import.meta.url).href;
+function Question(name){
+  return new URL(`/src/assets/Question.svg`, import.meta.url).href;
 }
 
 </script>
@@ -12,7 +12,7 @@ function TransportationNews(name){
 <template>
   <v-layout>
     <v-card class="Newscard">
-      <v-img class="TransportationNews" :src="TransportationNews(fname)"/></v-card>
+      <v-img class="Question" :src="Question(fname)"/></v-card>
   </v-layout>
 
 </template>
@@ -26,8 +26,8 @@ body {
   height: auto;
 }
 
-.TransportationNews{
-  width:200px;
+.Question{
+  width:250px;
   top: 50px;
   margin: auto;
 }

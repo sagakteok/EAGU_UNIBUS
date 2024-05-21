@@ -27,7 +27,6 @@ function CitybusText(name){
   return new URL('/src/assets/CitybusText.svg', import.meta.url).href;
 }
 
-
 </script>
 
 <template>
