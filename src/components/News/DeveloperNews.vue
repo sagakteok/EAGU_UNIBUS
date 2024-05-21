@@ -1,18 +1,7 @@
-<script setup>
-
-import {ref} from "vue";
-const fname = ref("Vue");
-
-function DeveloperNews(name){
-  return new URL(`/src/assets/DeveloperNews.svg`, import.meta.url).href;
-}
-
-</script>
-
 <template>
   <v-layout>
     <v-card class="Newscard">
-      <v-img class="DeveloperNews" :src="DeveloperNews(fname)"/></v-card>
+      <v-img class="DeveloperNews" :src="DeveloperNews"/></v-card>
   </v-layout>
 
 </template>
@@ -44,5 +33,12 @@ body {
 </style>
 
 <script>
+export default {
+  data() {
+    return {
+      DeveloperNews: new URL(`/src/assets/DeveloperNews.svg`, import.meta.url).href
+    };
+  }
+}
 
 </script>

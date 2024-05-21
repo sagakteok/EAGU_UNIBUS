@@ -1,16 +1,5 @@
-<script setup>
-
-import {ref} from "vue";
-const fname = ref("Vue");
-
-function CitybusGoSchool(name){
-  return new URL(`/src/assets/CitybusGoSchool.svg`, import.meta.url).href;
-}
-
-</script>
-
 <template>
-  <v-img class="CitybusGoSchool" :src="CitybusGoSchool(fname)"></v-img>
+  <v-img class="CitybusGoSchool" :src="CitybusGoSchool"></v-img>
   <v-layout>
     <v-card class="card"></v-card>
   </v-layout>
@@ -45,5 +34,11 @@ body {
 </style>
 
 <script>
-
+export default {
+  data() {
+    return {
+      CitybusGoSchool: new URL(`/src/assets/CitybusGoSchool.svg`, import.meta.url).href
+    };
+  }
+}
 </script>

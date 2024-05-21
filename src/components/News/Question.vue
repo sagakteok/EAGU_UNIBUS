@@ -1,18 +1,7 @@
-<script setup>
-
-import {ref} from "vue";
-const fname = ref("Vue");
-
-function Question(name){
-  return new URL(`/src/assets/Question.svg`, import.meta.url).href;
-}
-
-</script>
-
 <template>
   <v-layout>
     <v-card class="Newscard">
-      <v-img class="Question" :src="Question(fname)"/></v-card>
+      <v-img class="Question" :src="Question"/></v-card>
   </v-layout>
 
 </template>
@@ -44,5 +33,11 @@ body {
 </style>
 
 <script>
-
+export default {
+  data() {
+    return {
+      Question: new URL(`/src/assets/Question.svg`, import.meta.url).href
+    };
+  }
+}
 </script>

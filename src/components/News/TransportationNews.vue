@@ -1,18 +1,7 @@
-<script setup>
-
-import {ref} from "vue";
-const fname = ref("Vue");
-
-function TransportationNews(name){
-  return new URL(`/src/assets/TransportationNews.svg`, import.meta.url).href;
-}
-
-</script>
-
 <template>
   <v-layout>
     <v-card class="Newscard">
-      <v-img class="TransportationNews" :src="TransportationNews(fname)"/></v-card>
+      <v-img class="TransportationNews" :src="TransportationNews"/></v-card>
   </v-layout>
 
 </template>
@@ -44,5 +33,11 @@ body {
 </style>
 
 <script>
-
+export default {
+  data() {
+    return {
+      TransportationNews: new URL(`/src/assets/TransportationNews.svg`, import.meta.url).href
+    };
+  }
+}
 </script>

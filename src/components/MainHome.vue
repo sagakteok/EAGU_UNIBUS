@@ -1,45 +1,14 @@
-<script setup>
-import {ref} from "vue";
-import router from "../router.js";
-const fname = ref("Vue");
-
-function UNIBUS(name){
-  return new URL(`/src/assets/UNIBUS.svg`, import.meta.url).href;
-}
-
-function slogan(name){
-  return new URL('/src/assets/slogan.svg', import.meta.url).href;
-}
-
-function shuttlebus(name){
-  return new URL('/src/assets/shuttlebus.svg', import.meta.url).href;
-}
-
-function citybus(name){
-  return new URL('/src/assets/citybus.svg', import.meta.url).href;
-}
-
-function ShuttlebusText(name){
-  return new URL('/src/assets/ShuttlebusText.svg', import.meta.url).href;
-}
-
-function CitybusText(name){
-  return new URL('/src/assets/CitybusText.svg', import.meta.url).href;
-}
-
-</script>
-
 <template>
-    <v-img class="MainUNIBUS" :src="UNIBUS(fname)"/>
-    <v-img class="slogan" :src="slogan(fname)"/>
+    <v-img class="MainUNIBUS" :src="UNIBUS"/>
+    <v-img class="slogan" :src="slogan"/>
     <v-layout>
-      <v-card class="card1" hover @click="router.push('/shuttle')">
-        <v-img class="cardimages" :src="shuttlebus(fname)"/>
-        <v-img class="ShuttlebusText" :src="ShuttlebusText(fname)"/>
+      <v-card class="card1" hover @click="gotoshuttle()">
+        <v-img class="cardimages" :src="shuttlebus"/>
+        <v-img class="ShuttlebusText" :src="ShuttlebusText"/>
       </v-card>
-      <v-card class="card2" hover @click="router.push('/city')">
-        <v-img class="cardimages" :src="citybus(fname)"/>
-        <v-img class="CitybusText" :src="CitybusText(fname)"/>
+      <v-card class="card2" hover @click="gotocity()">
+        <v-img class="cardimages" :src="citybus"/>
+        <v-img class="CitybusText" :src="CitybusText"/>
       </v-card>
   </v-layout>
 </template>
@@ -110,5 +79,26 @@ body {
 </style>
 
 <script>
+import router from "../router.js";
 
+export default {
+  data() {
+    return {
+      UNIBUS: new URL(`../assets/UNIBUS.svg`, import.meta.url).href,
+      slogan: new URL('/src/assets/slogan.svg', import.meta.url).href,
+      shuttlebus: new URL('/src/assets/shuttlebus.svg', import.meta.url).href,
+      citybus: new URL('/src/assets/citybus.svg', import.meta.url).href,
+      ShuttlebusText: new URL('/src/assets/ShuttlebusText.svg', import.meta.url).href,
+      CitybusText: new URL('/src/assets/CitybusText.svg', import.meta.url).href
+    };
+  },
+  methods: {
+    gotoshuttle(){
+      router.push('/gotoshuttle')
+    },
+    gotocity(){
+      router.push('/city');
+    }
+  }
+};
 </script>
