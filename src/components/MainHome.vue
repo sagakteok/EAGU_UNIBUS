@@ -94,7 +94,7 @@ export default {
   },
   methods: {
     gotoshuttle(){
-      router.push('/gotoshuttle')
+      router.push('/shuttle')
     },
     gotocity(){
       router.push('/city');
