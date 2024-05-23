@@ -8,7 +8,7 @@
 
 <style>
 body {
-  background-image: url('../../assets/MainHome.svg');
+  background-image: url('../../assets/MainHome.png');
   background-size: cover;
   width: auto;
   height: auto;
@@ -19,7 +19,7 @@ body {
 export default {
   data() {
     return {
-      Question: new URL(`/src/assets/Question.svg`, import.meta.url).href
+      Question: new URL(`/src/assets/Question.png`, import.meta.url).href
     };
   }
 }

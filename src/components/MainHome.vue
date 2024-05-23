@@ -1,81 +1,24 @@
 <template>
-    <v-img class="MainUNIBUS" :src="UNIBUS"/>
-    <v-img class="slogan" :src="slogan"/>
-    <v-layout>
-      <v-card class="card1" hover @click="gotoshuttle()">
-        <v-img class="cardimages" :src="shuttlebus"/>
-        <v-img class="ShuttlebusText" :src="ShuttlebusText"/>
+    <v-row>
+      <v-img style="width: 300px" :src="slogan"/>
+    </v-row>
+    <v-row>
+      <v-card style="color: #006933; border: 4px solid; border-color: #006933; border-radius: 60px; box-shadow: 0px 0px 30px #00000050; height: 250px; width: 250px; right: 15px; top: 100px;" hover @click="gotoshuttle()">
+        <v-img style="top: 60px; width: 180px; margin: auto;" :src="shuttlebus"/>
       </v-card>
-      <v-card class="card2" hover @click="gotocity()">
-        <v-img class="cardimages" :src="citybus"/>
-        <v-img class="CitybusText" :src="CitybusText"/>
+      <v-card style="color: #006933; border: 4px solid; border-color: #006933; border-radius: 60px; box-shadow: 0px 0px 30px #00000050; height: 250px; width: 250px; left: 15px; top: 100px;" hover @click="gotocity()">
+        <v-img style="top: 60px; width: 150px; margin: auto" :src="citybus"/>
       </v-card>
-  </v-layout>
+    </v-row>
 </template>
 
 <style>
 body {
-  background-image: url('../assets/MainHome.svg');
+  background-image: url('../assets/MainHome.png');
   background-size: cover;
   width: auto;
   height: auto;
 }
-
-.MainUNIBUS{
-  width: 400px;
-  margin: auto;
-}
-
-.slogan{
-  top: 15px;
-  width:300px;
-  margin: auto;
-}
-
-.card1{
-  color: #006933;
-  border: 4px solid;
-  border-color: #006933;
-  border-radius: 60px;
-  box-shadow: 0px 0px 30px #00000050;
-  height: 250px;
-  position: relative;
-  width: 250px;
-  right: 15px;
-  top: 100px;
-}
-
-.card2{
-  color: #006933;
-  border: 4px solid;
-  border-color: #006933;
-  border-radius: 60px;
-  box-shadow: 0px 0px 30px #00000050;
-  height: 250px;
-  position: relative;
-  width: 250px;
-  left: 15px;
-  top: 100px;
-}
-
-.cardimages{
-  top: 15px;
-  width: 170px;
-  margin: auto;
-}
-
-.ShuttlebusText{
-  top: 5px;
-  width: 110px;
-  margin: auto;
-}
-
-.CitybusText{
-  top: 5px;
-  width: 110px;
-  margin: auto;
-}
-
 </style>
 
 <script>
@@ -84,12 +27,9 @@ import router from "../router.js";
 export default {
   data() {
     return {
-      UNIBUS: new URL(`../assets/UNIBUS.svg`, import.meta.url).href,
-      slogan: new URL('/src/assets/slogan.svg', import.meta.url).href,
-      shuttlebus: new URL('/src/assets/shuttlebus.svg', import.meta.url).href,
-      citybus: new URL('/src/assets/citybus.svg', import.meta.url).href,
-      ShuttlebusText: new URL('/src/assets/ShuttlebusText.svg', import.meta.url).href,
-      CitybusText: new URL('/src/assets/CitybusText.svg', import.meta.url).href
+      slogan: new URL('/src/assets/slogan.png', import.meta.url).href,
+      shuttlebus: new URL('/src/assets/shuttlebus.png', import.meta.url).href,
+      citybus: new URL('/src/assets/citybus.png', import.meta.url).href,
     };
   },
   methods: {

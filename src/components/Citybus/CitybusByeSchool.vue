@@ -7,7 +7,7 @@
 
 <style>
 body {
-  background-image: url('../../assets/MainHome.svg');
+  background-image: url('../../assets/MainHome.png');
   background-size: cover;
   width: auto;
   height: auto;
@@ -18,7 +18,7 @@ body {
 export default {
   data() {
     return {
-      CitybusByeSchool: new URL(`/src/assets/CitybusByeSchool.svg`, import.meta.url).href
+      CitybusByeSchool: new URL(`/src/assets/CitybusByeSchool.png`, import.meta.url).href
     };
   }
 }

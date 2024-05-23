@@ -8,7 +8,7 @@
 
 <style>
 body {
-  background-image: url('../../assets/MainHome.svg');
+  background-image: url('../../assets/MainHome.png');
   background-size: cover;
   width: auto;
   height: auto;
@@ -19,7 +19,7 @@ body {
 export default {
   data() {
     return {
-      TransportationNews: new URL(`/src/assets/TransportationNews.svg`, import.meta.url).href
+      TransportationNews: new URL(`/src/assets/TransportationNews.png`, import.meta.url).href
     };
   }
 }

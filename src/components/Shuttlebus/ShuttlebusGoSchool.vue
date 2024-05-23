@@ -8,7 +8,7 @@
 <style>
 
 body {
-  background-image: url('../../assets/MainHome.svg');
+  background-image: url('../../assets/MainHome.png');
   background-size: cover;
   width: auto;
   height: auto;
@@ -19,7 +19,7 @@ body {
 export default {
   data() {
     return {
-      ShuttlebusGoSchool: new URL(`/src/assets/ShuttlebusGoSchool.svg`, import.meta.url).href
+      ShuttlebusGoSchool: new URL(`/src/assets/ShuttlebusGoSchool.png`, import.meta.url).href
     };
   }
 }

@@ -1,20 +1,12 @@
 <template>
   <v-app-bar color="transparent" elevation="0" prominent>
-    <v-btn style="outline: none;" @click="gotomain()">
-      <v-img style="width: 100px;" :src="UNIBUS"/>
-    </v-btn>
-    <v-btn variant="text" style="outline: none;" @click="gotoshuttle()">
-      <div style="font-family: 'Inter-Bold', Helvetica; color: #FFFFFF; font-size: 20px; font-weight: 700;">셔틀버스</div>
-    </v-btn>
-    <v-btn variant="text" style="outline: none;" @click="gotocity()">
-      <div style="font-family: 'Inter-Bold', Helvetica; color: #FFFFFF; font-size: 20px; font-weight: 700;">시내버스</div>
-    </v-btn>
-    <v-btn variant="text" style="outline: none;" @click="gotonews()">
-      <div style="font-family: 'Inter-Bold', Helvetica; color: #FFFFFF; font-size: 20px; font-weight: 700;">소식</div>
-    </v-btn>
-    <v-btn style="outline: none;" href="https://www.dju.ac.kr/">
-      <div style="font-family: 'Inter-Bold', Helvetica; color: #FFFFFF; font-size: 20px; font-weight: 700;">대전대학교</div>
-    </v-btn>
+    <text @click="gotomain()">
+      <v-img style="width: 120px; margin-left: 20px; cursor: pointer;" :src="UNIBUS"/>
+    </text>
+    <text style="font-family: 'Inter-Bold', Helvetica; color: #FFFFFF; font-size: 20px; font-weight: 700; outline: none; margin-left: 30px; cursor: pointer" @click="gotoshuttle()">셔틀버스</text>
+    <text style="font-family: 'Inter-Bold', Helvetica; color: #FFFFFF; font-size: 20px; font-weight: 700; outline: none; margin-left: 30px; cursor: pointer" @click="gotocity()">시내버스</text>
+    <text style="font-family: 'Inter-Bold', Helvetica; color: #FFFFFF; font-size: 20px; font-weight: 700; outline: none; margin-left: 30px; cursor: pointer" @click="gotonews()">소식</text>
+    <text style="font-family: 'Inter-Bold', Helvetica; color: #FFFFFF; font-size: 20px; font-weight: 700; outline: none; margin-left: 30px; cursor: pointer" @click="gotodju()">대전대학교</text>
   </v-app-bar>
 </template>
 
@@ -24,7 +16,7 @@ import router from "../router.js";
 export default {
   data() {
     return {
-      UNIBUS: new URL(`../assets/UNIBUS.svg`, import.meta.url).href
+      UNIBUS: new URL(`../assets/UNIBUS.png`, import.meta.url).href
     };
   },
   methods: {
@@ -39,6 +31,9 @@ export default {
     },
     gotonews(){
       router.push('/news');
+    },
+    gotodju(){
+      window.location.href='https://www.dju.ac.kr/'
     }
   }
 };
