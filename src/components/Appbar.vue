@@ -6,16 +6,16 @@
       </text>
     </v-hover>
     <v-hover v-slot="{ isHovering, props }">
-      <text v-bind="props" :style="{ transition: 'all .05s linear 0s', fontFamily: 'Inter-Bold, Helvetica', color: isHovering ? '#00FF7C' : '#FFFFFF', fontSize: isHovering ? '22px' : '20px', fontWeight: 700, outline: 'none', marginLeft: '30px', cursor: 'pointer'}" @click="gotoshuttle()">셔틀버스</text>
+      <text v-bind="props" :style="{ transition: 'all .07s linear 0s', fontFamily: 'Inter-Bold, Helvetica', textDecoration: isHovering ? 'underline' : 'none', color: isHovering ? '#00FF7C' : '#FFFFFF', fontSize: isHovering ? '22px' : '20px', fontWeight: 700, outline: 'none', marginLeft: '30px', cursor: 'pointer'}" @click="gotoshuttle()">셔틀버스</text>
     </v-hover>
     <v-hover v-slot="{ isHovering, props }">
-      <text v-bind="props" :style="{ transition: 'all .05s linear 0s', fontFamily: 'Inter-Bold, Helvetica', color: isHovering ? '#00FF7C' : '#FFFFFF', fontSize: isHovering ? '22px' : '20px', fontWeight: 700, outline: 'none', marginLeft: '30px', cursor: 'pointer'}" @click="gotocity()">시내버스</text>
+      <text v-bind="props" :style="{ transition: 'all .07s linear 0s', fontFamily: 'Inter-Bold, Helvetica', textDecoration: isHovering ? 'underline' : 'none', color: isHovering ? '#00FF7C' : '#FFFFFF', fontSize: isHovering ? '22px' : '20px', fontWeight: 700, outline: 'none', marginLeft: '30px', cursor: 'pointer'}" @click="gotocity()">시내버스</text>
     </v-hover>
     <v-hover v-slot="{ isHovering, props }">
-      <text v-bind="props" :style="{ transition: 'all .05s linear 0s', fontFamily: 'Inter-Bold, Helvetica', color: isHovering ? '#00FF7C' : '#FFFFFF', fontSize: isHovering ? '22px' : '20px', fontWeight: 700, outline: 'none', marginLeft: '30px', cursor: 'pointer'}" @click="gotonews()">소식</text>
+      <text v-bind="props" :style="{ transition: 'all .07s linear 0s', fontFamily: 'Inter-Bold, Helvetica', textDecoration: isHovering ? 'underline' : 'none', color: isHovering ? '#00FF7C' : '#FFFFFF', fontSize: isHovering ? '22px' : '20px', fontWeight: 700, outline: 'none', marginLeft: '30px', cursor: 'pointer'}" @click="gotonews()">소식</text>
     </v-hover>
     <v-hover v-slot="{ isHovering, props }">
-      <text v-bind="props" :style="{ transition: 'all .05s linear 0s', fontFamily: 'Inter-Bold, Helvetica', color: isHovering ? '#00FF7C' : '#FFFFFF', fontSize: isHovering ? '22px' : '20px', fontWeight: 700, outline: 'none', marginLeft: '30px', cursor: 'pointer'}" @click="gotodju()">대전대학교</text>
+      <text v-bind="props" :style="{ transition: 'all .07s linear 0s', fontFamily: 'Inter-Bold, Helvetica', textDecoration: isHovering ? 'underline' : 'none', color: isHovering ? '#00FF7C' : '#FFFFFF', fontSize: isHovering ? '22px' : '20px', fontWeight: 700, outline: 'none', marginLeft: '30px', cursor: 'pointer'}" @click="gotodju()">대전대학교</text>
     </v-hover>
   </v-app-bar>
 </template>
