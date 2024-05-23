@@ -3,10 +3,18 @@
     <text @click="gotomain()">
       <v-img style="width: 120px; margin-left: 20px; cursor: pointer;" :src="UNIBUS"/>
     </text>
-    <text style="font-family: 'Inter-Bold', Helvetica; color: #FFFFFF; font-size: 20px; font-weight: 700; outline: none; margin-left: 30px; cursor: pointer" @click="gotoshuttle()">셔틀버스</text>
-    <text style="font-family: 'Inter-Bold', Helvetica; color: #FFFFFF; font-size: 20px; font-weight: 700; outline: none; margin-left: 30px; cursor: pointer" @click="gotocity()">시내버스</text>
-    <text style="font-family: 'Inter-Bold', Helvetica; color: #FFFFFF; font-size: 20px; font-weight: 700; outline: none; margin-left: 30px; cursor: pointer" @click="gotonews()">소식</text>
-    <text style="font-family: 'Inter-Bold', Helvetica; color: #FFFFFF; font-size: 20px; font-weight: 700; outline: none; margin-left: 30px; cursor: pointer" @click="gotodju()">대전대학교</text>
+    <v-hover v-slot="{ isHovering, props }">
+      <text v-bind="props" :style="{ fontFamily: 'Inter-Bold, Helvetica', color: isHovering ? '#00FF7C' : '#FFFFFF', fontSize: isHovering ? '23px' : '20px', fontWeight: 700, outline: 'none', marginLeft: '30px', cursor: 'pointer'}" @click="gotoshuttle()">셔틀버스</text>
+    </v-hover>
+    <v-hover v-slot="{ isHovering, props }">
+      <text v-bind="props" :style="{ fontFamily: 'Inter-Bold, Helvetica', color: isHovering ? '#00FF7C' : '#FFFFFF', fontSize: isHovering ? '23px' : '20px', fontWeight: 700, outline: 'none', marginLeft: '30px', cursor: 'pointer'}" @click="gotocity()">시내버스</text>
+    </v-hover>
+    <v-hover v-slot="{ isHovering, props }">
+      <text v-bind="props" :style="{ fontFamily: 'Inter-Bold, Helvetica', color: isHovering ? '#00FF7C' : '#FFFFFF', fontSize: isHovering ? '23px' : '20px', fontWeight: 700, outline: 'none', marginLeft: '30px', cursor: 'pointer'}" @click="gotonews()">소식</text>
+    </v-hover>
+    <v-hover v-slot="{ isHovering, props }">
+      <text v-bind="props" :style="{ fontFamily: 'Inter-Bold, Helvetica', color: isHovering ? '#00FF7C' : '#FFFFFF', fontSize: isHovering ? '23px' : '20px', fontWeight: 700, outline: 'none', marginLeft: '30px', cursor: 'pointer'}" @click="gotodju()">대전대학교</text>
+    </v-hover>
   </v-app-bar>
 </template>
 
