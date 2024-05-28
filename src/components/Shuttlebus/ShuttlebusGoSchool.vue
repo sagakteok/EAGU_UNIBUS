@@ -6,7 +6,6 @@
 </template>
 
 <style>
-
 body {
   background-image: url('../../assets/MainHome.png');
   background-size: cover;
