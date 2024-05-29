@@ -1,7 +1,8 @@
 <template>
-  <v-img :style="CitybusByeSchoolTitle()" :src="CitybusByeSchool"/>
   <v-layout>
-    <v-card :style="CitybusByeSchoolCard()"/>
+    <v-card :style="CitybusByeSchoolCard()">
+      <v-img :style="CitybusByeSchoolTitle()" :src="CitybusByeSchool"/>
+    </v-card>
   </v-layout>
 </template>
 
@@ -22,24 +23,23 @@ export default {
     };
   },
   methods: {
+    CitybusByeSchoolCard() {
+      return {
+        top: '20px',
+        width: '1000px',
+        height: '600px',
+        margin: 'auto',
+        borderRadius: '40px',
+        boxShadow: '0px 0px 30px #00000060'
+      };
+    },
     CitybusByeSchoolTitle() {
       return {
-        bottom: '190px',
-        width: '600px',
-        top: '5px',
+        width: '350px',
+        top: '50px',
         margin: 'auto'
       };
     },
-    CitybusByeSchoolCard(){
-      return{
-        top: '100px',
-        width: '700px',
-        height: '400px',
-        margin: 'auto',
-        borderRadius: '60px',
-        boxShadow: '0px 0px 30px #000000'
-      };
-    }
   }
 }
 </script>

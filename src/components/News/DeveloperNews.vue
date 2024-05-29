@@ -38,7 +38,7 @@ export default {
         width: '1000px',
         height: '600px',
         margin: 'auto',
-        borderRadius: '60px',
+        borderRadius: '40px',
         boxShadow: '0px 0px 30px #00000060'
       };
     },
