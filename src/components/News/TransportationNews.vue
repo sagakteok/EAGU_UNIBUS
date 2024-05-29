@@ -1,24 +1,13 @@
 <template>
   <v-layout>
-    <v-card
-        style="top: 20px; width: 1000px; height: 600px; margin: auto; border-radius: 60px; box-shadow: 0px 0px 30px #00000060;">
-      <v-img style="width: 250px; top: 50px; margin: auto;" :src="TransportationNews"/>
-        <v-card-text>
-          <v-col>
-            <v-text-field
-                style="width: 200px; margin-left: auto;"
-                :loading="loading"
-                append-inner-icon="mdi-magnify"
-                density="compact"
-                variant="solo"
-                hide-details
-                single-line
-                @click:append-inner="onClick"
-
-            />
-          </v-col>
-        </v-card-text>
-      </v-card>
+    <v-card :style="TransportationNewsCard">
+      <v-img :style="TransportationNewsTitle" :src="TransportationNews"/>
+      <v-card-text>
+        <v-col>
+          <v-text-field v-bind="TransportationNewsTextField" @click:append-inner="onClick"/>
+        </v-col>
+      </v-card-text>
+    </v-card>
   </v-layout>
 </template>
 
@@ -37,6 +26,43 @@ export default {
     return {
       TransportationNews: new URL(`/src/assets/TransportationNews.png`, import.meta.url).href
     };
+  },
+  methods: {
+    onClick() {
+    }
+  },
+  computed: {
+    TransportationNewsCard() {
+      return {
+        top: '20px',
+        width: '1000px',
+        height: '600px',
+        margin: 'auto',
+        borderRadius: '60px',
+        boxShadow: '0px 0px 30px #00000060'
+      };
+    },
+    TransportationNewsTitle() {
+      return {
+        width: '250px',
+        top: '50px',
+        margin: 'auto'
+      };
+    },
+    TransportationNewsTextField() {
+      return {
+        style: {
+          width: '200px',
+          marginLeft: 'auto'
+        },
+        loading: this.loading,
+        appendInnerIcon: 'mdi-magnify',
+        density: 'compact',
+        variant: 'solo',
+        hideDetails: true,
+        singleLine: true
+      };
+    }
   }
 }
 </script>

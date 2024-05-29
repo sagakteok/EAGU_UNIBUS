@@ -1,7 +1,7 @@
 <template>
-  <v-img style="bottom: 190px; width: 600px; top: 5px; margin: auto;" :src="CitybusGoSchool"></v-img>
+  <v-img :style="CitybusGoSchoolTitle()" :src="CitybusGoSchool"/>
   <v-layout>
-    <v-card style="top: 100px; width: 700px; height: 400px; margin: auto; border-radius: 60px; box-shadow: 0px 0px 30px #000000;"></v-card>
+    <v-card :style="CitybusGoSchoolCard()"/>
   </v-layout>
 </template>
 
@@ -20,6 +20,26 @@ export default {
     return {
       CitybusGoSchool: new URL(`/src/assets/CitybusGoSchool.png`, import.meta.url).href
     };
+  },
+  methods:{
+    CitybusGoSchoolTitle(){
+      return{
+        bottom: '190px',
+        width: '600px',
+        top: '5px',
+        margin: 'auto'
+      };
+    },
+    CitybusGoSchoolCard(){
+      return{
+        top: '100px',
+        width: '700px',
+        height: '400px',
+        margin: 'auto',
+        borderRadius: '60px',
+        boxShadow: '0px 0px 30px #000000'
+      };
+    }
   }
 }
 </script>
