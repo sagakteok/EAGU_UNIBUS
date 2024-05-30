@@ -1,15 +1,18 @@
 <template>
-  <v-layout>
-    <v-card :style="TransportationNewsCard">
-      <v-img :style="TransportationNewsTitle" :src="TransportationNews"/>
-      <v-card-text>
-        <v-col>
-          <v-text-field v-bind="TransportationNewsTextField" @click:append-inner="onClick"/>
-        </v-col>
-      </v-card-text>
-    </v-card>
-  </v-layout>
+  <div class="traffic-news">
+    <v-layout>
+      <v-card :style="TransportationNewsCard">
+        <v-img :style="TransportationNewsTitle" :src="TransportationNews"/>
+        <v-card-text>
+          <v-col>
+            <v-text-field v-bind="TransportationNewsTextField" @click:append-inner="onClick"/>
+          </v-col>
+        </v-card-text>
+      </v-card>
+    </v-layout>
+  </div>
 </template>
+
 
 <style>
 body {
