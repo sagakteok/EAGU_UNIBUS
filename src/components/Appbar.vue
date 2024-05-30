@@ -18,15 +18,18 @@
         </template>
         <v-list :style="MenuListStyle()">
           <v-hover v-slot="{ isHovering, props }">
-            <v-list-item-title v-bind="props" @click="gototransportationnews()" :style="ListTexts(isHovering)">공지사항</v-list-item-title>
+            <v-list-item-title v-bind="props" @click="gototransportationnews()" :style="ListTexts(isHovering)">공지사항
+            </v-list-item-title>
           </v-hover>
           <div class="jb-division-line" :style="MenuLineStyle()"/>
           <v-hover v-slot="{ isHovering, props }">
-            <v-list-item-title v-bind="props" @click="gotodevelopernews()" :style="ListTexts(isHovering)">개발 관련 소식</v-list-item-title>
+            <v-list-item-title v-bind="props" @click="gotodevelopernews()" :style="ListTexts(isHovering)">개발 관련 소식
+            </v-list-item-title>
           </v-hover>
           <div class="jb-division-line" :style="MenuLineStyle()"/>
           <v-hover v-slot="{ isHovering, props }">
-            <v-list-item-title v-bind="props" @click="gotoquestion()" :style="ListTexts(isHovering)">자주 묻는 질문</v-list-item-title>
+            <v-list-item-title v-bind="props" @click="gotoquestion()" :style="ListTexts(isHovering)">자주 묻는 질문
+            </v-list-item-title>
           </v-hover>
         </v-list>
       </v-menu>
@@ -39,7 +42,8 @@
 
 <script>
 import router from "../router.js";
-import { mergeProps } from "vue";
+import {mergeProps} from "vue";
+
 export default {
   data() {
     return {
@@ -51,26 +55,26 @@ export default {
     gotomain() {
       router.push('/')
     },
-    gotoshuttle(){
+    gotoshuttle() {
       router.push('/shuttle')
     },
-    gotocity(){
+    gotocity() {
       router.push('/city')
     },
-    gotodevelopernews(){
+    gotodevelopernews() {
       router.push('/DeveloperNews');
     },
-    gotoquestion(){
+    gotoquestion() {
       router.push('/Question');
     },
-    gototransportationnews(){
+    gototransportationnews() {
       router.push('/TransportationNews');
     },
-    gotodju(){
-      window.location.href='https://www.dju.ac.kr/'
+    gotodju() {
+      window.location.href = 'https://www.dju.ac.kr/'
     },
-    ClickUNIBUS(){
-      return{
+    ClickUNIBUS() {
+      return {
         width: '120px',
         marginLeft: '20px',
         cursor: 'pointer'
@@ -89,16 +93,16 @@ export default {
         cursor: 'pointer'
       };
     },
-    MenuListStyle(){
-      return{
+    MenuListStyle() {
+      return {
         width: '160px',
         height: '170px',
-        backgroundColor: '#00331990',
+        backgroundColor: '#386156',
         color: '#FFFFFF',
         borderRadius: '10px',
         top: '15px',
-        left: '-57px',
-        elevation: '30'
+        left: '-60px',
+        boxShadow: '0px 0px 10px #00000050'
       };
     },
     ListTexts(isHovering) {
@@ -113,8 +117,8 @@ export default {
         cursor: 'pointer'
       };
     },
-    MenuLineStyle(){
-      return{
+    MenuLineStyle() {
+      return {
         borderTop: '1px solid #444444',
         width: '125px',
         margin: '10px auto',
