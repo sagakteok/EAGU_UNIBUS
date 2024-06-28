@@ -5,10 +5,10 @@
         <v-img :style="ClickUNIBUS()" :src="UNIBUS"/>
       </text>
       <v-hover v-slot="{ isHovering, props }">
-        <text v-bind="props" @click="gotoshuttle()" :style="HoverTexts(isHovering)">셔틀버스</text>
+        <text v-bind="props" @click="gotocity()" :style="HoverTexts(isHovering)">시내통학버스</text>
       </v-hover>
       <v-hover v-slot="{ isHovering, props }">
-        <text v-bind="props" @click="gotocity()" :style="HoverTexts(isHovering)">시내버스</text>
+        <text v-bind="props" @click="gotoshuttle()" :style="HoverTexts(isHovering)">셔틀버스</text>
       </v-hover>
       <v-menu open-on-hover>
         <template v-slot:activator="{ props: activatorProps }">
@@ -42,7 +42,7 @@
 
 <script>
 import router from "../router.js";
-import {mergeProps} from "vue";
+import {mergeProps} from "vue"
 
 export default {
   data() {

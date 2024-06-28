@@ -2,12 +2,36 @@
   <v-layout>
     <v-card :style="CitybusGoSchoolCard()">
       <v-img :style="CitybusGoSchoolTitle()" :src="CitybusGoSchool"/>
+      <hr style="margin-top: 60px">
+      <v-toolbar>
+        <v-container style="margin-right: 500px;">
+          <v-row align="center" justify="center">
+            <v-col cols="auto">
+              <v-btn density="comfortable">1번</v-btn>
+            </v-col>
+
+            <v-col cols="auto">
+              <v-btn density="comfortable">2번</v-btn>
+            </v-col>
+
+            <v-col cols="auto">
+              <v-btn density="comfortable">3번</v-btn>
+            </v-col>
+            <v-col cols="auto">
+              <v-btn density="comfortable">4번</v-btn>
+            </v-col>
+          </v-row>
+        </v-container>
+      </v-toolbar>
+      <kakao-map/>
     </v-card>
+
+
   </v-layout>
 </template>
 
 <style>
-body {
+body{
   background-image: url('../../assets/MainHome.png');
   background-size: cover;
   width: auto;
@@ -16,7 +40,12 @@ body {
 </style>
 
 <script>
+
+
+import KakaoMap from "../../KaKaoMap.vue";
+
 export default {
+  components: {KakaoMap},
   data() {
     return {
       CitybusGoSchool: new URL(`/src/assets/CitybusGoSchool.png`, import.meta.url).href

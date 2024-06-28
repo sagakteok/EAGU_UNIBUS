@@ -13,13 +13,6 @@
             <v-col cols="auto">
               <v-btn density="comfortable">2번</v-btn>
             </v-col>
-
-            <v-col cols="auto">
-              <v-btn density="comfortable">3번</v-btn>
-            </v-col>
-            <v-col cols="auto">
-              <v-btn density="comfortable">4번</v-btn>
-            </v-col>
           </v-row>
         </v-container>
       </v-toolbar>

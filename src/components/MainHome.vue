@@ -4,13 +4,13 @@
   </v-row>
   <v-row>
     <v-hover v-slot="{ isHovering, props }">
-      <v-card v-bind="props" :style="MainHomeCards(isHovering, 'right')" @click="gotoshuttle()">
-        <v-img :style="MainHomeLeftCardImage()" :src="shuttlebus"/>
+      <v-card v-bind="props" :style="MainHomeCards(isHovering, 'right')" @click="gotocity()">
+        <v-img :style="MainHomeLeftCardImage()" :src="citybus"/>
       </v-card>
     </v-hover>
     <v-hover v-slot="{ isHovering, props }">
-      <v-card v-bind="props" :style="MainHomeCards(isHovering, 'left')" @click="gotocity()">
-        <v-img :style="MainHomeRightCardImage()" :src="citybus"/>
+      <v-card v-bind="props" :style="MainHomeCards(isHovering, 'left')" @click="gotoshuttle()">
+        <v-img :style="MainHomeRightCardImage()" :src="shuttlebus"/>
       </v-card>
     </v-hover>
   </v-row>
@@ -24,7 +24,7 @@ export default {
     return {
       slogan: new URL('/src/assets/slogan.png', import.meta.url).href,
       shuttlebus: new URL('/src/assets/shuttlebus.png', import.meta.url).href,
-      citybus: new URL('/src/assets/citybus.png', import.meta.url).href,
+      citybus: new URL('/src/assets/Citybus.png', import.meta.url).href,
     };
   },
   methods: {
@@ -49,15 +49,15 @@ export default {
     },
     MainHomeLeftCardImage(){
       return{
-        top: '60px',
-        width: '180px',
+        top: '50px',
+        width: '150px',
         margin: 'auto'
       };
     },
     MainHomeRightCardImage(){
       return{
         top: '60px',
-        width: '150px',
+        width: '170px',
         margin: 'auto'
       };
     }
