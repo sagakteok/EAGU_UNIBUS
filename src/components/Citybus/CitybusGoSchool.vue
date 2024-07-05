@@ -1,13 +1,17 @@
 <template>
   <v-app style="background-color: transparent">
     <PageAppbar/>
-    <v-img :style="CitybusGoSchoolTitle()" :src="CitybusGoSchool"/>
-    <v-toolbar :style="CitybusGoSchoolToolbar()">
-      <v-btn density="comfortable">1번</v-btn>
-      <v-btn density="comfortable">2번</v-btn>
-      <v-btn density="comfortable">3번</v-btn>
-      <v-btn density="comfortable">4번</v-btn>
-    </v-toolbar>
+    <v-row>
+      <v-img :style="CitybusGoSchoolTitle()" :src="CitybusGoSchool"/>
+    </v-row>
+    <v-row>
+      <v-toolbar :style="CitybusGoSchoolToolbar()">
+        <v-btn density="comfortable">1번</v-btn>
+        <v-btn density="comfortable">2번</v-btn>
+        <v-btn density="comfortable">3번</v-btn>
+        <v-btn density="comfortable">4번</v-btn>
+      </v-toolbar>
+    </v-row>
   </v-app>
 </template>
 
@@ -26,18 +30,17 @@ export default {
   methods: {
     CitybusGoSchoolTitle() {
       return {
-        top: '-300px',
         width: '30vw',
         minWidth: '550px',
-        margin: 'auto'
+        bottom: '100px'
       };
     },
     CitybusGoSchoolToolbar(){
       return {
         width: '50vw',
-        minWidth: '700px',
-        bottom: '700px',
-        margin: 'auto'
+        minWidth: '550px',
+        height: '70px',
+        bottom: '200px'
       }
     }
   },

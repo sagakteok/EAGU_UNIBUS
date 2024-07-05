@@ -1,11 +1,15 @@
 <template>
   <v-app style="background-color: transparent">
     <PageAppbar/>
+    <v-row>
       <v-img :style="ShuttlebusGoSchoolTitle()" :src="ShuttlebusGoSchool"/>
+    </v-row>
+    <v-row>
       <v-toolbar :style="ShuttlebusGoSchoolToolbar()">
         <v-btn density="comfortable">1번</v-btn>
         <v-btn density="comfortable">2번</v-btn>
       </v-toolbar>
+    </v-row>
   </v-app>
 </template>
 
@@ -24,18 +28,17 @@ export default {
   methods: {
     ShuttlebusGoSchoolTitle() {
       return {
-        top: '-300px',
         width: '30vw',
         minWidth: '550px',
-        margin: 'auto'
+        bottom: '100px'
       };
     },
     ShuttlebusGoSchoolToolbar(){
       return {
         width: '50vw',
-        minWidth: '700px',
-        bottom: '700px',
-        margin: 'auto'
+        minWidth: '550px',
+        height: '70px',
+        bottom: '200px'
       }
     }
   },
