@@ -1,5 +1,6 @@
 <template>
-  <v-layout>
+  <v-app>
+    <PageAppbar/>
     <v-card :style="QuestionCard">
       <v-img :style="QuestionTitle" :src="Question"/>
       <v-card-text>
@@ -8,20 +9,13 @@
         </v-col>
       </v-card-text>
     </v-card>
-  </v-layout>
+  </v-app>
 </template>
 
-<style>
-body {
-  background-image: url('../../assets/MainHome.png');
-  background-size: cover;
-  width: auto;
-  height: auto;
-}
-</style>
-
 <script>
+import PageAppbar from "../Appbars/PageAppbar.vue";
 export default {
+  components: {PageAppbar},
   data() {
     return {
       Question: new URL(`/src/assets/Question.png`, import.meta.url).href

@@ -7,7 +7,8 @@
 <style scoped>
 #map {
   width: 100%;
-  height: 400px;
+  bottom: 300px;
+  height: 100px;
 }
 </style>
 <script>

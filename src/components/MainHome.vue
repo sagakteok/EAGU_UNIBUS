@@ -1,25 +1,30 @@
 <template>
-  <v-row>
-    <v-img style="width: 300px" :src="slogan"/>
-  </v-row>
-  <v-row>
-    <v-hover v-slot="{ isHovering, props }">
-      <v-card v-bind="props" :style="MainHomeCards(isHovering, 'right')" @click="gotocity()">
-        <v-img :style="MainHomeLeftCardImage()" :src="citybus"/>
-      </v-card>
-    </v-hover>
-    <v-hover v-slot="{ isHovering, props }">
-      <v-card v-bind="props" :style="MainHomeCards(isHovering, 'left')" @click="gotoshuttle()">
-        <v-img :style="MainHomeRightCardImage()" :src="shuttlebus"/>
-      </v-card>
-    </v-hover>
-  </v-row>
+  <v-app>
+    <MainAppBar/>
+      <v-row>
+        <v-img style="width: 300px" :src="slogan"/>
+      </v-row>
+      <v-row>
+        <v-hover v-slot="{ isHovering, props }">
+          <v-card v-bind="props" :style="MainHomeCards(isHovering, 'right')" @click="gotocity()">
+            <v-img :style="MainHomeLeftCardImage()" :src="citybus"/>
+          </v-card>
+        </v-hover>
+        <v-hover v-slot="{ isHovering, props }">
+          <v-card v-bind="props" :style="MainHomeCards(isHovering, 'left')" @click="gotoshuttle()">
+            <v-img :style="MainHomeRightCardImage()" :src="shuttlebus"/>
+          </v-card>
+        </v-hover>
+      </v-row>
+  </v-app>
 </template>
 
 <script>
 import router from "../router.js";
+import MainAppBar from "../components/Appbars/MainAppbar.vue";
 
 export default {
+  components: {MainAppBar},
   data() {
     return {
       slogan: new URL('/src/assets/slogan.png', import.meta.url).href,
@@ -64,12 +69,3 @@ export default {
   }
 };
 </script>
-
-<style>
-body {
-  background-image: url('../assets/MainHome.png');
-  background-size: cover;
-  width: auto;
-  height: auto;
-}
-</style>

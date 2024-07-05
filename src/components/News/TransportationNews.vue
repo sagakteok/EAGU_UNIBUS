@@ -1,30 +1,21 @@
 <template>
-  <div class="traffic-news">
-    <v-layout>
-      <v-card :style="TransportationNewsCard">
-        <v-img :style="TransportationNewsTitle" :src="TransportationNews"/>
-        <v-card-text>
-          <v-col>
-            <v-text-field v-bind="TransportationNewsTextField" @click:append-inner="onClick"/>
-          </v-col>
-        </v-card-text>
-      </v-card>
-    </v-layout>
-  </div>
+  <v-app>
+    <PageAppbar/>
+    <v-card :style="TransportationNewsCard">
+      <v-img :style="TransportationNewsTitle" :src="TransportationNews"/>
+      <v-card-text>
+        <v-col>
+          <v-text-field v-bind="TransportationNewsTextField" @click:append-inner="onClick"/>
+        </v-col>
+      </v-card-text>
+    </v-card>
+  </v-app>
 </template>
 
-
-<style>
-body {
-  background-image: url('../../assets/MainHome.png');
-  background-size: cover;
-  width: auto;
-  height: auto;
-}
-</style>
-
 <script>
+import PageAppbar from "../Appbars/PageAppbar.vue";
 export default {
+  components: {PageAppbar},
   data() {
     return {
       TransportationNews: new URL(`/src/assets/TransportationNews.png`, import.meta.url).href

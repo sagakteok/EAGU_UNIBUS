@@ -1,5 +1,6 @@
 <template>
-  <v-layout>
+  <v-app>
+    <PageAppbar/>
     <v-card :style="DeveloperNewsCard">
       <v-img :style="DeveloperNewsTitle" :src="DeveloperNews"/>
       <v-card-text>
@@ -8,20 +9,13 @@
         </v-col>
       </v-card-text>
     </v-card>
-  </v-layout>
+  </v-app>
 </template>
 
-<style>
-body {
-  background-image: url('../../assets/MainHome.png');
-  background-size: cover;
-  width: auto;
-  height: auto;
-}
-</style>
-
 <script>
+import PageAppbar from "../Appbars/PageAppbar.vue";
 export default {
+  components: {PageAppbar},
   data() {
     return {
       DeveloperNews: new URL(`/src/assets/DeveloperNews.png`, import.meta.url).href
