@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app style="background-color: transparent">
     <PageAppbar/>
     <v-card :style="TransportationNewsCard">
       <v-img :style="TransportationNewsTitle" :src="TransportationNews"/>
@@ -57,6 +57,10 @@ export default {
         singleLine: true
       };
     }
+  },
+  mounted(){
+    document.body.style.backgroundColor = '#00FFFF'
+    document.body.style.backgroundSize = 'cover'
   }
 }
 </script>

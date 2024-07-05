@@ -1,10 +1,11 @@
-import { createWebHistory, createRouter} from "vue-router";
-import MainHome from "./components/MainHome.vue"
-import shuttlego from "./components/Shuttlebus/ShuttlebusGoSchool.vue"
-import citygo from "./components/Citybus/CitybusGoSchool.vue"
-import DeveloperNews from "./components/News/DeveloperNews.vue"
-import Question from "./components/News/Question.vue"
-import TransportationNews from "./components/News/TransportationNews.vue"
+import { createWebHistory, createRouter } from "vue-router";
+import MainHome from "./components/MainHome.vue";
+import ShuttleGo from "./components/Shuttlebus/ShuttlebusGoSchool.vue";
+import CityGo from "./components/Citybus/CitybusGoSchool.vue";
+import DeveloperNews from "./components/News/DeveloperNews.vue";
+import Question from "./components/News/Question.vue";
+import TransportationNews from "./components/News/TransportationNews.vue";
+
 const routes = [
     {
         path: "/",
@@ -12,11 +13,11 @@ const routes = [
     },
     {
         path: "/shuttle",
-        component: shuttlego,
+        component: ShuttleGo,
     },
     {
         path: "/city",
-        component: citygo,
+        component: CityGo,
     },
     {
         path: "/DeveloperNews",
@@ -30,11 +31,11 @@ const routes = [
         path: "/TransportationNews",
         component: TransportationNews,
     }
-    ]
+];
 
 const router = createRouter({
     history: createWebHistory(),
     routes,
 });
 
-export default router
+export default router;

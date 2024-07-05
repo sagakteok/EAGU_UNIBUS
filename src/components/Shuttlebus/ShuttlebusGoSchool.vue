@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app style="background-color: transparent">
     <PageAppbar/>
       <v-img :style="ShuttlebusGoSchoolTitle()" :src="ShuttlebusGoSchool"/>
       <v-toolbar :style="ShuttlebusGoSchoolToolbar()">
@@ -38,6 +38,10 @@ export default {
         margin: 'auto'
       }
     }
+  },
+  mounted(){
+    document.body.style.backgroundColor = '#006933'
+    document.body.style.backgroundSize = 'cover'
   }
 }
 </script>

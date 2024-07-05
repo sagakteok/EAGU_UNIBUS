@@ -1,21 +1,21 @@
 <template>
-  <v-app>
+  <v-app style="background-color: transparent">
     <MainAppBar/>
-      <v-row>
-        <v-img style="width: 300px" :src="slogan"/>
-      </v-row>
-      <v-row>
-        <v-hover v-slot="{ isHovering, props }">
-          <v-card v-bind="props" :style="MainHomeCards(isHovering, 'right')" @click="gotocity()">
-            <v-img :style="MainHomeLeftCardImage()" :src="citybus"/>
-          </v-card>
-        </v-hover>
-        <v-hover v-slot="{ isHovering, props }">
-          <v-card v-bind="props" :style="MainHomeCards(isHovering, 'left')" @click="gotoshuttle()">
-            <v-img :style="MainHomeRightCardImage()" :src="shuttlebus"/>
-          </v-card>
-        </v-hover>
-      </v-row>
+    <v-row>
+      <v-img :style="SloganStyle()" :src="slogan"/>
+    </v-row>
+    <v-row>
+      <v-hover v-slot="{ isHovering, props }">
+        <v-card v-bind="props" :style="MainHomeCards(isHovering, 'right')" @click="gotocity()">
+          <v-img :style="MainHomeLeftCardImage()" :src="citybus"/>
+        </v-card>
+      </v-hover>
+      <v-hover v-slot="{ isHovering, props }">
+        <v-card v-bind="props" :style="MainHomeCards(isHovering, 'left')" @click="gotoshuttle()">
+          <v-img :style="MainHomeRightCardImage()" :src="shuttlebus"/>
+        </v-card>
+      </v-hover>
+    </v-row>
   </v-app>
 </template>
 
@@ -33,11 +33,17 @@ export default {
     };
   },
   methods: {
-    gotoshuttle(){
-      router.push('/shuttle')
+    gotoshuttle() {
+      router.push('/shuttle');
     },
-    gotocity(){
+    gotocity() {
       router.push('/city');
+    },
+    SloganStyle() {
+      return {
+        width: '300px',
+        top: '20px'
+      };
     },
     MainHomeCards(isHovering, position) {
       return {
@@ -49,23 +55,27 @@ export default {
         height: '250px',
         width: '250px',
         [position]: '15px',
-        top: '100px'
+        top: '20px'
       };
     },
-    MainHomeLeftCardImage(){
-      return{
+    MainHomeLeftCardImage() {
+      return {
         top: '50px',
         width: '150px',
         margin: 'auto'
       };
     },
-    MainHomeRightCardImage(){
-      return{
+    MainHomeRightCardImage() {
+      return {
         top: '60px',
         width: '170px',
         margin: 'auto'
       };
     }
+  },
+  mounted(){
+    document.body.style.backgroundImage = "url(src/assets/MainHome.png)"
+    document.body.style.backgroundSize = 'cover'
   }
 };
 </script>
