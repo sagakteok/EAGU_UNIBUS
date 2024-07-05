@@ -59,7 +59,7 @@ export default {
     }
   },
   mounted(){
-    document.body.style.backgroundColor = '#00FFFF'
+    document.body.style.background = '#FFFFFF'
     document.body.style.backgroundSize = 'cover'
   }
 }

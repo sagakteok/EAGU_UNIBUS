@@ -57,8 +57,9 @@ export default {
         singleLine: true
       };
     }
-  },mounted(){
-    document.body.style.backgroundColor = '#00FFFF'
+  },
+  mounted(){
+    document.body.style.background = '#FFFFFF'
     document.body.style.backgroundSize = 'cover'
   }
 }

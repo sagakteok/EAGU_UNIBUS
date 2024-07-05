@@ -42,7 +42,7 @@ export default {
     }
   },
   mounted(){
-    document.body.style.backgroundColor = '#006933'
+    document.body.style.background = '#FFFFFF'
     document.body.style.backgroundSize = 'cover'
   }
 }

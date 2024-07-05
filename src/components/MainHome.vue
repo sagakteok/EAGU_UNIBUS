@@ -74,7 +74,7 @@ export default {
     }
   },
   mounted(){
-    document.body.style.backgroundImage = "url(src/assets/MainHome.png)"
+    document.body.style.background = "url(src/assets/MainHome.png)"
     document.body.style.backgroundSize = 'cover'
   }
 };
