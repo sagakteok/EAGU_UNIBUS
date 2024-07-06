@@ -1,16 +1,17 @@
 <template>
   <div>
-    <h2>카카오 맵</h2>
     <div id="map"></div>
   </div>
 </template>
-<style scoped>
+
+<style>
 #map {
-  width: 100%;
-  bottom: 300px;
-  height: 100px;
+  width: 50vw;
+  bottom: 500px;
+  height: 500px;
 }
 </style>
+
 <script>
 export default {
   name: "KakaoMap", // 컴포넌트 이름 지정
