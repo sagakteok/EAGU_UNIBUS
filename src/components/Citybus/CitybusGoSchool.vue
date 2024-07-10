@@ -6,42 +6,14 @@
     </v-row>
     <v-row>
       <v-toolbar :style="CitybusGoSchoolToolbar()">
-        <text>
-          <v-app-bar-nav-icon variant="text" @click.stop="drawer = !drawer"/>
-        </text>
-        <text>
-          코스 표시할 예정
-        </text>
+        <v-app-bar-nav-icon color="#FFFFFF" variant="text" @click.stop="drawer = !drawer"/>
+        <text :style="CitybusGoSchoolToolbarText()">{{ selectedCourse || '코스를 선택하세요.' }}</text>
       </v-toolbar>
-        <v-navigation-drawer v-model="drawer" :location="$vuetify.display.mobile ? 'left' : undefined" elevation="10" style="background: #FFFFFF">
-          <v-hover v-slot="{ isHovering, props }">
-            <v-list-item v-bind="props" :style="ListTexts(isHovering)">관저동 방면</v-list-item>
-          </v-hover>
-          <v-hover v-slot="{ isHovering, props }">
-            <v-list-item v-bind="props" :style="ListTexts(isHovering)">송강동 방면</v-list-item>
-          </v-hover>
-          <v-hover v-slot="{ isHovering, props }">
-            <v-list-item v-bind="props" :style="ListTexts(isHovering)">만년동 방면</v-list-item>
-          </v-hover>
-          <v-hover v-slot="{ isHovering, props }">
-            <v-list-item v-bind="props" :style="ListTexts(isHovering)">도룡동 방면</v-list-item>
-          </v-hover>
-          <v-hover v-slot="{ isHovering, props }">
-            <v-list-item v-bind="props" :style="ListTexts(isHovering)">테크노밸리 방면</v-list-item>
-          </v-hover>
-          <v-hover v-slot="{ isHovering, props }">
-            <v-list-item v-bind="props" :style="ListTexts(isHovering)">내동 방면</v-list-item>
-          </v-hover>
-          <v-hover v-slot="{ isHovering, props }">
-            <v-list-item v-bind="props" :style="ListTexts(isHovering)">자운대 방면</v-list-item>
-          </v-hover>
-          <v-hover v-slot="{ isHovering, props }">
-            <v-list-item v-bind="props" :style="ListTexts(isHovering)">도안 방면</v-list-item>
-          </v-hover>
-          <v-hover v-slot="{ isHovering, props }">
-            <v-list-item v-bind="props" :style="ListTexts(isHovering)">오정동 방면</v-list-item>
-          </v-hover>
-        </v-navigation-drawer>
+      <v-navigation-drawer v-model="drawer" elevation="10" :style="CitybusGoSchoolDrawer()" permanent>
+        <v-hover v-slot="{ isHovering, props }" v-for="course in courses" :key="course">
+          <v-list-item-title v-bind="props" :style="ListTexts(isHovering)" @click="selectCourse(course)">{{ course }}</v-list-item-title>
+        </v-hover>
+      </v-navigation-drawer>
     </v-row>
   </v-app>
 </template>
@@ -51,12 +23,23 @@ import PageAppbar from "../Appbars/PageAppbar.vue";
 import KakaoMap from "../../KaKaoMap.vue";
 
 export default {
-  components: {PageAppbar, KakaoMap},
+  components: { PageAppbar, KakaoMap },
   data() {
     return {
       CitybusGoSchool: new URL(`/src/assets/CitybusGoSchool.png`, import.meta.url).href,
       drawer: false,
-      group: null,
+      selectedCourse: null,
+      courses: [
+        '관저동 방면',
+        '송강동 방면',
+        '만년동 방면',
+        '도룡동 방면',
+        '테크노밸리 방면',
+        '내동 방면',
+        '자운대 방면',
+        '도안 방면',
+        '오정동 방면'
+      ],
     };
   },
   watch: {
@@ -78,7 +61,22 @@ export default {
         minWidth: '550px',
         height: '70px',
         bottom: '200px',
+        background: '#00000090'
       };
+    },
+    CitybusGoSchoolDrawer(){
+      return {
+        background: '#FFFFFF'
+      }
+    },
+    CitybusGoSchoolToolbarText(){
+      return{
+        margin: 'auto',
+        color: '#FFFFFF',
+        fontFamily: 'Inter-Bold, Helvetica',
+        fontSize: '30px',
+        fontWeight: '700'
+      }
     },
     ListTexts(isHovering) {
       return {
@@ -86,13 +84,17 @@ export default {
         color: isHovering ? '#006933' : '#000000',
         fontFamily: 'Inter-Bold, Helvetica',
         marginTop: '25px',
-        marginLeft: '15px',
+        marginLeft: '25px',
         fontSize: '20px',
         fontWeight: '700',
         textAlign: 'left',
         cursor: 'pointer'
       };
     },
+    selectCourse(course) {
+      this.selectedCourse = course;
+      this.drawer = false;
+    }
   },
   mounted() {
     document.body.style.background = '#FFFFFF';
