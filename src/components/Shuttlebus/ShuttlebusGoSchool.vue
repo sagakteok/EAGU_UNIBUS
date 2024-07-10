@@ -10,6 +10,9 @@
         <text :style="ShuttlebusGoSchoolToobarText()">{{ selectedCourse || '코스를 선택하세요.' }}</text>
       </v-toolbar>
       <v-navigation-drawer v-model="drawer" elevation="10" :style="ShuttlebusGoSchoolDrawer()" permanent>
+        <template v-slot:prepend>
+          <v-btn icon="mdi-close" variant="text" @click.stop="drawer = !drawer" :style="ShuttlebusGoSchoolDrawerClose()"/>
+        </template>
         <v-hover v-slot="{ isHovering, props }" v-for="course in courses" :key="course">
           <v-list-item-title v-bind="props" :style="ListTexts(isHovering)" @click="selectCourse(course)">{{ course }}</v-list-item-title>
         </v-hover>
@@ -61,6 +64,13 @@ export default {
     ShuttlebusGoSchoolDrawer(){
       return {
         background: '#FFFFFF'
+      }
+    },
+    ShuttlebusGoSchoolDrawerClose(){
+      return {
+        position: 'absolute',
+        right: '10px',
+        margin: '10px'
       }
     },
     ShuttlebusGoSchoolToobarText(){
