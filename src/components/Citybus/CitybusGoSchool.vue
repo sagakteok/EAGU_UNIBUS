@@ -1,6 +1,6 @@
 <template>
   <v-app style="background-color: transparent">
-    <PageAppbar/>
+    <Appbar/>
     <v-row>
       <v-img :style="CitybusGoSchoolTitle()" :src="CitybusGoSchool"/>
     </v-row>
@@ -22,11 +22,11 @@
 </template>
 
 <script>
-import PageAppbar from "../Appbars/PageAppbar.vue";
+import Appbar from "../Appbar.vue";
 import KakaoMap from "../../KaKaoMap.vue";
 
 export default {
-  components: { PageAppbar, KakaoMap },
+  components: { Appbar, KakaoMap },
   data() {
     return {
       CitybusGoSchool: new URL(`/src/assets/CitybusGoSchool.png`, import.meta.url).href,

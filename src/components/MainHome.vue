@@ -1,6 +1,5 @@
 <template>
   <v-app style="background-color: transparent">
-    <MainAppBar/>
     <v-row>
       <v-img :style="SloganStyle()" :src="slogan"/>
     </v-row>
@@ -21,10 +20,8 @@
 
 <script>
 import router from "../router.js";
-import MainAppBar from "../components/Appbars/MainAppbar.vue";
 
 export default {
-  components: {MainAppBar},
   data() {
     return {
       slogan: new URL('/src/assets/slogan.png', import.meta.url).href,

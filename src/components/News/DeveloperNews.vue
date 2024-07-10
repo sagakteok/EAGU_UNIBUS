@@ -1,6 +1,6 @@
 <template>
   <v-app style="background-color: transparent">
-    <PageAppbar/>
+    <Appbar/>
     <v-card :style="DeveloperNewsCard">
       <v-img :style="DeveloperNewsTitle" :src="DeveloperNews"/>
       <v-card-text>
@@ -13,9 +13,9 @@
 </template>
 
 <script>
-import PageAppbar from "../Appbars/PageAppbar.vue";
+import Appbar from "../Appbar.vue";
 export default {
-  components: {PageAppbar},
+  components: {Appbar},
   data() {
     return {
       DeveloperNews: new URL(`/src/assets/DeveloperNews.png`, import.meta.url).href

@@ -39,13 +39,13 @@
 </template>
 
 <script>
-import router from "../../router.js";
+import router from "../router.js";
 import {mergeProps} from "vue"
 
 export default {
   data() {
     return {
-      UNIBUS: new URL(`../../assets/UNIBUS.png`, import.meta.url).href
+      UNIBUS: new URL(`../assets/BlackUNIBUS.png`, import.meta.url).href
     };
   },
   methods: {
@@ -83,7 +83,7 @@ export default {
         transition: 'all .07s linear 0s',
         fontFamily: 'Inter-Bold, Helvetica',
         textDecoration: isHovering ? 'underline' : 'none',
-        color: isHovering ? '#00FF7C' : '#FFFFFF',
+        color: isHovering ? '#006933' : '#000000',
         fontSize: isHovering ? '22px' : '20px',
         fontWeight: 700,
         outline: 'none',
