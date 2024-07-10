@@ -7,4 +7,6 @@ export default defineConfig({
     include: ['esm-dep > cjs-dep'],
   },
   plugins: [vue()],
+  build: { chunkSizeWarningLimit: 1600, }
+
 })

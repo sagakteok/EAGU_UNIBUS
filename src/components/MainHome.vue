@@ -27,6 +27,7 @@ export default {
       slogan: new URL('/src/assets/slogan.png', import.meta.url).href,
       shuttlebus: new URL('/src/assets/shuttlebus.png', import.meta.url).href,
       citybus: new URL('/src/assets/Citybus.png', import.meta.url).href,
+
     };
   },
   methods: {
