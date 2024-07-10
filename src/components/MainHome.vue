@@ -27,7 +27,7 @@ export default {
       slogan: new URL('/src/assets/slogan.png', import.meta.url).href,
       shuttlebus: new URL('/src/assets/shuttlebus.png', import.meta.url).href,
       citybus: new URL('/src/assets/Citybus.png', import.meta.url).href,
-
+      mainhome: new URL('/src/assets/MainHome.png', import.meta.url).href
     };
   },
   methods: {
@@ -71,9 +71,9 @@ export default {
       };
     }
   },
-  mounted(){
-    document.body.style.background = "url(src/assets/MainHome.png)"
-    document.body.style.backgroundSize = 'cover'
+  mounted() {
+    document.body.style.backgroundImage = `url(${this.mainhome})`;
+    document.body.style.backgroundSize = 'cover';
   }
 };
 </script>
