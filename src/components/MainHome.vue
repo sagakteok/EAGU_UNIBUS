@@ -1,20 +1,22 @@
 <template>
   <v-app style="background-color: transparent">
-    <v-row>
-      <v-img :style="SloganStyle()" :src="slogan"/>
-    </v-row>
-    <v-row>
-      <v-hover v-slot="{ isHovering, props }">
-        <v-card v-bind="props" :style="MainHomeCards(isHovering, 'right')" @click="gotocity()">
-          <v-img :style="MainHomeLeftCardImage()" :src="citybus"/>
-        </v-card>
-      </v-hover>
-      <v-hover v-slot="{ isHovering, props }">
-        <v-card v-bind="props" :style="MainHomeCards(isHovering, 'left')" @click="gotoshuttle()">
-          <v-img :style="MainHomeRightCardImage()" :src="shuttlebus"/>
-        </v-card>
-      </v-hover>
-    </v-row>
+    <text>
+      <v-row>
+        <v-img :style="SloganStyle()" :src="slogan"/>
+      </v-row>
+      <v-row>
+        <v-hover v-slot="{ isHovering, props }">
+          <v-card v-bind="props" :style="MainHomeCards(isHovering, 'right')" @click="gotocity()">
+            <v-img :style="MainHomeLeftCardImage()" :src="citybus"/>
+          </v-card>
+        </v-hover>
+        <v-hover v-slot="{ isHovering, props }">
+          <v-card v-bind="props" :style="MainHomeCards(isHovering, 'left')" @click="gotoshuttle()">
+            <v-img :style="MainHomeRightCardImage()" :src="shuttlebus"/>
+          </v-card>
+        </v-hover>
+      </v-row>
+    </text>
   </v-app>
 </template>
 
@@ -40,7 +42,7 @@ export default {
     SloganStyle() {
       return {
         width: '300px',
-        top: '20px'
+        marginTop: '100px'
       };
     },
     MainHomeCards(isHovering, position) {
@@ -53,7 +55,7 @@ export default {
         height: '250px',
         width: '250px',
         [position]: '15px',
-        top: '20px'
+        marginTop: '100px'
       };
     },
     MainHomeLeftCardImage() {

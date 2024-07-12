@@ -1,23 +1,25 @@
 <template>
   <v-app style="background-color: transparent">
     <Appbar/>
-    <v-row>
-      <v-img :style="ShuttlebusGoSchoolTitle()" :src="ShuttlebusGoSchool"/>
-    </v-row>
-    <v-row>
-      <v-toolbar :style="ShuttlebusGoSchoolToolbar()">
-        <v-app-bar-nav-icon color="#FFFFFF" variant="text" @click.stop="drawer = !drawer"/>
-        <text :style="ShuttlebusGoSchoolToobarText()">{{ selectedCourse || '코스를 선택하세요.' }}</text>
-      </v-toolbar>
-      <v-navigation-drawer v-model="drawer" elevation="10" :style="ShuttlebusGoSchoolDrawer()" permanent>
-        <template v-slot:prepend>
-          <v-btn icon="mdi-close" variant="text" @click.stop="drawer = !drawer" :style="ShuttlebusGoSchoolDrawerClose()"/>
-        </template>
-        <v-hover v-slot="{ isHovering, props }" v-for="course in courses" :key="course">
-          <v-list-item-title v-bind="props" :style="ListTexts(isHovering)" @click="selectCourse(course)">{{ course }}</v-list-item-title>
-        </v-hover>
-      </v-navigation-drawer>
-    </v-row>
+    <text>
+      <v-row>
+        <v-img :style="ShuttlebusGoSchoolTitle()" :src="ShuttlebusGoSchool"/>
+      </v-row>
+      <v-row>
+        <v-toolbar :style="ShuttlebusGoSchoolToolbar()">
+          <v-app-bar-nav-icon color="#FFFFFF" variant="text" @click.stop="drawer = !drawer"/>
+          <text :style="ShuttlebusGoSchoolToobarText()">{{ selectedCourse || '코스를 선택하세요.' }}</text>
+        </v-toolbar>
+        <v-navigation-drawer v-model="drawer" elevation="10" :style="ShuttlebusGoSchoolDrawer()" permanent>
+          <template v-slot:prepend>
+            <v-btn icon="mdi-close" variant="text" @click.stop="drawer = !drawer" :style="ShuttlebusGoSchoolDrawerClose()"/>
+          </template>
+          <v-hover v-slot="{ isHovering, props }" v-for="course in courses" :key="course">
+            <v-list-item-title v-bind="props" :style="ListTexts(isHovering)" @click="selectCourse(course)">{{ course }}</v-list-item-title>
+          </v-hover>
+        </v-navigation-drawer>
+      </v-row>
+    </text>
   </v-app>
 </template>
 
@@ -49,7 +51,7 @@ export default {
       return {
         width: '20vw',
         minWidth: '550px',
-        bottom: '100px'
+        marginTop: '110px',
       };
     },
     ShuttlebusGoSchoolToolbar(){
@@ -57,7 +59,7 @@ export default {
         width: '50vw',
         minWidth: '550px',
         height: '70px',
-        bottom: '200px',
+        marginTop: '70px',
         background: '#00000090'
       }
     },

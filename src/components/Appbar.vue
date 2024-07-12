@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar color="transparent" elevation="0" prominent>
+  <v-app-bar color="#FFFFFF" elevation="0" prominent>
     <text @click="gotomain()">
       <v-img :style="ClickUNIBUS()" :src="UNIBUS"/>
     </text>
