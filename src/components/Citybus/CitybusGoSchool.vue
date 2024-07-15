@@ -7,9 +7,11 @@
       </v-row>
       <v-row>
         <v-toolbar :style="CitybusGoSchoolToolbar()">
-          <v-menu>
-            <template v-slot:activator="{props}">
-              <v-btn icon="mdi-dots-vertical" color="#FFFFFF" v-bind="props"/>
+          <v-menu :location="'bottom center'" transition="slide-y-transition">
+            <template v-slot:activator="{props: activatorProps}">
+              <v-hover v-slot:default="{isHovering, props: hoverProps}">
+                <text :style="CitybusGoSchoolToolbarText(isHovering)" v-bind="mergeProps(activatorProps, hoverProps)">{{ selectedCourse || '코스를 선택하세요.' }}</text>
+              </v-hover>
             </template>
             <v-list :style="MenuListStyle()">
               <v-hover v-slot="{ isHovering, props }" v-for="course in courses" :key="course">
@@ -17,7 +19,6 @@
               </v-hover>
             </v-list>
           </v-menu>
-          <text :style="CitybusGoSchoolToolbarText()">{{ selectedCourse || '코스를 선택하세요.' }}</text>
         </v-toolbar>
       </v-row>
     </text>
@@ -27,6 +28,7 @@
 <script>
 import Appbar from "../Appbar.vue";
 import KakaoMap from "../../KaKaoMap.vue";
+import {mergeProps} from "vue";
 
 export default {
   components: { Appbar, KakaoMap },
@@ -55,47 +57,35 @@ export default {
     },
   },
   methods: {
+    mergeProps,
     CitybusGoSchoolTitle() {
       return {
-        width: '30vw',
-        minWidth: '550px',
+        width: 'clamp(300px, 60vw, 600px)',
         marginTop: '110px',
       };
     },
     CitybusGoSchoolToolbar() {
       return {
-        width: '50vw',
-        minWidth: '550px',
-        height: '70px',
+        width: 'clamp(300px, 60vw, 600px)',
+        height: '60px',
         marginTop: '70px',
         background: '#00000090'
       };
     },
-    CitybusGoSchoolDrawer(){
-      return {
-        background: '#FFFFFF'
-      }
-    },
-    CitybusGoSchoolDrawerClose(){
-      return {
-        position: 'absolute',
-        right: '10px',
-        margin: '10px'
-      }
-    },
-    CitybusGoSchoolToolbarText(){
+    CitybusGoSchoolToolbarText(isHovering){
       return{
         margin: 'auto',
-        color: '#FFFFFF',
+        color: isHovering ? '#00FF7C' : '#FFFFFF',
         fontFamily: 'Inter-Bold, Helvetica',
-        fontSize: '30px',
-        fontWeight: '700'
+        fontSize: 'clamp(15px, 3vw, 20px)',
+        fontWeight: isHovering ? '800' : '600',
+        cursor: 'pointer'
       }
     },
     MenuListStyle() {
       return {
-        width: '180px',
-        height: '540px',
+        width: 'clamp(150px, 11.5vw, 180px)',
+        height: 'clamp(150px, 40vh, 300px)',
         background: '#7FB99A',
         color: '#FFFFFF',
         borderRadius: '10px',
@@ -108,11 +98,10 @@ export default {
         transition: 'all .1s linear 0s',
         color: isHovering ? '#00FF7C' : '#FFFFFF',
         fontFamily: 'Inter-Bold, Helvetica',
-        marginTop: '25px',
-        marginLeft: '25px',
-        fontSize: '20px',
+        marginTop: 'clamp(20px, 2vh, 25px)', // Example using vh units for margin
+        fontSize: 'clamp(17px, 1.3vw, 20px)', // Example using vw units for font size,
         fontWeight: '700',
-        textAlign: 'left',
+        textAlign: 'center',
         cursor: 'pointer'
       };
     },

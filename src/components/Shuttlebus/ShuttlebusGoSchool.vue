@@ -7,9 +7,11 @@
       </v-row>
       <v-row>
         <v-toolbar :style="ShuttlebusGoSchoolToolbar()">
-          <v-menu>
-            <template v-slot:activator="{props}">
-              <v-btn icon="mdi-dots-vertical" color="#FFFFFF" v-bind="props"/>
+          <v-menu :location="'bottom center'" transition="slide-y-transition">
+            <template v-slot:activator="{props: activatorProps}">
+              <v-hover v-slot:default="{isHovering, props: hoverProps}">
+                <text :style="ShuttlebusGoSchoolToolbarText(isHovering)" v-bind="mergeProps(activatorProps, hoverProps)">{{ selectedCourse || '코스를 선택하세요.' }}</text>
+              </v-hover>
             </template>
             <v-list :style="MenuListStyle()">
               <v-hover v-slot="{ isHovering, props }" v-for="course in courses" :key="course">
@@ -17,7 +19,6 @@
               </v-hover>
             </v-list>
           </v-menu>
-          <text :style="ShuttlebusGoSchoolToolbarText()">{{ selectedCourse || '코스를 선택하세요.' }}</text>
         </v-toolbar>
       </v-row>
     </text>
@@ -28,6 +29,7 @@
 
 import Appbar from "../Appbar.vue";
 import KakaoMap from "../../KaKaoMap.vue";
+import {mergeProps} from "vue";
 
 export default {
   components: {Appbar, KakaoMap},
@@ -48,47 +50,35 @@ export default {
     },
   },
   methods: {
+    mergeProps,
     ShuttlebusGoSchoolTitle() {
       return {
-        width: '20vw',
-        minWidth: '550px',
+        width: 'clamp(300px, 60vw, 600px)',
         marginTop: '110px',
       };
     },
     ShuttlebusGoSchoolToolbar(){
       return {
-        width: '50vw',
-        minWidth: '550px',
-        height: '70px',
+        width: 'clamp(300px, 60vw, 600px)',
+        height: '60px',
         marginTop: '70px',
         background: '#00000090'
       }
     },
-    ShuttlebusGoSchoolDrawer(){
-      return {
-        background: '#FFFFFF'
-      }
-    },
-    ShuttlebusGoSchoolDrawerClose(){
-      return {
-        position: 'absolute',
-        right: '10px',
-        margin: '10px'
-      }
-    },
-    ShuttlebusGoSchoolToolbarText(){
-      return {
+    ShuttlebusGoSchoolToolbarText(isHovering){
+      return{
         margin: 'auto',
-        color: '#FFFFFF',
+        color: isHovering ? '#00FF7C' : '#FFFFFF',
         fontFamily: 'Inter-Bold, Helvetica',
-        fontSize: '30px',
-        fontWeight: '700'
+        fontSize: 'clamp(15px, 3vw, 20px)',
+        fontWeight: isHovering ? '800' : '600',
+        cursor: 'pointer'
       }
     },
     MenuListStyle() {
       return {
-        width: '200px',
-        height: '150px',
+        width: 'clamp(150px, 13vw, 200px)',
+        height: 'clamp(135px, 18.5vh, 200px)',
         background: '#7FB99A',
         color: '#FFFFFF',
         borderRadius: '10px',
@@ -101,11 +91,10 @@ export default {
         transition: 'all .1s linear 0s',
         color: isHovering ? '#00FF7C' : '#FFFFFF',
         fontFamily: 'Inter-Bold, Helvetica',
-        marginTop: '25px',
-        marginLeft: '25px',
-        fontSize: '20px',
+        marginTop: 'clamp(20px, 2vh, 25px)', // Example using vh units for margin
+        fontSize: 'clamp(16px, 1.3vw, 20px)', // Example using vw units for font size,
         fontWeight: '700',
-        textAlign: 'left',
+        textAlign: 'center',
         cursor: 'pointer'
       };
     },

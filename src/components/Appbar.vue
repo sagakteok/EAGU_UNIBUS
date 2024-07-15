@@ -9,7 +9,7 @@
     <v-hover v-slot="{ isHovering, props }">
       <text v-bind="props" @click="gotoshuttle()" :style="HoverTexts(isHovering)">셔틀버스</text>
     </v-hover>
-    <v-menu open-on-hover>
+    <v-menu open-on-hover transition="slide-y-transition">
       <template v-slot:activator="{ props: activatorProps }">
         <v-hover v-slot:default="{ isHovering, props: hoverProps }">
           <text v-bind="mergeProps(activatorProps, hoverProps)" :style="HoverTexts(isHovering)">소식</text>
