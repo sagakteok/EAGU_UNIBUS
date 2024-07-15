@@ -83,7 +83,7 @@ export default {
         transition: 'all .07s linear 0s',
         fontFamily: 'Inter-Bold, Helvetica',
         textDecoration: isHovering ? 'underline' : 'none',
-        color: isHovering ? '#006933' : '#000000',
+        color: isHovering ? '#1FD387' : '#000000',
         fontSize: isHovering ? '22px' : '20px',
         fontWeight: 700,
         outline: 'none',

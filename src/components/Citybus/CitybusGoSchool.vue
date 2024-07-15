@@ -7,17 +7,18 @@
       </v-row>
       <v-row>
         <v-toolbar :style="CitybusGoSchoolToolbar()">
-          <v-app-bar-nav-icon color="#FFFFFF" variant="text" @click.stop="drawer = !drawer"/>
+          <v-menu>
+            <template v-slot:activator="{props}">
+              <v-btn icon="mdi-dots-vertical" color="#FFFFFF" v-bind="props"/>
+            </template>
+            <v-list :style="MenuListStyle()">
+              <v-hover v-slot="{ isHovering, props }" v-for="course in courses" :key="course">
+                <v-list-item-title v-bind="props" :style="ListTexts(isHovering)" @click="selectCourse(course)">{{ course }}</v-list-item-title>
+              </v-hover>
+            </v-list>
+          </v-menu>
           <text :style="CitybusGoSchoolToolbarText()">{{ selectedCourse || '코스를 선택하세요.' }}</text>
         </v-toolbar>
-        <v-navigation-drawer v-model="drawer" elevation="10" :style="CitybusGoSchoolDrawer()" permanent>
-          <template v-slot:prepend>
-            <v-btn icon="mdi-close" variant="text" @click.stop="drawer = !drawer" :style="CitybusGoSchoolDrawerClose()"/>
-          </template>
-          <v-hover v-slot="{ isHovering, props }" v-for="course in courses" :key="course">
-            <v-list-item-title v-bind="props" :style="ListTexts(isHovering)" @click="selectCourse(course)">{{ course }}</v-list-item-title>
-          </v-hover>
-        </v-navigation-drawer>
       </v-row>
     </text>
   </v-app>
@@ -33,6 +34,7 @@ export default {
     return {
       CitybusGoSchool: new URL(`/src/assets/CitybusGoSchool.png`, import.meta.url).href,
       drawer: false,
+      menuVisible: false,
       selectedCourse: null,
       courses: [
         '관저동 방면',
@@ -90,10 +92,21 @@ export default {
         fontWeight: '700'
       }
     },
+    MenuListStyle() {
+      return {
+        width: '180px',
+        height: '540px',
+        background: '#7FB99A',
+        color: '#FFFFFF',
+        borderRadius: '10px',
+        marginTop: '25px',
+        boxShadow: '0px 0px 10px #00000050'
+      };
+    },
     ListTexts(isHovering) {
       return {
         transition: 'all .1s linear 0s',
-        color: isHovering ? '#006933' : '#000000',
+        color: isHovering ? '#00FF7C' : '#FFFFFF',
         fontFamily: 'Inter-Bold, Helvetica',
         marginTop: '25px',
         marginLeft: '25px',
@@ -105,7 +118,6 @@ export default {
     },
     selectCourse(course) {
       this.selectedCourse = course;
-      this.drawer = false;
     }
   },
   mounted() {

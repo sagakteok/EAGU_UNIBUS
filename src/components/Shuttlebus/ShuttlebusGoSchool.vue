@@ -7,17 +7,18 @@
       </v-row>
       <v-row>
         <v-toolbar :style="ShuttlebusGoSchoolToolbar()">
-          <v-app-bar-nav-icon color="#FFFFFF" variant="text" @click.stop="drawer = !drawer"/>
-          <text :style="ShuttlebusGoSchoolToobarText()">{{ selectedCourse || '코스를 선택하세요.' }}</text>
+          <v-menu>
+            <template v-slot:activator="{props}">
+              <v-btn icon="mdi-dots-vertical" color="#FFFFFF" v-bind="props"/>
+            </template>
+            <v-list :style="MenuListStyle()">
+              <v-hover v-slot="{ isHovering, props }" v-for="course in courses" :key="course">
+                <v-list-item-title v-bind="props" :style="ListTexts(isHovering)" @click="selectCourse(course)">{{ course }}</v-list-item-title>
+              </v-hover>
+            </v-list>
+          </v-menu>
+          <text :style="ShuttlebusGoSchoolToolbarText()">{{ selectedCourse || '코스를 선택하세요.' }}</text>
         </v-toolbar>
-        <v-navigation-drawer v-model="drawer" elevation="10" :style="ShuttlebusGoSchoolDrawer()" permanent>
-          <template v-slot:prepend>
-            <v-btn icon="mdi-close" variant="text" @click.stop="drawer = !drawer" :style="ShuttlebusGoSchoolDrawerClose()"/>
-          </template>
-          <v-hover v-slot="{ isHovering, props }" v-for="course in courses" :key="course">
-            <v-list-item-title v-bind="props" :style="ListTexts(isHovering)" @click="selectCourse(course)">{{ course }}</v-list-item-title>
-          </v-hover>
-        </v-navigation-drawer>
       </v-row>
     </text>
   </v-app>
@@ -75,7 +76,7 @@ export default {
         margin: '10px'
       }
     },
-    ShuttlebusGoSchoolToobarText(){
+    ShuttlebusGoSchoolToolbarText(){
       return {
         margin: 'auto',
         color: '#FFFFFF',
@@ -84,10 +85,21 @@ export default {
         fontWeight: '700'
       }
     },
+    MenuListStyle() {
+      return {
+        width: '200px',
+        height: '150px',
+        background: '#7FB99A',
+        color: '#FFFFFF',
+        borderRadius: '10px',
+        marginTop: '25px',
+        boxShadow: '0px 0px 10px #00000050'
+      };
+    },
     ListTexts(isHovering) {
       return {
         transition: 'all .1s linear 0s',
-        color: isHovering ? '#006933' : '#000000',
+        color: isHovering ? '#00FF7C' : '#FFFFFF',
         fontFamily: 'Inter-Bold, Helvetica',
         marginTop: '25px',
         marginLeft: '25px',
@@ -99,7 +111,6 @@ export default {
     },
     selectCourse(course) {
       this.selectedCourse = course;
-      this.drawer = false;
     }
   },
   mounted(){

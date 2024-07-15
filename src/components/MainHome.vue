@@ -42,7 +42,7 @@ export default {
     SloganStyle() {
       return {
         width: '300px',
-        marginTop: '100px'
+        marginTop: '120px'
       };
     },
     MainHomeCards(isHovering, position) {
@@ -55,7 +55,7 @@ export default {
         height: '250px',
         width: '250px',
         [position]: '15px',
-        marginTop: '100px'
+        marginTop: '120px'
       };
     },
     MainHomeLeftCardImage() {
