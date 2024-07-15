@@ -53,12 +53,14 @@ export default {
     mergeProps,
     ShuttlebusGoSchoolTitle() {
       return {
+        transition: 'all 0s ease-in-out',
         width: 'clamp(300px, 60vw, 600px)',
         marginTop: '110px',
       };
     },
     ShuttlebusGoSchoolToolbar(){
       return {
+        transition: 'all 0s ease-in-out',
         width: 'clamp(300px, 60vw, 600px)',
         height: '60px',
         marginTop: '70px',
@@ -67,6 +69,7 @@ export default {
     },
     ShuttlebusGoSchoolToolbarText(isHovering){
       return{
+        transition: isHovering ? 'all .1s linear 0s' : 'all 0s ease-in-out',
         margin: 'auto',
         color: isHovering ? '#00FF7C' : '#FFFFFF',
         fontFamily: 'Inter-Bold, Helvetica',
@@ -77,8 +80,9 @@ export default {
     },
     MenuListStyle() {
       return {
+        transition: 'all 0s ease-in-out',
         width: 'clamp(150px, 13vw, 200px)',
-        height: 'clamp(135px, 18.5vh, 200px)',
+        height: 'clamp(135px, 18.5vh, 150px)',
         background: '#7FB99A',
         color: '#FFFFFF',
         borderRadius: '10px',
@@ -88,7 +92,7 @@ export default {
     },
     ListTexts(isHovering) {
       return {
-        transition: 'all .1s linear 0s',
+        transition: isHovering ? 'all .1s linear 0s' : 'all 0s ease-in-out',
         color: isHovering ? '#00FF7C' : '#FFFFFF',
         fontFamily: 'Inter-Bold, Helvetica',
         marginTop: 'clamp(20px, 2vh, 25px)', // Example using vh units for margin

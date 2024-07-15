@@ -9,7 +9,7 @@
     <v-hover v-slot="{ isHovering, props }">
       <text v-bind="props" @click="gotoshuttle()" :style="HoverTexts(isHovering)">셔틀버스</text>
     </v-hover>
-    <v-menu open-on-hover transition="slide-y-transition">
+    <v-menu open-on-hover :location="'bottom center'" transition="slide-y-transition">
       <template v-slot:activator="{ props: activatorProps }">
         <v-hover v-slot:default="{ isHovering, props: hoverProps }">
           <text v-bind="mergeProps(activatorProps, hoverProps)" :style="HoverTexts(isHovering)">소식</text>
@@ -73,43 +73,44 @@ export default {
     },
     ClickUNIBUS() {
       return {
-        width: '120px',
-        marginLeft: '20px',
+        transition: 'all 0s ease-in-out',
+        width: 'clamp(100px, 15vw, 120px)',
+        marginLeft: 'clamp(15px, 5vw, 20px)',
         cursor: 'pointer'
       };
     },
     HoverTexts(isHovering) {
       return {
-        transition: 'all .07s linear 0s',
+        transition: isHovering ? 'all .1s linear 0s' : 'all 0s ease-in-out',
         fontFamily: 'Inter-Bold, Helvetica',
         textDecoration: isHovering ? 'underline' : 'none',
         color: isHovering ? '#1FD387' : '#000000',
-        fontSize: isHovering ? '22px' : '20px',
+        fontSize: isHovering ? 'clamp(12px, 3.4vw, 22px)' : 'clamp(10px, 3vw, 20px)',
         fontWeight: 700,
         outline: 'none',
-        marginLeft: '30px',
+        marginLeft: 'clamp(20px, 5vw, 30px)',
         cursor: 'pointer'
       };
     },
     MenuListStyle() {
       return {
-        width: '160px',
+        transition: 'all 0s ease-in-out',
+        width: 'clamp(100px,20vw,160px)',
         height: '170px',
         backgroundColor: '#386156',
         color: '#FFFFFF',
         borderRadius: '10px',
-        top: '15px',
-        left: '-60px',
+        marginTop: '15px',
         boxShadow: '0px 0px 10px #00000050'
       };
     },
     ListTexts(isHovering) {
       return {
-        transition: 'all .1s linear 0s',
+        transition: isHovering ? 'all .1s linear 0s' : 'all 0s ease-in-out',
         color: isHovering ? '#00FF7C' : '#FFFFFF',
         fontFamily: 'Inter-Bold, Helvetica',
         marginTop: '10px',
-        fontSize: '20px',
+        fontSize: 'clamp(5px, 2.5vw, 20px)',
         fontWeight: '700',
         textAlign: 'center',
         cursor: 'pointer'
@@ -117,8 +118,9 @@ export default {
     },
     MenuLineStyle() {
       return {
+        transition: 'all 0s ease-in-out',
         borderTop: '1px solid #444444',
-        width: '125px',
+        width: 'clamp(80px, 15vw, 125px)',
         margin: '10px auto',
         borderColor: '#FFFFFF90'
       };

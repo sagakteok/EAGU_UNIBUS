@@ -6,12 +6,12 @@
       </v-row>
       <v-row>
         <v-hover v-slot="{ isHovering, props }">
-          <v-card v-bind="props" :style="MainHomeCards(isHovering, 'right')" @click="gotocity()">
+          <v-card v-bind="props" :style="MainHomeCards(isHovering, 'right')" @click="gotocity()" :ripple="false">
             <v-img :style="MainHomeLeftCardImage()" :src="citybus"/>
           </v-card>
         </v-hover>
         <v-hover v-slot="{ isHovering, props }">
-          <v-card v-bind="props" :style="MainHomeCards(isHovering, 'left')" @click="gotoshuttle()">
+          <v-card v-bind="props" :style="MainHomeCards(isHovering, 'left')" @click="gotoshuttle()" :ripple="false">
             <v-img :style="MainHomeRightCardImage()" :src="shuttlebus"/>
           </v-card>
         </v-hover>

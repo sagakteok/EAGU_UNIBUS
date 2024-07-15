@@ -60,12 +60,14 @@ export default {
     mergeProps,
     CitybusGoSchoolTitle() {
       return {
+        transition: 'all 0s ease-in-out',
         width: 'clamp(300px, 60vw, 600px)',
         marginTop: '110px',
       };
     },
     CitybusGoSchoolToolbar() {
       return {
+        transition: 'all 0s ease-in-out',
         width: 'clamp(300px, 60vw, 600px)',
         height: '60px',
         marginTop: '70px',
@@ -74,6 +76,7 @@ export default {
     },
     CitybusGoSchoolToolbarText(isHovering){
       return{
+        transition: isHovering ? 'all .1s linear 0s' : 'all 0s ease-in-out',
         margin: 'auto',
         color: isHovering ? '#00FF7C' : '#FFFFFF',
         fontFamily: 'Inter-Bold, Helvetica',
@@ -84,8 +87,9 @@ export default {
     },
     MenuListStyle() {
       return {
+        transition: 'all 0s ease-in-out',
         width: 'clamp(150px, 11.5vw, 180px)',
-        height: 'clamp(150px, 40vh, 300px)',
+        height: 'clamp(180px, 44vh, 530px)',
         background: '#7FB99A',
         color: '#FFFFFF',
         borderRadius: '10px',
@@ -95,7 +99,7 @@ export default {
     },
     ListTexts(isHovering) {
       return {
-        transition: 'all .1s linear 0s',
+        transition: isHovering ? 'all .1s linear 0s' : 'all 0s ease-in-out',
         color: isHovering ? '#00FF7C' : '#FFFFFF',
         fontFamily: 'Inter-Bold, Helvetica',
         marginTop: 'clamp(20px, 2vh, 25px)', // Example using vh units for margin
