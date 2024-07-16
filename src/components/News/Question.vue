@@ -1,15 +1,13 @@
 <template>
-  <v-app style="background-color: transparent">
-    <Appbar/>
-    <v-card :style="QuestionCard">
-      <v-img :style="QuestionTitle" :src="Question"/>
-      <v-card-text>
-        <v-col>
-          <v-text-field v-bind="QuestionTextField" @click:append-inner="onClick"/>
-        </v-col>
-      </v-card-text>
-    </v-card>
-  </v-app>
+  <Appbar/>
+  <v-card :style="QuestionCard">
+    <v-img :style="QuestionTitle" :src="Question"/>
+    <v-card-text>
+      <v-col>
+        <v-text-field v-bind="QuestionTextField" @click:append-inner="onClick"/>
+      </v-col>
+    </v-card-text>
+  </v-card>
 </template>
 
 <script>

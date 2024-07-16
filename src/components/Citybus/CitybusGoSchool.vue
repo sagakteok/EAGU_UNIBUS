@@ -1,28 +1,24 @@
 <template>
-  <v-app style="background-color: transparent">
+  <v-main>
     <Appbar/>
-    <text>
-      <v-row>
-        <v-img :style="CitybusGoSchoolTitle()" :src="CitybusGoSchool"/>
-      </v-row>
-      <v-row>
-        <v-toolbar :style="CitybusGoSchoolToolbar()">
-          <v-menu :location="'bottom center'" transition="slide-y-transition">
-            <template v-slot:activator="{props: activatorProps}">
-              <v-hover v-slot:default="{isHovering, props: hoverProps}">
-                <text :style="CitybusGoSchoolToolbarText(isHovering)" v-bind="mergeProps(activatorProps, hoverProps)">{{ selectedCourse || '코스를 선택하세요.' }}</text>
-              </v-hover>
-            </template>
-            <v-list :style="MenuListStyle()">
-              <v-hover v-slot="{ isHovering, props }" v-for="course in courses" :key="course">
-                <v-list-item-title v-bind="props" :style="ListTexts(isHovering)" @click="selectCourse(course)">{{ course }}</v-list-item-title>
-              </v-hover>
-            </v-list>
-          </v-menu>
-        </v-toolbar>
-      </v-row>
-    </text>
-  </v-app>
+    <v-img :style="CitybusGoSchoolBannerStyle()" :src="CitybusGoSchoolBanner" cover>
+      <text :style="CitybusGoSchoolTitle()">시내통학 버스로 등교하기</text>
+    </v-img>
+    <v-toolbar :style="CitybusGoSchoolToolbar()">
+      <v-menu :location="'bottom center'" transition="slide-y-transition">
+        <template v-slot:activator="{props: activatorProps}">
+          <v-hover v-slot:default="{isHovering, props: hoverProps}">
+            <text :style="CitybusGoSchoolToolbarText(isHovering)" v-bind="mergeProps(activatorProps, hoverProps)">{{ selectedCourse || '코스를 선택하세요.' }}</text>
+          </v-hover>
+        </template>
+        <v-list :style="MenuListStyle()">
+          <v-hover v-slot="{ isHovering, props }" v-for="course in courses" :key="course">
+            <v-list-item-title v-bind="props" :style="ListTexts(isHovering)" @click="selectCourse(course)">{{ course }}</v-list-item-title>
+          </v-hover>
+        </v-list>
+      </v-menu>
+    </v-toolbar>
+  </v-main>
 </template>
 
 <script>
@@ -34,9 +30,8 @@ export default {
   components: { Appbar, KakaoMap },
   data() {
     return {
-      CitybusGoSchool: new URL(`/src/assets/CitybusGoSchool.png`, import.meta.url).href,
+      CitybusGoSchoolBanner: new URL('/src/assets/CitybusGoSchoolBanner.png', import.meta.url).href,
       drawer: false,
-      menuVisible: false,
       selectedCourse: null,
       courses: [
         '관저동 방면',
@@ -58,21 +53,38 @@ export default {
   },
   methods: {
     mergeProps,
+    CitybusGoSchoolBannerStyle(){
+      return{
+        transition: 'all 0s ease-in-out',
+        width: '100vw',
+        height: 'clamp(150px, 15vw, 270px)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '0px',
+        textShadow: '0px 0px 3px #00000090'
+      }
+    },
     CitybusGoSchoolTitle() {
       return {
         transition: 'all 0s ease-in-out',
-        width: 'clamp(300px, 60vw, 600px)',
-        marginTop: '110px',
+        fontFamily: 'Inter-Bold, Helvetica',
+        fontWeight: '700',
+        fontSize: 'clamp(40px, 4vw, 60px)',
+        color: '#FFFFFF'
       };
     },
-    CitybusGoSchoolToolbar() {
+    CitybusGoSchoolToolbar(){
       return {
         transition: 'all 0s ease-in-out',
-        width: 'clamp(300px, 60vw, 600px)',
-        height: '60px',
-        marginTop: '70px',
-        background: '#00000090'
-      };
+        width: 'clamp(500px, 60vw, 1280px)',
+        height: 'clamp(32px, 3.2vw, 48px)',
+        margin: 'auto',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        background: '#00837B',
+      }
     },
     CitybusGoSchoolToolbarText(isHovering){
       return{
@@ -80,20 +92,20 @@ export default {
         margin: 'auto',
         color: isHovering ? '#00FF7C' : '#FFFFFF',
         fontFamily: 'Inter-Bold, Helvetica',
-        fontSize: 'clamp(15px, 3vw, 20px)',
-        fontWeight: isHovering ? '800' : '600',
+        fontSize: 'clamp(16px, 1.6vw, 24px)',
+        fontWeight: isHovering ? '700' : '600',
         cursor: 'pointer'
       }
     },
     MenuListStyle() {
       return {
         transition: 'all 0s ease-in-out',
-        width: 'clamp(150px, 11.5vw, 180px)',
-        height: 'clamp(180px, 44vh, 530px)',
+        width: 'clamp(150px, 13vw, 200px)',
+        height: 'clamp(180px, 35vh, 530px)',
         background: '#7FB99A',
         color: '#FFFFFF',
         borderRadius: '10px',
-        marginTop: '25px',
+        marginTop: '20px',
         boxShadow: '0px 0px 10px #00000050'
       };
     },
@@ -102,8 +114,8 @@ export default {
         transition: isHovering ? 'all .1s linear 0s' : 'all 0s ease-in-out',
         color: isHovering ? '#00FF7C' : '#FFFFFF',
         fontFamily: 'Inter-Bold, Helvetica',
-        marginTop: 'clamp(20px, 2vh, 25px)', // Example using vh units for margin
-        fontSize: 'clamp(17px, 1.3vw, 20px)', // Example using vw units for font size,
+        marginTop: 'clamp(19.5px, 1.5vw, 22.5px)',
+        fontSize: 'clamp(15px, 1.3vw, 20px)',
         fontWeight: '700',
         textAlign: 'center',
         cursor: 'pointer'

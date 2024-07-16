@@ -1,15 +1,13 @@
 <template>
-  <v-app style="background-color: transparent">
-    <Appbar/>
-    <v-card :style="DeveloperNewsCard">
-      <v-img :style="DeveloperNewsTitle" :src="DeveloperNews"/>
-      <v-card-text>
-        <v-col>
-          <v-text-field v-bind="DeveloperNewsTextField" @click:append-inner="onClick"/>
-        </v-col>
-      </v-card-text>
-    </v-card>
-  </v-app>
+  <Appbar/>
+  <v-card :style="DeveloperNewsCard">
+    <v-img :style="DeveloperNewsTitle" :src="DeveloperNews"/>
+    <v-card-text>
+      <v-col>
+        <v-text-field v-bind="DeveloperNewsTextField" @click:append-inner="onClick"/>
+      </v-col>
+    </v-card-text>
+  </v-card>
 </template>
 
 <script>
