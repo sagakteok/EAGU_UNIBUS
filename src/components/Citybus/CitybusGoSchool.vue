@@ -4,11 +4,11 @@
     <v-img :style="CitybusGoSchoolBannerStyle()" :src="CitybusGoSchoolBanner" cover>
       <text :style="CitybusGoSchoolTitle()">시내통학 버스로 등교하기</text>
     </v-img>
-    <v-toolbar :style="CitybusGoSchoolToolbar()">
-      <v-menu :location="'bottom center'" transition="slide-y-transition">
+    <v-toolbar :style="CitybusGoSchoolToolbar()" elevation="3">
+      <v-menu :location="'bottom'" transition="slide-y-transition">
         <template v-slot:activator="{props: activatorProps}">
           <v-hover v-slot:default="{isHovering, props: hoverProps}">
-            <text :style="CitybusGoSchoolToolbarText(isHovering)" v-bind="mergeProps(activatorProps, hoverProps)">{{ selectedCourse || '코스를 선택하세요.' }}</text>
+            <v-icon icon="mdi-dots-vertical" :style="CitybusGoSchoolToolbar3dots(isHovering)" v-bind="mergeProps(activatorProps, hoverProps)"/>
           </v-hover>
         </template>
         <v-list :style="MenuListStyle()">
@@ -17,6 +17,7 @@
           </v-hover>
         </v-list>
       </v-menu>
+      <text :style="CitybusGoSchoolToolbarText()">{{ selectedCourse || '코스를 선택하세요.' }}</text>
     </v-toolbar>
   </v-main>
 </template>
@@ -62,7 +63,8 @@ export default {
         alignItems: 'center',
         justifyContent: 'center',
         padding: '0px',
-        textShadow: '0px 0px 3px #00000090'
+        textShadow: '0px 0px 3px #00000090',
+        cursor: 'default'
       }
     },
     CitybusGoSchoolTitle() {
@@ -86,15 +88,25 @@ export default {
         background: '#00837B',
       }
     },
-    CitybusGoSchoolToolbarText(isHovering){
+    CitybusGoSchoolToolbarText(){
       return{
-        transition: isHovering ? 'all .1s linear 0s' : 'all 0s ease-in-out',
+        transition: 'all 0s ease-in-out',
         margin: 'auto',
-        color: isHovering ? '#00FF7C' : '#FFFFFF',
+        color: '#FFFFFF',
         fontFamily: 'Inter-Bold, Helvetica',
         fontSize: 'clamp(16px, 1.6vw, 24px)',
-        fontWeight: isHovering ? '700' : '600',
-        cursor: 'pointer'
+        fontWeight: '700',
+        cursor: 'default'
+      }
+    },
+    CitybusGoSchoolToolbar3dots(isHovering){
+      return{
+        background: 'transparent !important',
+        transition: isHovering ? 'all .1s linear 0s' : 'all 0s ease-in-out',
+        color: isHovering ? '#00FF7C' : '#FFFFFF',
+        fontSize: 'clamp(13px, 2vw, 20px)',
+        marginLeft: 'clamp(8.3px, 1vw, 21px)',
+        outline: 'none',
       }
     },
     MenuListStyle() {

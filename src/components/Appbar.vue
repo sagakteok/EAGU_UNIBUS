@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar color="#FFFFFF" elevation="0" prominent>
+  <v-app-bar :style="AppbarStyle()" elevation="2" prominent>
     <text @click="gotomain()">
       <v-img :style="ClickUNIBUS()" :src="UNIBUS"/>
     </text>
@@ -71,6 +71,11 @@ export default {
     gotodju() {
       window.location.href = 'https://www.dju.ac.kr/'
     },
+    AppbarStyle(){
+      return{
+        background: '#FFFFFF',
+      }
+    },
     ClickUNIBUS() {
       return {
         transition: 'all 0s ease-in-out',
@@ -83,9 +88,9 @@ export default {
       return {
         transition: isHovering ? 'all .1s linear 0s' : 'all 0s ease-in-out',
         fontFamily: 'Inter-Bold, Helvetica',
-        textDecoration: isHovering ? 'underline' : 'none',
+        textShadow: isHovering ? '0px 0px 5px #00FF7C50' : 'none',
         color: isHovering ? '#1FD387' : '#000000',
-        fontSize: isHovering ? 'clamp(12px, 3.4vw, 22px)' : 'clamp(10px, 3vw, 20px)',
+        fontSize: 'clamp(10px, 3vw, 20px)',
         fontWeight: 700,
         outline: 'none',
         marginLeft: 'clamp(20px, 5vw, 30px)',
