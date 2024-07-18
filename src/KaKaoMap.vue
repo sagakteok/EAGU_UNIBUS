@@ -1,12 +1,15 @@
 <template>
   <div>
     <div id="map"></div>
+    <button @click="moveTOLocation"></button>
   </div>
 </template>
 
 <style>
 #map {
-  width: 50vw;
+  margin-top: 550px;
+  margin-inline: auto;
+  width: 60vw;
   bottom: 500px;
   height: 500px;
 }
@@ -21,6 +24,7 @@ export default {
       map: null,
     };
   },
+
   setup() {},
   created() {},
   mounted() {
