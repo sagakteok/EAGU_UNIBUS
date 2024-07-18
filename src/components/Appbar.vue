@@ -89,7 +89,7 @@ export default {
       return {
         transition: isHovering ? 'all .1s linear 0s' : 'all 0s ease-in-out',
         fontFamily: 'Inter-Bold, Helvetica',
-        textShadow: isHovering ? '0px 0px 5px #1FD38780' : 'none',
+        textShadow: isHovering ? '0px 0px 3px #1FD38780' : 'none',
         color: isHovering ? '#1FD387' : '#000000',
         fontSize: isHovering ? 'clamp(12px, 3.4vw, 22px)' : 'clamp(10px, 3vw, 20px)',
         fontWeight: 700,

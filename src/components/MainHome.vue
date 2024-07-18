@@ -1,22 +1,22 @@
 <template>
   <v-app style="background-color: transparent">
-    <text>
-      <v-row>
-        <v-img :style="SloganStyle()" :src="slogan"/>
-      </v-row>
-      <v-row>
-        <v-hover v-slot="{ isHovering, props }">
-          <v-card v-bind="props" :style="MainHomeCards(isHovering, 'right')" @click="gotocity()" :ripple="false">
-            <v-img :style="MainHomeLeftCardImage()" :src="citybus"/>
-          </v-card>
-        </v-hover>
-        <v-hover v-slot="{ isHovering, props }">
-          <v-card v-bind="props" :style="MainHomeCards(isHovering, 'left')" @click="gotoshuttle()" :ripple="false">
-            <v-img :style="MainHomeRightCardImage()" :src="shuttlebus"/>
-          </v-card>
-        </v-hover>
-      </v-row>
-    </text>
+    <v-row>
+      <v-img :style="SloganStyle()" :src="slogan"/>
+    </v-row>
+    <v-row style="margin: 0">
+      <v-hover v-slot="{ isHovering, props }">
+        <v-card v-bind="props" :style="MainHomeCards(isHovering)" @click="gotocity()" :ripple="false">
+          <v-icon icon="mdi-bus-stop" :style="MainHomeCardsIcon(isHovering)"/>
+          <text :style="MainHomeCardsText(isHovering)">시내통학버스</text>
+        </v-card>
+      </v-hover>
+      <v-hover v-slot="{ isHovering, props }">
+        <v-card v-bind="props" :style="MainHomeCards(isHovering)" @click="gotocity()" :ripple="false">
+          <v-icon icon="mdi-bus-marker" :style="MainHomeCardsIcon(isHovering)"/>
+          <text :style="MainHomeCardsText(isHovering)">셔틀버스</text>
+        </v-card>
+      </v-hover>
+    </v-row>
   </v-app>
 </template>
 
@@ -41,35 +41,43 @@ export default {
     },
     SloganStyle() {
       return {
-        width: '300px',
-        marginTop: '120px'
+        marginTop: 'clamp(50px, 10vh, 200px)'
       };
     },
-    MainHomeCards(isHovering, position) {
+    MainHomeCards(isHovering) {
       return {
+        transition: isHovering ? 'all .1s linear 0s' : 'all 0s ease-in-out',
         backgroundColor: isHovering ? '#00FF7C' : '#FFFFFF',
-        border: '4px solid',
+        border: 'solid calc(clamp(2.5px, 0.5vw, 4px))',
         borderColor: '#006933',
-        borderRadius: '60px',
+        borderRadius: 'clamp(24px, 7.2vw, 60px)',
         boxShadow: isHovering ? '0px 0px 30px #000000' : '0px 0px 30px #00000050',
-        height: '250px',
-        width: '250px',
-        [position]: '15px',
-        marginTop: '120px'
+        height: 'clamp(180px, 30vw, 270px)',
+        width: 'clamp(180px, 30vw, 270px)',
+        margin: 'clamp(15px, 10vw, 20px)',
+        marginTop: 'clamp(50px, 10vh, 200px)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
       };
     },
-    MainHomeLeftCardImage() {
+    MainHomeCardsIcon(isHovering) {
       return {
-        top: '50px',
-        width: '150px',
-        margin: 'auto'
+        transition: isHovering ? 'all .1s linear 0s' : 'all 0s ease-in-out',
+        position: 'absolute',
+        fontSize: 'clamp(96px, 16vw, 144px)',
+        filter: isHovering ? 'blur(7px)' : 'none',
+        color: isHovering ? '#FFFFFF' : '#006933'
       };
     },
-    MainHomeRightCardImage() {
+    MainHomeCardsText(isHovering) {
       return {
-        top: '60px',
-        width: '170px',
-        margin: 'auto'
+        transition: isHovering ? 'all .1s linear 0s' : 'all 0s ease-in-out',
+        position: 'absolute',
+        fontFamily: 'Inter-Bold, Helvetica',
+        fontWeight: 700,
+        fontSize: 'clamp(26.7px, 4.4vw, 40px)',
+        color: isHovering ? '#006933' : '#FFFFFF00'
       };
     }
   },

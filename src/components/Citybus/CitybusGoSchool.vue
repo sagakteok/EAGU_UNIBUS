@@ -1,24 +1,28 @@
 <template>
   <v-main>
     <Appbar/>
-    <v-img :style="CitybusGoSchoolBannerStyle()" :src="CitybusGoSchoolBanner" cover>
-      <text :style="CitybusGoSchoolTitle()">시내통학 버스로 등교하기</text>
-    </v-img>
-    <v-toolbar :style="CitybusGoSchoolToolbar()" elevation="3">
-      <v-menu :location="'bottom'" transition="slide-y-transition">
-        <template v-slot:activator="{props: activatorProps}">
-          <v-hover v-slot:default="{isHovering, props: hoverProps}">
-            <v-icon icon="mdi-dots-vertical" :style="CitybusGoSchoolToolbar3dots(isHovering)" v-bind="mergeProps(activatorProps, hoverProps)"/>
-          </v-hover>
-        </template>
-        <v-list :style="MenuListStyle()">
-          <v-hover v-slot="{ isHovering, props }" v-for="course in courses" :key="course">
-            <v-list-item-title v-bind="props" :style="ListTexts(isHovering)" @click="selectCourse(course)">{{ course }}</v-list-item-title>
-          </v-hover>
-        </v-list>
-      </v-menu>
-      <text :style="CitybusGoSchoolToolbarText()">{{ selectedCourse || '코스를 선택하세요.' }}</text>
-    </v-toolbar>
+    <v-row>
+      <v-img :style="CitybusGoSchoolBannerStyle()" :src="CitybusGoSchoolBanner" cover>
+        <text :style="CitybusGoSchoolTitle()">시내통학 버스로 등교하기</text>
+      </v-img>
+    </v-row>
+    <v-row>
+      <v-toolbar :style="CitybusGoSchoolToolbar()" elevation="3">
+        <v-menu :location="'bottom'" transition="slide-y-transition">
+          <template v-slot:activator="{props: activatorProps}">
+            <v-hover v-slot:default="{isHovering, props: hoverProps}">
+              <v-icon icon="mdi-dots-vertical" :style="CitybusGoSchoolToolbar3dots(isHovering)" v-bind="mergeProps(activatorProps, hoverProps)"/>
+            </v-hover>
+          </template>
+          <v-list :style="MenuListStyle()">
+            <v-hover v-slot="{ isHovering, props }" v-for="course in courses" :key="course">
+              <v-list-item-title v-bind="props" :style="ListTexts(isHovering)" @click="selectCourse(course)">{{ course }}</v-list-item-title>
+            </v-hover>
+          </v-list>
+        </v-menu>
+        <text :style="CitybusGoSchoolToolbarText()">{{ selectedCourse || '코스를 선택하세요.' }}</text>
+      </v-toolbar>
+    </v-row>
   </v-main>
 </template>
 
@@ -58,7 +62,7 @@ export default {
       return{
         transition: 'all 0s ease-in-out',
         width: '100vw',
-        height: 'clamp(150px, 15vw, 270px)',
+        height: 'clamp(160px, 16vw, 20vh)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -72,15 +76,15 @@ export default {
         transition: 'all 0s ease-in-out',
         fontFamily: 'Inter-Bold, Helvetica',
         fontWeight: '700',
-        fontSize: 'clamp(40px, 4vw, 60px)',
+        fontSize: 'clamp(40px, 4vw, 5vh)',
         color: '#FFFFFF'
       };
     },
     CitybusGoSchoolToolbar(){
       return {
         transition: 'all 0s ease-in-out',
-        width: 'clamp(500px, 60vw, 1280px)',
-        height: 'clamp(32px, 3.2vw, 48px)',
+        width: '100vw',
+        height: 'clamp(32px, 3.2vw, 4vh)',
         margin: 'auto',
         display: 'flex',
         alignItems: 'center',
@@ -94,7 +98,7 @@ export default {
         margin: 'auto',
         color: '#FFFFFF',
         fontFamily: 'Inter-Bold, Helvetica',
-        fontSize: 'clamp(16px, 1.6vw, 24px)',
+        fontSize: 'clamp(16px, 1.6vw, 2vh)',
         fontWeight: '700',
         cursor: 'default'
       }
@@ -105,7 +109,7 @@ export default {
         transition: isHovering ? 'all .1s linear 0s' : 'all 0s ease-in-out',
         color: isHovering ? '#00FF7C' : '#FFFFFF',
         fontSize: 'clamp(13px, 2vw, 20px)',
-        marginLeft: 'clamp(8.3px, 1vw, 21px)',
+        marginLeft: 'clamp(12px, 1.5vw, 15px)',
         outline: 'none',
       }
     },
