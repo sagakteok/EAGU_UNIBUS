@@ -1,7 +1,7 @@
 <template>
   <v-app style="background-color: transparent">
     <v-row>
-      <v-img :style="SloganStyle()" :src="slogan"/>
+      <v-img transition="scroll-y-transition" :style="SloganStyle()" :src="slogan"/>
     </v-row>
     <v-row style="margin: 0">
       <v-hover v-slot="{ isHovering, props }">
