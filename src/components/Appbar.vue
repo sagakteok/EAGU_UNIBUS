@@ -1,7 +1,7 @@
 <template>
   <v-app-bar :style="AppbarStyle()">
     <text @click="gotomain()">
-      <v-img :style="ClickUNIBUS()" :src="UNIBUS"/>
+      <v-img transition="scroll-y-reverse-transition" :style="ClickUNIBUS()" :src="UNIBUS"/>
     </text>
     <v-hover v-slot="{ isHovering, props }">
       <text v-bind="props" @click="gotocity()" :style="HoverTexts(isHovering)">시내통학버스</text>

@@ -5,16 +5,20 @@
     </v-row>
     <v-row style="margin: 0">
       <v-hover v-slot="{ isHovering, props }">
-        <v-card v-bind="props" :style="MainHomeCards(isHovering)" @click="gotocity()" :ripple="false">
-          <v-icon icon="mdi-bus-stop" :style="MainHomeCardsIcon(isHovering)"/>
-          <text :style="MainHomeCardsText(isHovering)">시내통학버스</text>
-        </v-card>
+        <v-scroll-y-reverse-transition>
+          <v-card v-show="scrollY1" v-bind="props" :style="MainHomeCards(isHovering)" @click="gotocity()" :ripple="false">
+            <v-icon icon="mdi-bus-stop" :style="MainHomeCardsIcon(isHovering)"/>
+            <text :style="MainHomeCardsText(isHovering)">시내통학버스</text>
+          </v-card>
+        </v-scroll-y-reverse-transition>
       </v-hover>
       <v-hover v-slot="{ isHovering, props }">
-        <v-card v-bind="props" :style="MainHomeCards(isHovering)" @click="gotocity()" :ripple="false">
-          <v-icon icon="mdi-bus-marker" :style="MainHomeCardsIcon(isHovering)"/>
-          <text :style="MainHomeCardsText(isHovering)">셔틀버스</text>
-        </v-card>
+        <v-scroll-y-reverse-transition>
+          <v-card v-show="scrollY2" v-bind="props" :style="MainHomeCards(isHovering)" @click="gotocity()" :ripple="false">
+            <v-icon icon="mdi-bus-marker" :style="MainHomeCardsIcon(isHovering)"/>
+            <text :style="MainHomeCardsText(isHovering)">셔틀버스</text>
+          </v-card>
+        </v-scroll-y-reverse-transition>
       </v-hover>
     </v-row>
   </v-app>
@@ -26,6 +30,8 @@ import router from "../router.js";
 export default {
   data() {
     return {
+      scrollY1: false,
+      scrollY2: false,
       slogan: new URL('/src/assets/slogan.png', import.meta.url).href,
       shuttlebus: new URL('/src/assets/shuttlebus.png', import.meta.url).href,
       citybus: new URL('/src/assets/Citybus.png', import.meta.url).href,
@@ -94,6 +100,10 @@ export default {
           easing: 'ease-in-out',
         }
     );
+    setTimeout(() => {
+      this.scrollY1 = true;
+      this.scrollY2 = true;
+    }, 100)
   }
 };
 </script>

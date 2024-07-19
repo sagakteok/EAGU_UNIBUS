@@ -3,27 +3,32 @@
     <Appbar/>
     <v-row>
       <v-img transition="scroll-y-reverse-transition" :style="CitybusGoSchoolBannerStyle()" :src="CitybusGoSchoolBanner" cover>
-        <text :style="CitybusGoSchoolTitle()">시내통학 버스로 등교하기</text>
+        <v-scroll-y-reverse-transition>
+          <text v-show="scrollY1" :style="CitybusGoSchoolTitle()">시내통학 버스로 등교하기</text>
+        </v-scroll-y-reverse-transition>
       </v-img>
     </v-row>
     <v-row>
-      <v-toolbar :style="CitybusGoSchoolToolbar()" elevation="3">
-        <v-menu :location="'bottom'" transition="slide-y-transition">
-          <template v-slot:activator="{props: activatorProps}">
-            <v-hover v-slot:default="{isHovering, props: hoverProps}">
-              <v-icon icon="mdi-dots-vertical" :style="CitybusGoSchoolToolbar3dots(isHovering)" v-bind="mergeProps(activatorProps, hoverProps)"/>
-            </v-hover>
-          </template>
-          <v-list :style="MenuListStyle()">
-            <v-hover v-slot="{ isHovering, props }" v-for="course in courses" :key="course">
-              <v-list-item-title v-bind="props" :style="ListTexts(isHovering)" @click="selectCourse(course)">{{ course }}</v-list-item-title>
-            </v-hover>
-          </v-list>
-        </v-menu>
-        <text :style="CitybusGoSchoolToolbarText()">{{ selectedCourse || '코스를 선택하세요.' }}</text>
-      </v-toolbar>
+      <v-scroll-y-transition>
+        <v-toolbar :style="CitybusGoSchoolToolbar()" elevation="3">
+          <v-menu :location="'bottom'" transition="slide-y-transition">
+            <template v-slot:activator="{props: activatorProps}">
+              <v-hover v-slot:default="{isHovering, props: hoverProps}">
+                <v-icon icon="mdi-dots-vertical" :style="CitybusGoSchoolToolbar3dots(isHovering)" v-bind="mergeProps(activatorProps, hoverProps)"/>
+              </v-hover>
+            </template>
+            <v-list :style="MenuListStyle()">
+              <v-hover v-slot="{ isHovering, props }" v-for="course in courses" :key="course">
+                <v-list-item-title v-bind="props" :style="ListTexts(isHovering)" @click="selectCourse(course)">{{ course }}</v-list-item-title>
+              </v-hover>
+            </v-list>
+          </v-menu>
+          <text :style="CitybusGoSchoolToolbarText()">{{ selectedCourse || '코스를 선택하세요.' }}</text>
+        </v-toolbar>
+      </v-scroll-y-transition>
     </v-row>
   </v-main>
+  <kakao-map/>
 </template>
 
 <script>
@@ -35,6 +40,8 @@ export default {
   components: { Appbar, KakaoMap },
   data() {
     return {
+      scrollY1: false,
+      scrollY2: false,
       CitybusGoSchoolBanner: new URL('/src/assets/CitybusGoSchoolBanner.png', import.meta.url).href,
       drawer: false,
       selectedCourse: null,
@@ -154,6 +161,10 @@ export default {
           easing: 'ease-in-out',
         }
     );
+    setTimeout(() => {
+      this.scrollY1 = true;
+      this.scrollY2 = true;
+    }, 100)
   },
 };
 </script>
