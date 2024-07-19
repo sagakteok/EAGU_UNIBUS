@@ -1,7 +1,7 @@
 <template>
   <v-app style="background-color: transparent">
     <v-row>
-      <v-img transition="scroll-y-transition" :style="SloganStyle()" :src="slogan"/>
+      <v-img transition="scroll-y-reverse-transition" :style="SloganStyle()" :src="slogan"/>
     </v-row>
     <v-row style="margin: 0">
       <v-hover v-slot="{ isHovering, props }">
@@ -77,13 +77,23 @@ export default {
         fontFamily: 'Inter-Bold, Helvetica',
         fontWeight: 700,
         fontSize: 'clamp(26.7px, 4.4vw, 40px)',
-        color: isHovering ? '#006933' : '#FFFFFF00'
+        color: isHovering ? '#006933' : '#FFFFFF00',
       };
     }
   },
   mounted() {
     document.body.style.backgroundImage = `url(${this.mainhome})`;
     document.body.style.backgroundSize = 'cover';
+    document.body.animate(
+        [
+          {opacity: 0},
+          {opacity: 1},
+        ],
+        {
+          duration: 400,
+          easing: 'ease-in-out',
+        }
+    );
   }
 };
 </script>

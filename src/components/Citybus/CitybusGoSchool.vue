@@ -2,7 +2,7 @@
   <v-main>
     <Appbar/>
     <v-row>
-      <v-img :style="CitybusGoSchoolBannerStyle()" :src="CitybusGoSchoolBanner" cover>
+      <v-img transition="scroll-y-reverse-transition" :style="CitybusGoSchoolBannerStyle()" :src="CitybusGoSchoolBanner" cover>
         <text :style="CitybusGoSchoolTitle()">시내통학 버스로 등교하기</text>
       </v-img>
     </v-row>
@@ -144,6 +144,16 @@ export default {
   mounted() {
     document.body.style.background = '#FFFFFF';
     document.body.style.backgroundSize = 'cover';
+    document.body.animate(
+        [
+          {opacity: 0},
+          {opacity: 1},
+        ],
+        {
+          duration: 200,
+          easing: 'ease-in-out',
+        }
+    );
   },
 };
 </script>
