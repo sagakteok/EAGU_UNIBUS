@@ -9,26 +9,23 @@
     <v-hover v-slot="{ isHovering, props }">
       <text v-bind="props" @click="gotoshuttle()" :style="HoverTexts(isHovering)">셔틀버스</text>
     </v-hover>
-    <v-menu open-on-hover :location="'bottom center'" transition="slide-y-transition">
+    <v-menu open-on-hover v-model="menuOpen" transition="slide-y-transition">
       <template v-slot:activator="{ props: activatorProps }">
         <v-hover v-slot:default="{ isHovering, props: hoverProps }">
-          <text v-bind="mergeProps(activatorProps, hoverProps)" :style="HoverTexts(isHovering)">소식</text>
+          <text v-bind="mergeProps(activatorProps, hoverProps)" :style="HoverTexts(isHovering || menuOpen)">소식</text>
         </v-hover>
       </template>
       <v-list :style="MenuListStyle()">
         <v-hover v-slot="{ isHovering, props }">
-          <v-list-item-title v-bind="props" @click="gototransportationnews()" :style="ListTexts(isHovering)">공지사항
-          </v-list-item-title>
+          <v-list-item-title v-bind="props" @click="gototransportationnews()" :style="ListTexts(isHovering)">공지사항</v-list-item-title>
         </v-hover>
         <div class="jb-division-line" :style="MenuLineStyle()"/>
         <v-hover v-slot="{ isHovering, props }">
-          <v-list-item-title v-bind="props" @click="gotodevelopernews()" :style="ListTexts(isHovering)">개발 관련 소식
-          </v-list-item-title>
+          <v-list-item-title v-bind="props" @click="gotodevelopernews()" :style="ListTexts(isHovering)">개발 관련 소식</v-list-item-title>
         </v-hover>
         <div class="jb-division-line" :style="MenuLineStyle()"/>
         <v-hover v-slot="{ isHovering, props }">
-          <v-list-item-title v-bind="props" @click="gotoquestion()" :style="ListTexts(isHovering)">자주 묻는 질문
-          </v-list-item-title>
+          <v-list-item-title v-bind="props" @click="gotoquestion()" :style="ListTexts(isHovering)">자주 묻는 질문</v-list-item-title>
         </v-hover>
       </v-list>
     </v-menu>
@@ -40,12 +37,13 @@
 
 <script>
 import router from "../router.js";
-import {mergeProps} from "vue"
+import { mergeProps } from "vue";
 
 export default {
   data() {
     return {
-      UNIBUS: new URL(`../assets/BlackUNIBUS.png`, import.meta.url).href
+      UNIBUS: new URL(`../assets/BlackUNIBUS.png`, import.meta.url).href,
+      menuOpen: false
     };
   },
   methods: {
@@ -71,8 +69,8 @@ export default {
     gotodju() {
       window.location.href = 'https://www.dju.ac.kr/'
     },
-    AppbarStyle(){
-      return{
+    AppbarStyle() {
+      return {
         background: '#FFFFFF',
         elevation: '2'
       }
@@ -87,7 +85,7 @@ export default {
     },
     HoverTexts(isHovering) {
       return {
-        transition: isHovering ? 'all .1s linear 0s' : 'all 0s ease-in-out',
+        transition: 'all .1s linear',
         fontFamily: 'Inter-Bold, Helvetica',
         textShadow: isHovering ? '0px 0px 3px #1FD38780' : 'none',
         color: isHovering ? '#1FD387' : '#000000',

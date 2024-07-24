@@ -12,10 +12,10 @@
     <v-row>
       <v-scroll-y-transition>
         <v-toolbar :style="CitybusGoSchoolToolbar()" elevation="3">
-          <v-menu :location="'bottom'" transition="slide-y-transition">
+          <v-menu :location="'bottom'" v-model="menuOpen" transition="slide-y-transition">
             <template v-slot:activator="{props: activatorProps}">
               <v-hover v-slot:default="{isHovering, props: hoverProps}">
-                <v-icon icon="mdi-dots-vertical" :style="CitybusGoSchoolToolbar3dots(isHovering)"
+                <v-icon icon="mdi-dots-vertical" :style="CitybusGoSchoolToolbar3dots(isHovering || menuOpen)"
                         v-bind="mergeProps(activatorProps, hoverProps)"/>
               </v-hover>
             </template>
@@ -52,9 +52,8 @@ export default {
       scrollY1: false,
       scrollY2: false,
       CitybusGoSchoolBanner: new URL('/src/assets/CitybusGoSchoolBanner.png', import.meta.url).href,
-      drawer: false,
+      menuOpen: false,
       selectedCourse: null,
-
       courses: [
         'course1',
         'course2',
