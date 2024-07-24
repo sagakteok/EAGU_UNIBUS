@@ -3,6 +3,9 @@
     <div id="map"></div>
     <button @click="moveTOLocation"></button>
   </div>
+  <div>
+    <button @click="sendMarkerId">Load Marker</button>
+  </div>
 </template>
 
 <style>
@@ -55,6 +58,7 @@ export default {
 
       this.map = new window.kakao.maps.Map(container, options);
       this.loadMaker();
+
     },
     // 지정한 위치에 마커 불러오기
     loadMaker() {
@@ -68,6 +72,10 @@ export default {
       });
 
       marker.setMap(this.map);
+    },
+    sendMarkerId() {
+      const markerId = 'markerIdBasedOnSelectedCourse'; // 로직에 따라 마커 ID 결정
+      this.$emit('loadMarker', markerId);
     },
   },
 };
