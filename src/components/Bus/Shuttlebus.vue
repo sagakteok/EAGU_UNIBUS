@@ -1,6 +1,6 @@
 <template>
+  <Appbar/>
   <v-main>
-    <Appbar/>
     <v-row>
       <v-img transition="scroll-y-reverse-transition" :style="ShuttlebusGoSchoolBannerStyle()" :src="ShuttlebusGoSchoolBanner" cover>
         <text :style="ShuttlebusGoSchoolTitle()">셔틀 버스로 등교하기</text>
@@ -8,10 +8,10 @@
     </v-row>
     <v-row>
       <v-toolbar :style="ShuttlebusGoSchoolToolbar()" elevation="3">
-        <v-menu :location="'bottom'" transition="slide-y-transition">
+        <v-menu :location="'bottom'" v-model="menuOpen" transition="slide-y-transition">
           <template v-slot:activator="{props: activatorProps}">
             <v-hover v-slot:default="{isHovering, props: hoverProps}">
-              <v-icon icon="mdi-dots-vertical" :style="ShuttlebusGoSchoolToolbar3dots(isHovering)" v-bind="mergeProps(activatorProps, hoverProps)"/>
+              <v-icon icon="mdi-dots-vertical" :style="ShuttlebusGoSchoolToolbar3dots(isHovering || menuOpen)" v-bind="mergeProps(activatorProps, hoverProps)"/>
             </v-hover>
           </template>
           <v-list :style="MenuListStyle()">
@@ -38,7 +38,7 @@ export default {
   data() {
     return {
       ShuttlebusGoSchoolBanner: new URL('/src/assets/ShuttlebusGoSchoolBanner.png', import.meta.url).href,
-      drawer: false,
+      menuOpen: false,
       selectedCourse: null,
       courses: [
         'course1',
