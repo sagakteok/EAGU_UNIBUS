@@ -24,6 +24,7 @@
       </v-toolbar>
     </v-row>
   </v-main>
+  <kakao-map/>
 </template>
 
 <script>
@@ -42,7 +43,7 @@ export default {
       courses: [
         'course1',
         'course2',
-        'course3',
+        'cours1e3',
         'course4',
         'course5',
         'course6',

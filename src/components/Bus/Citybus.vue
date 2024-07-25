@@ -29,10 +29,6 @@
             </v-list>
           </v-menu>
           <text :style="CitybusGoSchoolToolbarText()">{{ selectedCourse || '코스를 선택하세요.' }}</text>
-          <div>
-            <button @click="selectCourse('course1')">Select Course 1</button>
-            <kakaomap :selectedCourse="selectedCourse" @loadMarker="loadMarkerHandler"></kakaomap>
-          </div>
         </v-toolbar>
       </v-scroll-y-transition>
     </v-row>
