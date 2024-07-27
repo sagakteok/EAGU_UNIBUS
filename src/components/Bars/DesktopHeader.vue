@@ -1,7 +1,7 @@
 <template>
   <v-app-bar :style="AppbarStyle()">
-    <text @click="gotomain()">
-      <v-img transition="scroll-y-reverse-transition" :style="ClickUNIBUS()" :src="UNIBUS"/>
+    <text>
+      <v-img :style="DesktopClickUNIBUS()" @click="gotomain()" :src="UNIBUS"/>
     </text>
     <v-hover v-slot="{ isHovering, props }">
       <text v-bind="props" @click="gotocity()" :style="HoverTexts(isHovering)">시내통학버스</text>
@@ -36,14 +36,16 @@
 </template>
 
 <script>
-import router from "../router.js";
+import router from "../../router.js";
 import { mergeProps } from "vue";
 
 export default {
   data() {
     return {
-      UNIBUS: new URL(`../assets/BlackUNIBUS.png`, import.meta.url).href,
-      menuOpen: false
+      UNIBUS: new URL(`../../assets/BlackUNIBUS.png`, import.meta.url).href,
+      group: null,
+      menuOpen: false,
+      windowWidth: window.innerWidth,
     };
   },
   methods: {
@@ -75,31 +77,31 @@ export default {
         elevation: '2'
       }
     },
-    ClickUNIBUS() {
+    DesktopClickUNIBUS() {
       return {
         transition: 'all 0s ease-in-out',
-        width: 'clamp(100px, 15vw, 120px)',
-        marginLeft: 'clamp(15px, 5vw, 20px)',
+        width: '120px',
+        marginLeft: '20px',
         cursor: 'pointer'
       };
     },
     HoverTexts(isHovering) {
       return {
-        transition: 'all .1s linear',
+        transition: isHovering ? 'all .1s linear 0s' : 'all 0s ease-in-out',
         fontFamily: 'Inter-Bold, Helvetica',
         textShadow: isHovering ? '0px 0px 3px #1FD38780' : 'none',
         color: isHovering ? '#1FD387' : '#000000',
-        fontSize: isHovering ? 'clamp(12px, 3.4vw, 22px)' : 'clamp(10px, 3vw, 20px)',
+        fontSize: isHovering ? '22px' : '20px',
         fontWeight: 700,
         outline: 'none',
-        marginLeft: 'clamp(20px, 5vw, 30px)',
+        marginLeft: '30px',
         cursor: 'pointer'
       };
     },
     MenuListStyle() {
       return {
         transition: 'all 0s ease-in-out',
-        width: 'clamp(100px,20vw,160px)',
+        width: '160px',
         height: '170px',
         backgroundColor: '#386156',
         color: '#FFFFFF',
@@ -114,7 +116,7 @@ export default {
         color: isHovering ? '#00FF7C' : '#FFFFFF',
         fontFamily: 'Inter-Bold, Helvetica',
         marginTop: '10px',
-        fontSize: 'clamp(5px, 2.5vw, 20px)',
+        fontSize: '20px',
         fontWeight: '700',
         textAlign: 'center',
         cursor: 'pointer'
@@ -124,11 +126,11 @@ export default {
       return {
         transition: 'all 0s ease-in-out',
         borderTop: '1px solid #444444',
-        width: 'clamp(80px, 15vw, 125px)',
+        width: '125px',
         margin: '10px auto',
         borderColor: '#FFFFFF90'
       };
-    }
+    },
   }
 };
 </script>

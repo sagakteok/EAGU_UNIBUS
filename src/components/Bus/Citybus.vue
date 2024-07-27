@@ -1,6 +1,12 @@
 <template>
+  <div v-if="!isMobile">
+    <DesktopHeader/>
+  </div>
+  <div v-else>
+    <MobileHeader/>
+    <Footer/>
+  </div>
   <v-main>
-    <Appbar/>
     <v-row>
       <v-img transition="scroll-y-reverse-transition" :style="CitybusGoSchoolBannerStyle()" :src="CitybusGoSchoolBanner"
              cover>
@@ -21,10 +27,7 @@
             </template>
             <v-list :style="MenuListStyle()">
               <v-hover v-slot="{ isHovering, props }" v-for="course in courses" :key="course">
-                <v-list-item-title v-bind="props" :style="ListTexts(isHovering)" @click="selectCourse(course)">{{
-                    course
-                  }}
-                </v-list-item-title>
+                <v-list-item-title v-bind="props" :style="ListTexts(isHovering)" @click="selectCourse(course)">{{course}}</v-list-item-title>
               </v-hover>
             </v-list>
           </v-menu>
@@ -37,19 +40,23 @@
 </template>
 
 <script>
-import Appbar from "../Appbar.vue";
+import DesktopHeader from "../Bars/DesktopHeader.vue";
+import MobileHeader from "../Bars/MobileHeader.vue";
+import Footer from "../Bars/Footer.vue";
 import KakaoMap from "../../KaKaoMap.vue";
 import {mergeProps} from "vue";
 
 export default {
-  components: {Appbar, KakaoMap},
+  components: {DesktopHeader, MobileHeader, Footer, KakaoMap},
   data() {
     return {
       scrollY1: false,
       scrollY2: false,
       CitybusGoSchoolBanner: new URL('/src/assets/CitybusGoSchoolBanner.png', import.meta.url).href,
+      isMobile: false,
       menuOpen: false,
       selectedCourse: null,
+      windowWidth: window.innerWidth,
       courses: [
         'course1',
         'course2',
@@ -168,16 +175,7 @@ export default {
       }
     };
   },
-  watch: {
-    group() {
-      this.drawer = false;
-    },
-  },
   methods: {
-
-    selectedCourse(course) {
-      this.selectedCourse = course;
-    },
     loadMarkerHandler(markerId) {
       // Handle marker ID from child component
       console.log('Marker ID:', markerId);
@@ -231,7 +229,7 @@ export default {
     },
     CitybusGoSchoolToolbar3dots(isHovering) {
       return {
-        background: 'transparent !important',
+        background: 'transparent',
         transition: isHovering ? 'all .1s linear 0s' : 'all 0s ease-in-out',
         color: isHovering ? '#00FF7C' : '#FFFFFF',
         fontSize: 'clamp(13px, 2vw, 20px)',
@@ -265,7 +263,15 @@ export default {
     },
     selectCourse(course) {
       this.selectedCourse = course;
+    },
+    handleResize() {
+      this.windowWidth = window.innerWidth;
     }
+  },
+  computed: {
+    isMobile() {
+      return this.windowWidth < 800;
+    },
   },
   mounted() {
     document.body.style.background = '#FFFFFF';
@@ -284,6 +290,10 @@ export default {
       this.scrollY1 = true;
       this.scrollY2 = true;
     }, 100)
+    window.addEventListener('resize', this.handleResize);
   },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.handleResize);
+  }
 };
 </script>

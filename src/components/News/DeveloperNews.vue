@@ -1,5 +1,11 @@
 <template>
-  <Appbar/>
+  <div v-if="!isMobile">
+    <DesktopHeader/>
+  </div>
+  <div v-else>
+    <MobileHeader/>
+    <Footer/>
+  </div>
   <v-card :style="DeveloperNewsCard">
     <v-img :style="DeveloperNewsTitle" :src="DeveloperNews"/>
     <v-card-text>
@@ -11,17 +17,23 @@
 </template>
 
 <script>
-import Appbar from "../Appbar.vue";
+import DesktopHeader from "../Bars/DesktopHeader.vue";
+import MobileHeader from "../Bars/MobileHeader.vue";
+import Footer from "../Bars/Footer.vue";
 export default {
-  components: {Appbar},
+  components: {DesktopHeader, MobileHeader, Footer},
   data() {
     return {
-      DeveloperNews: new URL(`/src/assets/DeveloperNews.png`, import.meta.url).href
+      DeveloperNews: new URL(`/src/assets/DeveloperNews.png`, import.meta.url).href,
+      isMobile: false,
+      windowWidth: window.innerWidth
     };
   },
   methods: {
-    onClick() {
-    },
+    onClick() {},
+    handleResize() {
+      this.windowWidth = window.innerWidth;
+    }
   },
   computed: {
     DeveloperNewsCard() {
@@ -36,7 +48,7 @@ export default {
     },
     DeveloperNewsTitle() {
       return {
-        width: '250px',
+        width: '200px',
         top: '50px',
         margin: 'auto'
       };
@@ -54,11 +66,18 @@ export default {
         hideDetails: true,
         singleLine: true
       };
-    }
+    },
+    isMobile() {
+      return this.windowWidth < 800;
+    },
   },
   mounted(){
     document.body.style.background = '#FFFFFF'
     document.body.style.backgroundSize = 'cover'
+    window.addEventListener('resize', this.handleResize);
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.handleResize);
   }
 }
 </script>
