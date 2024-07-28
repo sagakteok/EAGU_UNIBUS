@@ -1,10 +1,14 @@
 <template>
-  <div v-if="!isMobile">
-    <DesktopHeader/>
+  <div v-if="isMobile500">
+    <MobileHeader500/>
+    <Footer500/>
+  </div>
+  <div v-else-if="isMobile800">
+    <MobileHeader800/>
+    <Footer800/>
   </div>
   <div v-else>
-    <MobileHeader/>
-    <Footer/>
+    <DesktopHeader/>
   </div>
   <v-card :style="QuestionCard">
     <v-img :style="QuestionTitle" :src="Question"/>
@@ -14,14 +18,19 @@
       </v-col>
     </v-card-text>
   </v-card>
+  <GoTopButton/>
 </template>
 
 <script>
 import DesktopHeader from "../Bars/DesktopHeader.vue";
-import MobileHeader from "../Bars/MobileHeader.vue";
-import Footer from "../Bars/Footer.vue";
+import MobileHeader500 from "../Bars/MobileHeader500.vue";
+import MobileHeader800 from "../Bars/MobileHeader800.vue";
+import Footer500 from "../Bars/Footer500.vue";
+import Footer800 from "../Bars/Footer800.vue";
+import GoTopButton from "../Bars/GoTopButton.vue";
+
 export default {
-  components: {DesktopHeader, MobileHeader, Footer},
+  components: {DesktopHeader, MobileHeader500, MobileHeader800, Footer500, Footer800, GoTopButton},
   data() {
     return {
       Question: new URL(`/src/assets/Question.png`, import.meta.url).href,
@@ -67,9 +76,12 @@ export default {
         singleLine: true
       };
     },
-    isMobile() {
+    isMobile800() {
       return this.windowWidth < 800;
     },
+    isMobile500(){
+      return this.windowWidth < 500;
+    }
   },
   mounted(){
     document.body.style.background = '#FFFFFF'
@@ -80,4 +92,6 @@ export default {
     window.removeEventListener('resize', this.handleResize);
   }
 }
+</script>
+<script setup>
 </script>
