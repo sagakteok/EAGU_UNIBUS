@@ -41,10 +41,21 @@
     </v-row>
   </v-main>
   <GoTopButton/>
-  <kakao-map/>
+  <course7 class="mt-10"/>
 </template>
 
 <script>
+import router from "../../router.js";
+import course1 from "../Course/course1.vue";
+import course2 from "../Course/course2.vue";
+import course3 from "../Course/course3.vue";
+import course4 from "../Course/course4.vue";
+import course5 from "../Course/course5.vue";
+import course6 from "../Course/course6.vue";
+import course7 from "../Course/course7.vue";
+import course8 from "../Course/course8.vue";
+import course9 from "../Course/course9.vue";
+
 import DesktopHeader from "../Bars/DesktopHeader.vue";
 import MobileHeader500 from "../Bars/MobileHeader500.vue";
 import MobileHeader800 from "../Bars/MobileHeader800.vue";
@@ -55,7 +66,8 @@ import KakaoMap from "../../KaKaoMap.vue";
 import {mergeProps} from "vue";
 
 export default {
-  components: {DesktopHeader, MobileHeader500, MobileHeader800, Footer500, Footer800, GoTopButton, KakaoMap},
+  components: {DesktopHeader, MobileHeader500, MobileHeader800, Footer500, Footer800, GoTopButton, KakaoMap, course1, course2, course3, course4,
+    course5,course6, course7, course8, course9},
   data() {
     return {
       scrollY1: false,
