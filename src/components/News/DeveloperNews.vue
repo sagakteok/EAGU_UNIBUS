@@ -25,12 +25,10 @@
 import DesktopHeader from "../Bars/DesktopHeader.vue";
 import MobileHeader500 from "../Bars/MobileHeader500.vue";
 import MobileHeader800 from "../Bars/MobileHeader800.vue";
-import Footer500 from "../Bars/Footer500.vue";
-import Footer800 from "../Bars/Footer800.vue";
 import GoTopButton from "../Bars/GoTopButton.vue";
 
 export default {
-  components: {DesktopHeader, MobileHeader500, MobileHeader800, Footer500, Footer800 ,GoTopButton},
+  components: {DesktopHeader, MobileHeader500, MobileHeader800, GoTopButton},
   data() {
     return {
       DeveloperNews: new URL(`/src/assets/DeveloperNews.png`, import.meta.url).href,

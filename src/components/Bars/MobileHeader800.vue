@@ -1,7 +1,7 @@
 <template>
-  <v-app-bar :style="AppbarStyle()" elevation="0">
+  <v-app-bar :style="AppbarStyle()" scroll-behavior="elevate" scroll-threshold="0">
     <v-app-bar-title>
-      <v-img :style="MobileUNIBUS()" :src="UNIBUS"/>
+      <v-img :style="MobileUNIBUS()" @click="gotomain()" :src="UNIBUS"/>
     </v-app-bar-title>
     <v-hover v-slot="{ isHovering, props }">
       <v-app-bar-nav-icon v-model="drawer" size="40" :style="AppbarNavIconStyle(isHovering || drawer)" variant="text" v-bind="props" @click.stop="drawer = !drawer"/>
@@ -59,6 +59,9 @@ export default {
   },
   methods: {
     mergeProps,
+    gotomain() {
+      router.push('/')
+    },
     gotoshuttle() {
       router.push('/shuttle')
     },
@@ -80,7 +83,6 @@ export default {
     AppbarStyle() {
       return {
         background: '#FFFFFF',
-        borderBottom: '1px solid #00000030',
       }
     },
     AppbarNavIconStyle(isHovering) {
@@ -97,11 +99,12 @@ export default {
       return {
         transition: 'all 0s ease-in-out',
         width: '100px',
+        cursor: 'pointer'
       };
     },
     DrawerStyle(){
       return{
-        background: '#7FB99A',
+        background: '#39B997',
       }
     },
     DrawerBottomMargin(){
@@ -117,7 +120,7 @@ export default {
         marginTop: '10px',
         marginLeft: '20px',
         fontSize: '20px',
-        fontWeight: '700',
+        fontWeight: '500',
         textAlign: 'left',
         cursor: 'pointer'
       };
@@ -132,12 +135,11 @@ export default {
       return {
         transition: isHovering ? 'all .1s linear 0s' : 'all 0s ease-in-out',
         fontFamily: 'Inter-Bold, Helvetica',
-        textShadow: isHovering ? '0px 0px 3px #1FD38780' : 'none',
         color: isHovering ? '#0CA054' : '#003319',
         marginTop: '20px',
         marginLeft: '10px',
         fontSize: '20px',
-        fontWeight: '700',
+        fontWeight: '500',
         textAlign: 'left',
         cursor: 'pointer',
       };

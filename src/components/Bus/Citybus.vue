@@ -1,19 +1,61 @@
 <template>
   <div v-if="isMobile500">
     <MobileHeader500/>
-    <Footer500/>
   </div>
   <div v-else-if="isMobile800">
     <MobileHeader800/>
-    <Footer800/>
+    <div>
+      <v-row>
+        <v-scroll-y-reverse-transition>
+          <text v-show="scrollY1" :style="CitybusGoSchoolTitle800()">시내 통학 버스</text>
+        </v-scroll-y-reverse-transition>
+      </v-row>
+    </div>
+    <div :style="SlideGroupStyle800()">
+      <v-slide-group center-active show-arrows>
+        <v-slide-group-item v-for="course in courses" :key="course" v-slot="{ isSelected, toggle }">
+          <v-btn :style="SlideGroupButtonStyle800(isSelected)" elevation="0" class="ma-2" rounded @click="handleClick(course, toggle)">{{course}}</v-btn>
+        </v-slide-group-item>
+      </v-slide-group>
+    </div>
+    <div :style="SlideGroupCourseTextBackground800()">
+      <text :style="SlideGroupCourseText800()">{{ selectedCourse || '코스를 선택하세요.' }}</text>
+    </div>
+  </div>
+  <div v-else-if="isMobile1600">
+    <DesktopHeader/>
+    <v-row>
+      <v-img transition="scroll-y-reverse-transition" :style="CitybusGoSchoolBannerStyle1600()" :src="CitybusGoSchoolBanner" cover>
+        <v-scroll-y-reverse-transition>
+          <text v-show="scrollY1" :style="CitybusGoSchoolTitle1600()">시내통학 버스로 등교하기</text>
+        </v-scroll-y-reverse-transition>
+      </v-img>
+    </v-row>
+    <v-row>
+      <v-scroll-y-transition>
+        <v-toolbar v-show="scrollY2" :style="CitybusGoSchoolToolbar1600()" elevation="0">
+          <v-menu :location="'bottom'" v-model="menuOpen" transition="slide-y-transition">
+            <template v-slot:activator="{props: activatorProps}">
+              <v-hover v-slot:default="{isHovering, props: hoverProps}">
+                <v-icon icon="mdi-dots-vertical" :style="CitybusGoSchoolToolbar3dots1600(isHovering || menuOpen)"
+                        v-bind="mergeProps(activatorProps, hoverProps)"/>
+              </v-hover>
+            </template>
+            <v-list :style="MenuListStyle()">
+              <v-hover v-slot="{ isHovering, props }" v-for="course in courses" :key="course">
+                <v-list-item-title v-bind="props" :style="ListTexts(isHovering)" @click="selectCourse(course)">{{course}}</v-list-item-title>
+              </v-hover>
+            </v-list>
+          </v-menu>
+          <text :style="CitybusGoSchoolToolbarText1600()">{{ selectedCourse || '코스를 선택하세요.' }}</text>
+        </v-toolbar>
+      </v-scroll-y-transition>
+    </v-row>
   </div>
   <div v-else>
     <DesktopHeader/>
-  </div>
-  <v-main>
     <v-row>
-      <v-img transition="scroll-y-reverse-transition" :style="CitybusGoSchoolBannerStyle()" :src="CitybusGoSchoolBanner"
-             cover>
+      <v-img transition="scroll-y-reverse-transition" :style="CitybusGoSchoolBannerStyle()" :src="CitybusGoSchoolBanner" cover>
         <v-scroll-y-reverse-transition>
           <text v-show="scrollY1" :style="CitybusGoSchoolTitle()">시내통학 버스로 등교하기</text>
         </v-scroll-y-reverse-transition>
@@ -21,7 +63,7 @@
     </v-row>
     <v-row>
       <v-scroll-y-transition>
-        <v-toolbar :style="CitybusGoSchoolToolbar()" elevation="3">
+        <v-toolbar v-show="scrollY2" :style="CitybusGoSchoolToolbar()" elevation="0">
           <v-menu :location="'bottom'" v-model="menuOpen" transition="slide-y-transition">
             <template v-slot:activator="{props: activatorProps}">
               <v-hover v-slot:default="{isHovering, props: hoverProps}">
@@ -39,13 +81,19 @@
         </v-toolbar>
       </v-scroll-y-transition>
     </v-row>
-  </v-main>
+  </div>
   <GoTopButton/>
+  <kakao-map/>
   <course7 class="mt-10"/>
 </template>
 
 <script>
 import router from "../../router.js";
+import DesktopHeader from "../Bars/DesktopHeader.vue";
+import MobileHeader500 from "../Bars/MobileHeader500.vue";
+import MobileHeader800 from "../Bars/MobileHeader800.vue";
+import GoTopButton from "../Bars/GoTopButton.vue";
+import KakaoMap from "../../KaKaoMap.vue";
 import course1 from "../Course/course1.vue";
 import course2 from "../Course/course2.vue";
 import course3 from "../Course/course3.vue";
@@ -55,18 +103,10 @@ import course6 from "../Course/course6.vue";
 import course7 from "../Course/course7.vue";
 import course8 from "../Course/course8.vue";
 import course9 from "../Course/course9.vue";
-
-import DesktopHeader from "../Bars/DesktopHeader.vue";
-import MobileHeader500 from "../Bars/MobileHeader500.vue";
-import MobileHeader800 from "../Bars/MobileHeader800.vue";
-import Footer500 from "../Bars/Footer500.vue";
-import Footer800 from "../Bars/Footer800.vue";
-import GoTopButton from "../Bars/GoTopButton.vue";
-import KakaoMap from "../../KaKaoMap.vue";
 import {mergeProps} from "vue";
 
 export default {
-  components: {DesktopHeader, MobileHeader500, MobileHeader800, Footer500, Footer800, GoTopButton, KakaoMap, course1, course2, course3, course4,
+  components: {DesktopHeader, MobileHeader500, MobileHeader800, GoTopButton, KakaoMap, course1, course2, course3, course4,
     course5,course6, course7, course8, course9},
   data() {
     return {
@@ -205,12 +245,11 @@ export default {
       return {
         transition: 'all 0s ease-in-out',
         width: '100vw',
-        height: 'clamp(160px, 16vw, 20vh)',
+        height: '300px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         padding: '0px',
-        textShadow: '0px 0px 3px #00000090',
         cursor: 'default'
       }
     },
@@ -219,20 +258,24 @@ export default {
         transition: 'all 0s ease-in-out',
         fontFamily: 'Inter-Bold, Helvetica',
         fontWeight: '700',
-        fontSize: 'clamp(40px, 4vw, 5vh)',
-        color: '#FFFFFF'
+        fontSize: '70px',
+        color: '#FFFFFF',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
       };
     },
     CitybusGoSchoolToolbar() {
       return {
         transition: 'all 0s ease-in-out',
-        width: '100vw',
-        height: 'clamp(32px, 3.2vw, 4vh)',
+        width: 'clamp(800px, 70vw, 1600px)',
+        height: '50px',
         margin: 'auto',
+        marginTop: '-50px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        background: '#00837B',
+        background: '#00000099',
       }
     },
     CitybusGoSchoolToolbarText() {
@@ -241,18 +284,18 @@ export default {
         margin: 'auto',
         color: '#FFFFFF',
         fontFamily: 'Inter-Bold, Helvetica',
-        fontSize: 'clamp(16px, 1.6vw, 2vh)',
+        fontSize: '25px',
         fontWeight: '700',
         cursor: 'default'
       }
     },
     CitybusGoSchoolToolbar3dots(isHovering) {
       return {
-        background: 'transparent',
+        background: 'transparent !important',
         transition: isHovering ? 'all .1s linear 0s' : 'all 0s ease-in-out',
         color: isHovering ? '#00FF7C' : '#FFFFFF',
-        fontSize: 'clamp(13px, 2vw, 20px)',
-        marginLeft: 'clamp(12px, 1.5vw, 15px)',
+        fontSize: '20px',
+        marginLeft: '15px',
         outline: 'none',
       }
     },
@@ -280,14 +323,133 @@ export default {
         cursor: 'pointer'
       };
     },
+    CitybusGoSchoolBannerStyle1600() {
+      return {
+        transition: 'all 0s ease-in-out',
+        width: '100vw',
+        height: '270px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '0px',
+        cursor: 'default'
+      }
+    },
+    CitybusGoSchoolTitle1600() {
+      return {
+        transition: 'all 0s ease-in-out',
+        fontFamily: 'Inter-Bold, Helvetica',
+        fontWeight: '700',
+        fontSize: '63px',
+        color: '#FFFFFF',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      };
+    },
+    CitybusGoSchoolToolbar1600() {
+      return {
+        transition: 'all 0s ease-in-out',
+        width: 'clamp(800px, 70vw, 1600px)',
+        height: '45px',
+        margin: 'auto',
+        marginTop: '-45px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        background: '#00000099',
+      }
+    },
+    CitybusGoSchoolToolbarText1600() {
+      return {
+        transition: 'all 0s ease-in-out',
+        margin: 'auto',
+        color: '#FFFFFF',
+        fontFamily: 'Inter-Bold, Helvetica',
+        fontSize: '22.5px',
+        fontWeight: '700',
+        cursor: 'default'
+      }
+    },
+    CitybusGoSchoolToolbar3dots1600(isHovering) {
+      return {
+        background: 'transparent !important',
+        transition: isHovering ? 'all .1s linear 0s' : 'all 0s ease-in-out',
+        color: isHovering ? '#00FF7C' : '#FFFFFF',
+        fontSize: '18px',
+        marginLeft: '15px',
+        outline: 'none',
+      }
+    },
+    CitybusGoSchoolTitle800() {
+      return {
+        transition: 'all 0s ease-in-out',
+        fontFamily: 'Inter-Bold, Helvetica',
+        fontWeight: '600',
+        fontSize: '40px',
+        color: '#006933',
+        marginTop: '30px',
+        marginLeft: '30px',
+        marginBottom: '40px',
+      };
+    },
+    SlideGroupStyle800(){
+      return {
+        height: '160px',
+        background: '#39B99770',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }
+    },
+    SlideGroupButtonStyle800(isSelected){
+      return {
+        borderRadius: isSelected ? '48px' : '40px',
+        width: isSelected ? '240px': '200px',
+        height: isSelected ? '96px' : '80px',
+        backgroundColor: isSelected ? '#39B997' : '#FFFFFF',
+        color: isSelected ? '#FFFFFF' : '#39B997',
+        fontFamily: 'Inter-Bold, Helvetica',
+        fontSize: '16px',
+        fontWeight: '700',
+      }
+    },
+    SlideGroupCourseText800() {
+      return {
+        transition: this.selectedCourse ? 'all .1s linear 0s' : 'all 0s ease-in-out',
+        margin: 'auto',
+        color: this.selectedCourse ? '#003319' : '#00331950',
+        fontFamily: 'Inter-Bold, Helvetica',
+        fontSize: this.selectedCourse ? ' 42px' : '30px',
+        fontWeight: '700',
+        cursor: 'default',
+        marginBottom: '30px'
+      }
+    },
+    SlideGroupCourseTextBackground800(){
+      return {
+        height: '80px',
+        background: '#39B99770',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }
+    },
     selectCourse(course) {
       this.selectedCourse = course;
+    },
+    handleClick(course, toggle) {
+      toggle();
+      this.selectCourse(course);
     },
     handleResize() {
       this.windowWidth = window.innerWidth;
     }
   },
   computed: {
+    isMobile1600() {
+      return this.windowWidth < 1600;
+    },
     isMobile800() {
       return this.windowWidth < 800;
     },
@@ -296,8 +458,6 @@ export default {
     }
   },
   mounted() {
-    document.body.style.background = '#FFFFFF';
-    document.body.style.backgroundSize = 'cover';
     document.body.animate(
         [
           {opacity: 0},

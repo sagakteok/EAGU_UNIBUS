@@ -1,8 +1,5 @@
 <template>
-  <v-app style="background-color: transparent">
-    <v-row>
-      <v-img transition="scroll-y-reverse-transition" :style="SloganStyle()" :src="slogan"/>
-    </v-row>
+  <v-img :src="mainhome" cover width="100vw" height="100vh">
     <v-row style="margin: 0">
       <v-hover v-slot="{ isHovering, props }">
         <v-scroll-y-reverse-transition>
@@ -21,7 +18,7 @@
         </v-scroll-y-reverse-transition>
       </v-hover>
     </v-row>
-  </v-app>
+  </v-img>
 </template>
 
 <script>
@@ -47,7 +44,7 @@ export default {
     },
     SloganStyle() {
       return {
-        marginTop: 'clamp(50px, 10vh, 200px)'
+        marginTop: 'clamp(50px, 5vw, 10vh)'
       };
     },
     MainHomeCards(isHovering) {
@@ -60,7 +57,7 @@ export default {
         boxShadow: isHovering ? '0px 0px 30px #000000' : '0px 0px 30px #00000050',
         height: 'clamp(180px, 30vw, 270px)',
         width: 'clamp(180px, 30vw, 270px)',
-        margin: 'clamp(15px, 10vw, 20px)',
+        margin: 'auto',
         marginTop: 'clamp(50px, 10vh, 200px)',
         display: 'flex',
         alignItems: 'center',
@@ -88,8 +85,6 @@ export default {
     }
   },
   mounted() {
-    document.body.style.backgroundImage = `url(${this.mainhome})`;
-    document.body.style.backgroundSize = 'cover';
     document.body.animate(
         [
           {opacity: 0},

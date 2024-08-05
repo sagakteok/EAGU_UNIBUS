@@ -1,39 +1,37 @@
 <template>
   <div v-if="isMobile500">
     <MobileHeader500/>
-    <Footer500/>
   </div>
   <div v-else-if="isMobile800">
     <MobileHeader800/>
-    <Footer800/>
   </div>
   <div v-else>
     <DesktopHeader/>
   </div>
-  <v-main>
-    <v-row>
-      <v-img transition="scroll-y-reverse-transition" :style="ShuttlebusGoSchoolBannerStyle()" :src="ShuttlebusGoSchoolBanner" cover>
-        <text :style="ShuttlebusGoSchoolTitle()">셔틀 버스로 등교하기</text>
-      </v-img>
-    </v-row>
-    <v-row>
-      <v-toolbar :style="ShuttlebusGoSchoolToolbar()" elevation="3">
-        <v-menu :location="'bottom'" v-model="menuOpen" transition="slide-y-transition">
-          <template v-slot:activator="{props: activatorProps}">
-            <v-hover v-slot:default="{isHovering, props: hoverProps}">
-              <v-icon icon="mdi-dots-vertical" :style="ShuttlebusGoSchoolToolbar3dots(isHovering || menuOpen)" v-bind="mergeProps(activatorProps, hoverProps)"/>
-            </v-hover>
-          </template>
-          <v-list :style="MenuListStyle()">
-            <v-hover v-slot="{ isHovering, props }" v-for="course in courses" :key="course">
-              <v-list-item-title v-bind="props" :style="ListTexts(isHovering)" @click="selectCourse(course)">{{ course }}</v-list-item-title>
-            </v-hover>
-          </v-list>
-        </v-menu>
-        <text :style="ShuttlebusGoSchoolToolbarText()">{{ selectedCourse || '코스를 선택하세요.' }}</text>
-      </v-toolbar>
-    </v-row>
-  </v-main>
+  <v-row>
+    <v-img transition="scroll-y-reverse-transition" :style="ShuttlebusGoSchoolBannerStyle()" :src="ShuttlebusGoSchoolBanner" cover>
+      <v-scroll-y-reverse-transition>
+        <text v-show="scrollY1" :style="ShuttlebusGoSchoolTitle()">셔틀 버스로 등교하기</text>
+      </v-scroll-y-reverse-transition>
+    </v-img>
+  </v-row>
+  <v-row>
+    <v-toolbar :style="ShuttlebusGoSchoolToolbar()" elevation="0">
+      <v-menu :location="'bottom'" v-model="menuOpen" transition="slide-y-transition">
+        <template v-slot:activator="{props: activatorProps}">
+          <v-hover v-slot:default="{isHovering, props: hoverProps}">
+            <v-icon icon="mdi-dots-vertical" :style="ShuttlebusGoSchoolToolbar3dots(isHovering || menuOpen)" v-bind="mergeProps(activatorProps, hoverProps)"/>
+          </v-hover>
+        </template>
+        <v-list :style="MenuListStyle()">
+          <v-hover v-slot="{ isHovering, props }" v-for="course in courses" :key="course">
+            <v-list-item-title v-bind="props" :style="ListTexts(isHovering)" @click="selectCourse(course)">{{ course }}</v-list-item-title>
+          </v-hover>
+        </v-list>
+      </v-menu>
+      <text :style="ShuttlebusGoSchoolToolbarText()">{{ selectedCourse || '코스를 선택하세요.' }}</text>
+    </v-toolbar>
+  </v-row>
   <GoTopButton/>
   <kakao-map/>
 </template>
@@ -42,16 +40,16 @@
 import DesktopHeader from "../Bars/DesktopHeader.vue";
 import MobileHeader500 from "../Bars/MobileHeader500.vue";
 import MobileHeader800 from "../Bars/MobileHeader800.vue";
-import Footer500 from "../Bars/Footer500.vue";
-import Footer800 from "../Bars/Footer800.vue";
 import GoTopButton from "../Bars/GoTopButton.vue";
 import KakaoMap from "../../KaKaoMap.vue";
 import {mergeProps} from "vue";
 
 export default {
-  components: {DesktopHeader, MobileHeader500, MobileHeader800, Footer500, Footer800, GoTopButton, KakaoMap},
+  components: {DesktopHeader, MobileHeader500, MobileHeader800, GoTopButton, KakaoMap},
   data() {
     return {
+      scrollY1: false,
+      scrollY2: false,
       ShuttlebusGoSchoolBanner: new URL('/src/assets/ShuttlebusGoSchoolBanner.png', import.meta.url).href,
       isMobile: false,
       menuOpen: false,
@@ -181,7 +179,7 @@ export default {
       return{
         transition: 'all 0s ease-in-out',
         width: '100vw',
-        height: 'clamp(160px, 16vw, 20vh)',
+        height: '300px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -195,20 +193,24 @@ export default {
         transition: 'all 0s ease-in-out',
         fontFamily: 'Inter-Bold, Helvetica',
         fontWeight: '700',
-        fontSize: 'clamp(40px, 4vw, 5vh)',
-        color: '#FFFFFF'
+        fontSize: '70px',
+        color: '#FFFFFF',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
       };
     },
     ShuttlebusGoSchoolToolbar(){
       return {
         transition: 'all 0s ease-in-out',
-        width: '100vw',
-        height: 'clamp(32px, 3.2vw, 4vh)',
+        width: '1600px',
+        height: '50px',
         margin: 'auto',
+        marginTop: '-50px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        background: '#00837B',
+        background: '#00000090',
       }
     },
     ShuttlebusGoSchoolToolbarText(){
@@ -217,7 +219,7 @@ export default {
         margin: 'auto',
         color: '#FFFFFF',
         fontFamily: 'Inter-Bold, Helvetica',
-        fontSize: 'clamp(16px, 1.6vw, 2vh)',
+        fontSize: '25px',
         fontWeight: '700',
         cursor: 'default'
       }
@@ -228,7 +230,7 @@ export default {
         transition: isHovering ? 'all .1s linear 0s' : 'all 0s ease-in-out',
         color: isHovering ? '#00FF7C' : '#FFFFFF',
         fontSize: 'clamp(13px, 2vw, 20px)',
-        marginLeft: 'clamp(12px, 1.5vw, 15px)',
+        marginLeft: '15px',
         outline: 'none',
       }
     },
@@ -272,8 +274,6 @@ export default {
     }
   },
   mounted() {
-    document.body.style.background = '#FFFFFF';
-    document.body.style.backgroundSize = 'cover';
     document.body.animate(
         [
           {opacity: 0},
@@ -284,6 +284,10 @@ export default {
           easing: 'ease-in-out',
         }
     );
+    setTimeout(() => {
+      this.scrollY1 = true;
+      this.scrollY2 = true;
+    }, 100)
     window.addEventListener('resize', this.handleResize);
   },
   beforeDestroy() {

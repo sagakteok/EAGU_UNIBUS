@@ -1,7 +1,7 @@
 <template>
-  <v-app-bar :style="AppbarStyle()" elevation="0">
+  <v-app-bar :style="AppbarStyle()" scroll-behavior="elevate" scroll-threshold="0">
     <v-app-bar-title>
-      <v-img :style="MobileUNIBUS()" :src="UNIBUS"/>
+      <v-img :style="MobileUNIBUS()" @click="gotomain()" :src="UNIBUS"/>
     </v-app-bar-title>
     <v-hover v-slot="{ isHovering, props }">
       <v-app-bar-nav-icon v-model="drawer" size="30" :style="AppbarNavIconStyle(isHovering || drawer)" variant="text" v-bind="props" @click.stop="drawer = !drawer"/>
@@ -59,6 +59,9 @@ export default {
   },
   methods: {
     mergeProps,
+    gotomain() {
+      router.push('/')
+    },
     gotoshuttle() {
       router.push('/shuttle')
     },
@@ -80,15 +83,16 @@ export default {
     AppbarStyle() {
       return {
         background: '#FFFFFF',
-        borderBottom: '1px solid #00000030',
-        height: '50px'
+        height: '50px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
       }
     },
     AppbarNavIconStyle(isHovering) {
       return {
         transition: isHovering ? 'all .1s linear 0s' : 'all 0s ease-in-out',
         textShadow: isHovering ? '0px 0px 3px #1FD38780' : 'none',
-        marginBottom: '14px',
         fontSize: '10px',
         color: isHovering ? '#1FD387' : '#000000',
         outline: 'none',
@@ -99,12 +103,12 @@ export default {
       return {
         transition: 'all 0s ease-in-out',
         width: '80px',
-        marginBottom: '14px'
+        cursor: 'pointer'
       };
     },
     DrawerStyle(){
       return{
-        background: '#7FB99A',
+        background: '#39B997',
         marginTop: '-14px',
       }
     },
@@ -120,7 +124,7 @@ export default {
         color: isHovering ? '#00FF7C' : '#FFFFFF',
         marginLeft: '10px',
         fontSize: '15px',
-        fontWeight: '700',
+        fontWeight: '500',
         textAlign: 'left',
         cursor: 'pointer'
       };
@@ -139,7 +143,7 @@ export default {
         color: isHovering ? '#0CA054' : '#003319',
         marginTop: '15px',
         fontSize: '15px',
-        fontWeight: '700',
+        fontWeight: '500',
         textAlign: 'left',
         cursor: 'pointer',
       };

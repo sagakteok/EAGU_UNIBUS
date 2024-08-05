@@ -1,11 +1,9 @@
 <template>
   <div v-if="isMobile500">
     <MobileHeader500/>
-    <Footer500/>
   </div>
   <div v-else-if="isMobile800">
     <MobileHeader800/>
-    <Footer800/>
   </div>
   <div v-else>
     <DesktopHeader/>
@@ -25,12 +23,10 @@
 import DesktopHeader from "../Bars/DesktopHeader.vue";
 import MobileHeader500 from "../Bars/MobileHeader500.vue";
 import MobileHeader800 from "../Bars/MobileHeader800.vue";
-import Footer500 from "../Bars/Footer500.vue";
-import Footer800 from "../Bars/Footer800.vue";
 import GoTopButton from "../Bars/GoTopButton.vue";
 
 export default {
-  components: {DesktopHeader, MobileHeader500, MobileHeader800, Footer500, Footer800, GoTopButton},
+  components: {DesktopHeader, MobileHeader500, MobileHeader800, GoTopButton},
   data() {
     return {
       Question: new URL(`/src/assets/Question.png`, import.meta.url).href,
@@ -84,14 +80,10 @@ export default {
     }
   },
   mounted(){
-    document.body.style.background = '#FFFFFF'
-    document.body.style.backgroundSize = 'cover'
     window.addEventListener('resize', this.handleResize);
   },
   beforeDestroy() {
     window.removeEventListener('resize', this.handleResize);
   }
 }
-</script>
-<script setup>
 </script>

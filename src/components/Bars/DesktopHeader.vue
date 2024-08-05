@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar :style="AppbarStyle()">
+  <v-app-bar :style="AppbarStyle()" scroll-behavior="elevate" scroll-threshold="0">
     <text>
       <v-img :style="DesktopClickUNIBUS()" @click="gotomain()" :src="UNIBUS"/>
     </text>
@@ -74,7 +74,6 @@ export default {
     AppbarStyle() {
       return {
         background: '#FFFFFF',
-        elevation: '2'
       }
     },
     DesktopClickUNIBUS() {
@@ -89,12 +88,11 @@ export default {
       return {
         transition: isHovering ? 'all .1s linear 0s' : 'all 0s ease-in-out',
         fontFamily: 'Inter-Bold, Helvetica',
-        textShadow: isHovering ? '0px 0px 3px #1FD38780' : 'none',
         color: isHovering ? '#1FD387' : '#000000',
         fontSize: isHovering ? '22px' : '20px',
-        fontWeight: 700,
+        fontWeight: isHovering ? '700' : '500',
         outline: 'none',
-        marginLeft: '30px',
+        marginLeft: '20px',
         cursor: 'pointer'
       };
     },
@@ -107,7 +105,7 @@ export default {
         color: '#FFFFFF',
         borderRadius: '10px',
         marginTop: '15px',
-        boxShadow: '0px 0px 10px #00000050'
+        boxShadow: '0px 0px 10px #00000050',
       };
     },
     ListTexts(isHovering) {
@@ -117,7 +115,7 @@ export default {
         fontFamily: 'Inter-Bold, Helvetica',
         marginTop: '10px',
         fontSize: '20px',
-        fontWeight: '700',
+        fontWeight: '600',
         textAlign: 'center',
         cursor: 'pointer'
       };
