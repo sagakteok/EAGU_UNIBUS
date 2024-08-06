@@ -396,7 +396,7 @@ export default {
     SlideGroupStyle800(){
       return {
         height: '160px',
-        background: '#39B99770',
+        background: '#B0E0D1',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -429,7 +429,7 @@ export default {
     SlideGroupCourseTextBackground800(){
       return {
         height: '80px',
-        background: '#39B99770',
+        background: '#B0E0D1',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',

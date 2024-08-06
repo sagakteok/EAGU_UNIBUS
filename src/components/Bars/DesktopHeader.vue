@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar :style="AppbarStyle()" scroll-behavior="elevate" scroll-threshold="0">
+  <v-app-bar :style="AppbarStyle()" elevation="0" scroll-threshold="0">
     <text>
       <v-img :style="DesktopClickUNIBUS()" @click="gotomain()" :src="UNIBUS"/>
     </text>

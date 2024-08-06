@@ -32,21 +32,21 @@
       <div :style="SlideGroupStyle()" v-show="Transition2">
         <v-hover v-slot="{isHovering, props}">
           <v-scroll-y-reverse-transition>
-            <v-card v-show="Transition3" v-bind="props" :style="NewsCardStyle(isHovering)" :elevation="isHovering ? 5 : 2" class="ma-3" @click="" :ripple="false">
+            <v-card v-show="Transition3" v-bind="props" :style="NewsCardStyle(isHovering)" :elevation="isHovering ? 5 : 0" class="ma-3" @click="" :ripple="false">
               <v-card-text>1</v-card-text>
             </v-card>
           </v-scroll-y-reverse-transition>
         </v-hover>
         <v-hover v-slot="{isHovering, props}">
           <v-scroll-y-reverse-transition>
-            <v-card v-show="Transition4" v-bind="props" :style="NewsCardStyle(isHovering)" :elevation="isHovering ? 5 : 2" class="ma-3" @click="" :ripple="false">
+            <v-card v-show="Transition4" v-bind="props" :style="NewsCardStyle(isHovering)" :elevation="isHovering ? 5 : 0" class="ma-3" @click="" :ripple="false">
               <v-card-text>2</v-card-text>
             </v-card>
           </v-scroll-y-reverse-transition>
         </v-hover>
         <v-hover v-slot="{isHovering, props}">
           <v-scroll-y-reverse-transition>
-            <v-card v-show="Transition5" v-bind="props" :style="NewsCardStyle(isHovering)" :elevation="isHovering ? 5 : 2" class="ma-3" @click="" :ripple="false">
+            <v-card v-show="Transition5" v-bind="props" :style="NewsCardStyle(isHovering)" :elevation="isHovering ? 5 : 0" class="ma-3" @click="" :ripple="false">
               <v-card-text>3</v-card-text>
             </v-card>
           </v-scroll-y-reverse-transition>
@@ -95,7 +95,7 @@ export default {
         fontSize: '60px',
         color: '#006933',
         margin: 'auto',
-        marginTop: '30px'
+        marginTop: '60px'
       };
     },
     TransportationNewsSubTitle() {
@@ -130,7 +130,8 @@ export default {
       return {
         width: '100vw',
         maxWidth: '1600px',
-        background: '#39B99770',
+        background: '#B0E0D1',
+        borderRadius: '40px',
         marginTop: '30px',
         height: '350px',
         display: 'flex',
@@ -144,6 +145,7 @@ export default {
         width: isHovering ? '378px' : '360px',
         height: isHovering ? '315px' : '300px',
         background: '#FFFFFF',
+        border: '2px solid #39B997',
         borderRadius: '50px',
       }
     },

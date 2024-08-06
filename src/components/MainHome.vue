@@ -1,24 +1,27 @@
 <template>
-  <v-img :src="mainhome" cover width="100vw" height="100vh">
-    <v-row style="margin: 0">
-      <v-hover v-slot="{ isHovering, props }">
-        <v-scroll-y-reverse-transition>
-          <v-card v-show="scrollY1" v-bind="props" :style="MainHomeCards(isHovering)" @click="gotocity()" :ripple="false">
-            <v-icon icon="mdi-bus-stop" :style="MainHomeCardsIcon(isHovering)"/>
-            <text :style="MainHomeCardsText(isHovering)">시내통학버스</text>
-          </v-card>
-        </v-scroll-y-reverse-transition>
-      </v-hover>
-      <v-hover v-slot="{ isHovering, props }">
-        <v-scroll-y-reverse-transition>
-          <v-card v-show="scrollY2" v-bind="props" :style="MainHomeCards(isHovering)" @click="gotoshuttle()" :ripple="false">
-            <v-icon icon="mdi-bus-marker" :style="MainHomeCardsIcon(isHovering)"/>
-            <text :style="MainHomeCardsText(isHovering)">셔틀버스</text>
-          </v-card>
-        </v-scroll-y-reverse-transition>
-      </v-hover>
-    </v-row>
-  </v-img>
+  <div>
+    <v-img :src="mainhome" cover width="100vw" height="100vh">
+      <v-row style="margin: 0">
+        <v-hover v-slot="{ isHovering, props }">
+          <v-scroll-y-reverse-transition>
+            <v-card v-show="scrollY1" v-bind="props" :style="MainHomeCards(isHovering)" @click="gotocity()" :ripple="false">
+              <v-icon icon="mdi-bus-stop" :style="MainHomeCardsIcon(isHovering)"/>
+              <text :style="MainHomeCardsText(isHovering)">시내통학버스</text>
+            </v-card>
+          </v-scroll-y-reverse-transition>
+        </v-hover>
+        <v-hover v-slot="{ isHovering, props }">
+          <v-scroll-y-reverse-transition>
+            <v-card v-show="scrollY2" v-bind="props" :style="MainHomeCards(isHovering)" @click="gotoshuttle()" :ripple="false">
+              <v-icon icon="mdi-bus-marker" :style="MainHomeCardsIcon(isHovering)"/>
+              <text :style="MainHomeCardsText(isHovering)">셔틀버스</text>
+            </v-card>
+          </v-scroll-y-reverse-transition>
+        </v-hover>
+      </v-row>
+    </v-img>
+  </div>
+
 </template>
 
 <script>
