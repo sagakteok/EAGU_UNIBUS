@@ -1,66 +1,178 @@
 <template>
   <div v-if="isMobile500">
     <MobileHeader500/>
+    <div>
+      <v-row>
+        <v-scroll-y-reverse-transition>
+          <text v-show="Transition1" :style="DeveloperNewsTitle()">개발 관련 소식</text>
+        </v-scroll-y-reverse-transition>
+      </v-row>
+      <v-row>
+        <v-scroll-y-transition>
+          <text v-show="Transition1" :style="DeveloperNewsSubTitle()">UNIBUS 웹의 변경 사항 등을 확인해보세요.</text>
+        </v-scroll-y-transition>
+      </v-row>
+    </div>
+    <div :style="NewNoticeDivision()">
+      <div>
+        <v-row>
+          <v-scroll-y-reverse-transition>
+            <text v-show="Transition2" :style="NewNoticeTitle()">새로운 소식</text>
+          </v-scroll-y-reverse-transition>
+        </v-row>
+      </div>
+      <v-dialog-transition>
+        <div :style="SlideGroupStyle()" v-show="Transition2">
+          <v-hover v-slot="{isHovering, props}">
+            <v-scroll-y-reverse-transition>
+              <v-card v-show="Transition3" v-bind="props" :style="NewsCardStyle(isHovering)" :elevation="isHovering ? 5 : 0" class="ma-3" @click="" :ripple="false">
+                <v-card-text>1</v-card-text>
+              </v-card>
+            </v-scroll-y-reverse-transition>
+          </v-hover>
+          <v-hover v-slot="{isHovering, props}">
+            <v-scroll-y-reverse-transition>
+              <v-card v-show="Transition4" v-bind="props" :style="NewsCardStyle(isHovering)" :elevation="isHovering ? 5 : 0" class="ma-3" @click="" :ripple="false">
+                <v-card-text>2</v-card-text>
+              </v-card>
+            </v-scroll-y-reverse-transition>
+          </v-hover>
+          <v-hover v-slot="{isHovering, props}">
+            <v-scroll-y-reverse-transition>
+              <v-card v-show="Transition5" v-bind="props" :style="NewsCardStyle(isHovering)" :elevation="isHovering ? 5 : 0" class="ma-3" @click="" :ripple="false">
+                <v-card-text>3</v-card-text>
+              </v-card>
+            </v-scroll-y-reverse-transition>
+          </v-hover>
+        </div>
+      </v-dialog-transition>
+    </div>
+    <div :style="NewsListDivision()">
+      <div>
+        <v-row>
+          <v-scroll-y-reverse-transition>
+            <text v-show="Transition2" :style="NewNoticeTitle()">게시물 목록</text>
+          </v-scroll-y-reverse-transition>
+        </v-row>
+      </div>
+    </div>
+    <Footer500/>
   </div>
   <div v-else-if="isMobile800">
     <MobileHeader800/>
+    <div>
+      <v-row>
+        <v-scroll-y-reverse-transition>
+          <text v-show="Transition1" :style="DeveloperNewsTitle()">개발 관련 소식</text>
+        </v-scroll-y-reverse-transition>
+      </v-row>
+      <v-row>
+        <v-scroll-y-transition>
+          <text v-show="Transition1" :style="DeveloperNewsSubTitle()">UNIBUS 웹의 변경 사항 등을 확인해보세요.</text>
+        </v-scroll-y-transition>
+      </v-row>
+    </div>
+    <div :style="NewNoticeDivision()">
+      <div>
+        <v-row>
+          <v-scroll-y-reverse-transition>
+            <text v-show="Transition2" :style="NewNoticeTitle()">새로운 소식</text>
+          </v-scroll-y-reverse-transition>
+        </v-row>
+      </div>
+      <v-dialog-transition>
+        <div :style="SlideGroupStyle()" v-show="Transition2">
+          <v-hover v-slot="{isHovering, props}">
+            <v-scroll-y-reverse-transition>
+              <v-card v-show="Transition3" v-bind="props" :style="NewsCardStyle(isHovering)" :elevation="isHovering ? 5 : 0" class="ma-3" @click="" :ripple="false">
+                <v-card-text>1</v-card-text>
+              </v-card>
+            </v-scroll-y-reverse-transition>
+          </v-hover>
+          <v-hover v-slot="{isHovering, props}">
+            <v-scroll-y-reverse-transition>
+              <v-card v-show="Transition4" v-bind="props" :style="NewsCardStyle(isHovering)" :elevation="isHovering ? 5 : 0" class="ma-3" @click="" :ripple="false">
+                <v-card-text>2</v-card-text>
+              </v-card>
+            </v-scroll-y-reverse-transition>
+          </v-hover>
+          <v-hover v-slot="{isHovering, props}">
+            <v-scroll-y-reverse-transition>
+              <v-card v-show="Transition5" v-bind="props" :style="NewsCardStyle(isHovering)" :elevation="isHovering ? 5 : 0" class="ma-3" @click="" :ripple="false">
+                <v-card-text>3</v-card-text>
+              </v-card>
+            </v-scroll-y-reverse-transition>
+          </v-hover>
+        </div>
+      </v-dialog-transition>
+    </div>
+    <div :style="NewsListDivision()">
+      <div>
+        <v-row>
+          <v-scroll-y-reverse-transition>
+            <text v-show="Transition2" :style="NewNoticeTitle()">게시물 목록</text>
+          </v-scroll-y-reverse-transition>
+        </v-row>
+      </div>
+    </div>
+    <Footer800/>
   </div>
   <div v-else>
     <DesktopHeader/>
-  </div>
-  <div>
-    <v-row>
-      <v-scroll-y-reverse-transition>
-        <text v-show="Transition1" :style="DeveloperNewsTitle()">개발 관련 소식</text>
-      </v-scroll-y-reverse-transition>
-    </v-row>
-    <v-row>
-      <v-scroll-y-transition>
-        <text v-show="Transition1" :style="DeveloperNewsSubTitle()">UNIBUS 웹의 변경 사항 등을 확인해보세요.</text>
-      </v-scroll-y-transition>
-    </v-row>
-  </div>
-  <div :style="NewNoticeDivision()">
     <div>
       <v-row>
         <v-scroll-y-reverse-transition>
-          <text v-show="Transition2" :style="NewNoticeTitle()">새로운 소식</text>
+          <text v-show="Transition1" :style="DeveloperNewsTitle()">개발 관련 소식</text>
         </v-scroll-y-reverse-transition>
+      </v-row>
+      <v-row>
+        <v-scroll-y-transition>
+          <text v-show="Transition1" :style="DeveloperNewsSubTitle()">UNIBUS 웹의 변경 사항 등을 확인해보세요.</text>
+        </v-scroll-y-transition>
       </v-row>
     </div>
-    <v-dialog-transition>
-      <div :style="SlideGroupStyle()" v-show="Transition2">
-        <v-hover v-slot="{isHovering, props}">
+    <div :style="NewNoticeDivision()">
+      <div>
+        <v-row>
           <v-scroll-y-reverse-transition>
-            <v-card v-show="Transition3" v-bind="props" :style="NewsCardStyle(isHovering)" :elevation="isHovering ? 5 : 0" class="ma-3" @click="" :ripple="false">
-              <v-card-text>1</v-card-text>
-            </v-card>
+            <text v-show="Transition2" :style="NewNoticeTitle()">새로운 소식</text>
           </v-scroll-y-reverse-transition>
-        </v-hover>
-        <v-hover v-slot="{isHovering, props}">
-          <v-scroll-y-reverse-transition>
-            <v-card v-show="Transition4" v-bind="props" :style="NewsCardStyle(isHovering)" :elevation="isHovering ? 5 : 0" class="ma-3" @click="" :ripple="false">
-              <v-card-text>2</v-card-text>
-            </v-card>
-          </v-scroll-y-reverse-transition>
-        </v-hover>
-        <v-hover v-slot="{isHovering, props}">
-          <v-scroll-y-reverse-transition>
-            <v-card v-show="Transition5" v-bind="props" :style="NewsCardStyle(isHovering)" :elevation="isHovering ? 5 : 0" class="ma-3" @click="" :ripple="false">
-              <v-card-text>3</v-card-text>
-            </v-card>
-          </v-scroll-y-reverse-transition>
-        </v-hover>
+        </v-row>
       </div>
-    </v-dialog-transition>
-  </div>
-  <div :style="NewsListDivision()">
-    <div>
-      <v-row>
-        <v-scroll-y-reverse-transition>
-          <text v-show="Transition2" :style="NewNoticeTitle()">게시물 목록</text>
-        </v-scroll-y-reverse-transition>
-      </v-row>
+      <v-dialog-transition>
+        <div :style="SlideGroupStyle()" v-show="Transition2">
+          <v-hover v-slot="{isHovering, props}">
+            <v-scroll-y-reverse-transition>
+              <v-card v-show="Transition3" v-bind="props" :style="NewsCardStyle(isHovering)" :elevation="isHovering ? 5 : 0" class="ma-3" @click="" :ripple="false">
+                <v-card-text>1</v-card-text>
+              </v-card>
+            </v-scroll-y-reverse-transition>
+          </v-hover>
+          <v-hover v-slot="{isHovering, props}">
+            <v-scroll-y-reverse-transition>
+              <v-card v-show="Transition4" v-bind="props" :style="NewsCardStyle(isHovering)" :elevation="isHovering ? 5 : 0" class="ma-3" @click="" :ripple="false">
+                <v-card-text>2</v-card-text>
+              </v-card>
+            </v-scroll-y-reverse-transition>
+          </v-hover>
+          <v-hover v-slot="{isHovering, props}">
+            <v-scroll-y-reverse-transition>
+              <v-card v-show="Transition5" v-bind="props" :style="NewsCardStyle(isHovering)" :elevation="isHovering ? 5 : 0" class="ma-3" @click="" :ripple="false">
+                <v-card-text>3</v-card-text>
+              </v-card>
+            </v-scroll-y-reverse-transition>
+          </v-hover>
+        </div>
+      </v-dialog-transition>
+    </div>
+    <div :style="NewsListDivision()">
+      <div>
+        <v-row>
+          <v-scroll-y-reverse-transition>
+            <text v-show="Transition2" :style="NewNoticeTitle()">게시물 목록</text>
+          </v-scroll-y-reverse-transition>
+        </v-row>
+      </div>
     </div>
   </div>
   <GoTopButton/>
@@ -71,9 +183,11 @@ import DesktopHeader from "../Bars/DesktopHeader.vue";
 import MobileHeader500 from "../Bars/MobileHeader500.vue";
 import MobileHeader800 from "../Bars/MobileHeader800.vue";
 import GoTopButton from "../Bars/GoTopButton.vue";
+import Footer500 from "../Bars/Footer500.vue";
+import Footer800 from "../Bars/Footer800.vue";
 
 export default {
-  components: {DesktopHeader, MobileHeader500, MobileHeader800, GoTopButton},
+  components: {DesktopHeader, MobileHeader500, MobileHeader800, GoTopButton, Footer500, Footer800},
   data() {
     return {
       isMobile: false,
@@ -170,6 +284,16 @@ export default {
     }
   },
   mounted() {
+    document.body.animate(
+        [
+          {opacity: 0},
+          {opacity: 1},
+        ],
+        {
+          duration: 200,
+          easing: 'ease-in-out',
+        }
+    );
     setTimeout(() => {
       this.Transition1 = true;
     }, 100)

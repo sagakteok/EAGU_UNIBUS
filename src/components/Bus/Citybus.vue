@@ -1,6 +1,7 @@
 <template>
   <div v-if="isMobile500">
     <MobileHeader500/>
+    <Footer500/>
   </div>
   <div v-else-if="isMobile800">
     <MobileHeader800/>
@@ -21,6 +22,7 @@
     <div :style="SlideGroupCourseTextBackground800()">
       <text :style="SlideGroupCourseText800()">{{ selectedCourse || '코스를 선택하세요.' }}</text>
     </div>
+    <Footer800/>
   </div>
   <div v-else-if="isMobile1600">
     <DesktopHeader/>
@@ -93,6 +95,8 @@ import DesktopHeader from "../Bars/DesktopHeader.vue";
 import MobileHeader500 from "../Bars/MobileHeader500.vue";
 import MobileHeader800 from "../Bars/MobileHeader800.vue";
 import GoTopButton from "../Bars/GoTopButton.vue";
+import Footer500 from "../Bars/Footer500.vue";
+import Footer800 from "../Bars/Footer800.vue";
 import KakaoMap from "../../KaKaoMap.vue";
 import course1 from "../Course/course1.vue";
 import course2 from "../Course/course2.vue";
@@ -106,7 +110,7 @@ import course9 from "../Course/course9.vue";
 import {mergeProps} from "vue";
 
 export default {
-  components: {DesktopHeader, MobileHeader500, MobileHeader800, GoTopButton, KakaoMap, course1, course2, course3, course4,
+  components: {DesktopHeader, MobileHeader500, MobileHeader800, GoTopButton, Footer500, Footer800, KakaoMap, course1, course2, course3, course4,
     course5,course6, course7, course8, course9},
   data() {
     return {

@@ -1,9 +1,11 @@
 <template>
   <div v-if="isMobile500">
     <MobileHeader500/>
+    <Footer500/>
   </div>
   <div v-else-if="isMobile800">
     <MobileHeader800/>
+    <Footer800/>
   </div>
   <div v-else>
     <DesktopHeader/>
@@ -41,11 +43,13 @@ import DesktopHeader from "../Bars/DesktopHeader.vue";
 import MobileHeader500 from "../Bars/MobileHeader500.vue";
 import MobileHeader800 from "../Bars/MobileHeader800.vue";
 import GoTopButton from "../Bars/GoTopButton.vue";
+import Footer500 from "../Bars/Footer500.vue";
+import Footer800 from "../Bars/Footer800.vue";
 import KakaoMap from "../../KaKaoMap.vue";
 import {mergeProps} from "vue";
 
 export default {
-  components: {DesktopHeader, MobileHeader500, MobileHeader800, GoTopButton, KakaoMap},
+  components: {DesktopHeader, MobileHeader500, MobileHeader800, GoTopButton, Footer500, Footer800, KakaoMap},
   data() {
     return {
       scrollY1: false,
