@@ -209,7 +209,8 @@ export default {
         fontSize: '60px',
         color: '#006933',
         margin: 'auto',
-        marginTop: '60px'
+        marginTop: '60px',
+        cursor: 'default'
       };
     },
     DeveloperNewsSubTitle() {
@@ -219,7 +220,8 @@ export default {
         fontWeight: '600',
         fontSize: '15px',
         margin: 'auto',
-        marginTop: '0px'
+        marginTop: '0px',
+        cursor: 'default'
       };
     },
     NewNoticeDivision() {
@@ -237,7 +239,8 @@ export default {
         fontWeight: '500',
         fontSize: '30px',
         color: '#006933',
-        marginLeft: '40px'
+        marginLeft: '40px',
+        cursor: 'default'
       }
     },
     SlideGroupStyle() {

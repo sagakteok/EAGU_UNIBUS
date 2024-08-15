@@ -91,7 +91,6 @@ export default {
         color: isHovering ? '#1FD387' : '#000000',
         fontSize: isHovering ? '22px' : '20px',
         fontWeight: isHovering ? '700' : '500',
-        outline: 'none',
         marginLeft: '20px',
         cursor: 'pointer'
       };

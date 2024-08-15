@@ -235,7 +235,6 @@ export default {
         color: isHovering ? '#00FF7C' : '#FFFFFF',
         fontSize: 'clamp(13px, 2vw, 20px)',
         marginLeft: '15px',
-        outline: 'none',
       }
     },
     MenuListStyle() {

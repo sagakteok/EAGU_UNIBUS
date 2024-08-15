@@ -300,7 +300,6 @@ export default {
         color: isHovering ? '#00FF7C' : '#FFFFFF',
         fontSize: '20px',
         marginLeft: '15px',
-        outline: 'none',
       }
     },
     MenuListStyle() {
@@ -382,7 +381,6 @@ export default {
         color: isHovering ? '#00FF7C' : '#FFFFFF',
         fontSize: '18px',
         marginLeft: '15px',
-        outline: 'none',
       }
     },
     CitybusGoSchoolTitle800() {

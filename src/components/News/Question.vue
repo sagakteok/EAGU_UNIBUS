@@ -80,7 +80,8 @@ export default {
         fontSize: '60px',
         color: '#006933',
         margin: 'auto',
-        marginTop: '60px'
+        marginTop: '60px',
+        cursor: 'default'
       };
     },
     QuestionSubTitle() {
@@ -90,7 +91,8 @@ export default {
         fontWeight: '600',
         fontSize: '15px',
         margin: 'auto',
-        marginTop: '0px'
+        marginTop: '0px',
+        cursor: 'default'
       };
     },
     handleResize() {

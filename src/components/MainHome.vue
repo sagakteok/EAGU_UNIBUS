@@ -61,9 +61,9 @@ export default {
     MainHomeTitle() {
       return {
         transition: 'all 0s ease-in-out',
-        width: '600px',
+        width: 'clamp(300px, 70vw, 70vh)',
         margin: 'auto',
-        marginTop: '120px',
+        marginTop: '20vh',
       };
     },
     MainHomeSubTitle() {
@@ -71,7 +71,7 @@ export default {
         transition: 'all 0s ease-in-out',
         fontFamily: 'Inter-Bold, Helvetica',
         fontWeight: '600',
-        fontSize: '25px',
+        fontSize: 'clamp(15px, 3.5vw, 3.5vh)',
         color: '#FFFFFF',
         margin: 'auto',
         marginTop: '30px'
@@ -82,7 +82,7 @@ export default {
         width: '100vw',
         maxWidth: '1600px',
         margin: 'auto',
-        marginTop: '100px',
+        marginTop: '14vh',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -94,8 +94,8 @@ export default {
         backgroundColor: isHovering ? '#00FF7C' : '#FFFFFF',
         border: '4px solid #006933',
         borderRadius: '50px',
-        height: isHovering ? '252px' : '240px',
-        width: isHovering ? '252px' : '240px',
+        height: '240px',
+        width: '240px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',

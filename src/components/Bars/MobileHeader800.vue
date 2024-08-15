@@ -91,7 +91,6 @@ export default {
         textShadow: isHovering ? '0px 0px 3px #1FD38780' : 'none',
         fontSize: '15px',
         color: isHovering ? '#1FD387' : '#000000',
-        outline: 'none',
         cursor: 'pointer'
       };
     },
